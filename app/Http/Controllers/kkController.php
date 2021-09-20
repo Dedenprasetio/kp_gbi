@@ -82,7 +82,7 @@ class kkController extends Controller
 
         $talentas = Talenta::get();
         $anggotas = Anggota::get();
-        return view('anggota.create', compact('kode',  'talentas', 'anggotas'));
+        return view('kk.create', compact('kode',  'talentas', 'anggotas'));
 
     }
     

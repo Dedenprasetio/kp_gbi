@@ -29,7 +29,7 @@
 
                 <div class="card-body">
                 
-                        <a href="{{ route('anggota.create') }}" class="btn btn-primary  btn-fw col-lg-2"><i class="fa fa-plus"></i> Tambah Anggota</a>
+                        <a href="{{ route('kk.create') }}" class="btn btn-primary  btn-fw col-lg-2"></i> (+) Kepala Keluarga </a>
                         </br></br>
                   <div class="table-responsive">
                     <table class="table table-striped" id="table">
@@ -39,29 +39,12 @@
                             NO
                           </th>
                         <th>
-                            NO KK
+                            Nomor Kepala Keluarga
                           </th>
                           <th>
-                            NAMA
+                            Nama Kepala Keluarga
                           </th>
-                          <th>
-                            TGL LAHIR
-                          </th>
-                          <th>
-                            JK
-                          </th>
-                         
-                         
-                          <th>
-                            GER-WIL
-                          </th>
-                          
-                          <th>
-                            STATUS KEANGGOTAAN
-                          </th>
-                          <th>
-                            DATA UPDATE
-                          </th>
+              
                           <th>
                             ACTION
                           </th>
