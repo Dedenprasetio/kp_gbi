@@ -107,6 +107,9 @@
                             {{$data->updated_at}}
                           </td>
                           <td>
+
+
+                  <a href="#" class="btn btn-secondary  btn-sm"><i class="fa fa-download"></i> </a>
                 
                   <a href="{{route('talenta.edit', $data->id)}}" class="btn btn-secondary  btn-sm"><i class="fa fa-cog"></i> </a>
                   <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalDelete_{{ $data->id }}"><i class="fa fa-trash"></i></button>
