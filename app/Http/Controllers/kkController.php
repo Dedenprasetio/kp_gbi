@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Anggota;
 use App\Talenta;
+use App\KartuKeluarga;
 // use App\Jabatan;
 // use App\Gerwil;
 // use App\TransNikah;
@@ -39,10 +40,14 @@ class kkController extends Controller
         if(Auth::user()->level == 'user') {
             Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
             return redirect()->to('/');
-        } 
-        $talentas  = Talenta::get();
-        $anggotas   = Anggota::get();
-        return view('kk.index',array('anggota' => $anggotas,   'talenta' => $talentas));
+        }
+        $q = KartuKeluarga::query();
+        $datas1 = $q->get();
+
+        $kk = KartuKeluarga::get();
+        $anggota   = Anggota::get();
+        
+        return view('kk.index', compact('kk', 'anggota', 'datas1'));
   
     }
 
@@ -52,37 +57,11 @@ class kkController extends Controller
         if(Auth::user()->level == 'user') {
             Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
             return redirect()->to('/');
-        }
-
+        }     
+        $anggotas = anggota::get();
         
-        //MENGITUNG KODE ANGGOTA SECARA OTOMATIS
-        $getRow = Anggota::orderBy('id', 'DESC')->get();
-        $rowCount = $getRow->count();
-        $lastId = $getRow->first();
-        $kode = "NIAGBIN00001";
-        if ($rowCount > 0) {
-            if ($lastId->id < 9) {
-                    $kode = "NIAGBIN0000".''.($lastId->id + 1);
-            } else if ($lastId->id < 99) {
-                    $kode = "NIAGBIN000".''.($lastId->id + 1);
-            } else if ($lastId->id < 999) {
-                    $kode = "NIAGBIN00".''.($lastId->id + 1);
-            } else if ($lastId->id < 9999) {
-                    $kode = "NIAGBIN0".''.($lastId->id + 1);
-            } else {
-                    $kode = "NIAGBIN".''.($lastId->id + 1);
-            }
-        }
- 
-        // $users = User::WhereNotExists(function($query) {
-        //                 $query->select(DB::raw(1))
-        //                 ->from('anggota')
-        //                 ->whereRaw('anggota.user_id = users.id');
-        //              })->get();
 
-        $talentas = Talenta::get();
-        $anggotas = Anggota::get();
-        return view('kk.create', compact('kode',  'talentas', 'anggotas'));
+        return view('kk.create' , compact('anggotas'));
 
     }
     
@@ -97,38 +76,16 @@ class kkController extends Controller
     public function store(Request $request)
     {   
 
-        $count = Anggota::where('kode_anggota',$request->input('kode_anggota'))->count();
-
-        if($count>0){
-            Session::flash('message', 'Already exist!');
-            Session::flash('message_type', 'danger');
-            return redirect()->to('anggota');
-        }
-
         $this->validate($request, [
-            'nama' => 'required|string|max:255',
-            'gerwil' => 'required',
-            
-        ]);
+           
+            'anggota_id' => 'required',
+            'nomor_kk' => 'required',
+        ]); 
+        KartuKeluarga::create($request->all());
 
-        
-
-        if($request->file('gambar') == '') {
-            $gambar = NULL;
-        } else {
-            $file = $request->file('gambar');
-            $dt = Carbon::now();
-            $acak  = $file->getClientOriginalExtension();
-            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
-            $request->file('gambar')->move("images/anggota", $fileName);
-            $gambar = $fileName;
-        }
-         
-        
-        Anggota::create($request->all());
 
         alert()->success('Berhasil.','Data telah ditambahkan!');
-        return redirect()->route('anggota.index');
+        return redirect()->route('kk.index');
 
     }
 
@@ -141,9 +98,16 @@ class kkController extends Controller
     public function show($id)
     {   
         
-        $data = anggota::findOrFail($id);
-       
-        return view('Anggota.show', compact('data'));
+        $data = KartuKeluarga::findOrFail($id);
+    
+        if((Auth::user()->level == 'user') && (Auth::user()->id != $id)) {
+                Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+                return redirect()->to('/');
+        }
+        
+        $anggotas = anggota::get();
+
+        return view('kk.show', compact('data', 'anggotas'));
         
     }
 
@@ -155,13 +119,13 @@ class kkController extends Controller
      */
     public function edit($id)
     {   
-        if((Auth::user()->level == 'user') && (Auth::user()->id != $id)) {
-                Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
-                return redirect()->to('/');
+        if(Auth::user()->level == 'user') {
+            Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+            return redirect()->to('/');
         }
 
-        $data = Anggota::findOrFail($id);
-        return view('anggota.edit', compact('data'));
+        $data = KartuKeluarga::findOrFail($id);
+        return view('Talenta.edit', compact('data'));
     }
 
     /**
@@ -208,8 +172,8 @@ class kkController extends Controller
             Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
             return redirect()->to('/');
         }
-        Anggota::find($id)->delete();
+        KartuKeluarga::find($id)->delete();
         alert()->success('Berhasil.','Data telah dihapus!');
-        return redirect()->route('anggota.index');
+        return redirect()->route('kk.index');
     }
 }

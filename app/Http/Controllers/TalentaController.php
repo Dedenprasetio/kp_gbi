@@ -118,7 +118,8 @@ class TalentaController extends Controller
     }
 
      public function show($id)
-    {   $data = Talenta::findOrFail($id);
+    {   
+        $data = Talenta::findOrFail($id);
     
         if((Auth::user()->level == 'user') && (Auth::user()->id != $id)) {
                 Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');

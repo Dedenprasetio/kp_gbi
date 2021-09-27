@@ -32,25 +32,43 @@
                         <a href="{{ route('kk.create') }}" class="btn btn-primary  btn-fw col-lg-2"></i> (+) Kepala Keluarga </a>
                         </br></br>
                   <div class="table-responsive">
-                    <table class="table table-striped" id="table">
+                  <table class="table table-striped" id="table">
                       <thead>
                         <tr>
                         <th>
                             NO
                           </th>
-                        <th>
-                            Nomor Kepala Keluarga
+                           <th>
+                            NAMA KEPALA KELUARGA
                           </th>
                           <th>
-                            Nama Kepala Keluarga
+                            NOMOR KEPALA KELUARGA
                           </th>
-              
                           <th>
                             ACTION
                           </th>
                         </tr>
                       </thead>
-                      
+                      <tbody>
+                      <?php $no = 0;?>
+                      @foreach($kk as $data)
+                      <?php $no++ ;?>
+          
+                        <tr>
+                        <td>{{ $no }}</td>
+                          <td> 
+                              {{$data->anggota->nama}}
+                          </td>
+                          <td> 
+                            {{$data->nomor_kk}}
+                          </td>
+                          <td> 
+                            Tombol Detail KK
+                          </td>
+
+                        </tr>
+                      @endforeach
+                      </tbody>
                     </table>
                   </div>
                {{--  {!! $datas->links() !!} --}}

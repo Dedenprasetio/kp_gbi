@@ -17,6 +17,7 @@ class CreateKartuKeluargasTable extends Migration
             $table->increments('id');
             $table->integer('anggota_id')->unsigned();
             $table->foreign('anggota_id')->references('id')->on('anggota')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('nomor_kk')->nullable();
             $table->timestamps();
         });
     }

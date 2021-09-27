@@ -56,7 +56,7 @@ $(document).ready(function() {
                       <h4 class="card-title">Tambah Kepala Keluarga</h4>
                       
                         <div class="form-group{{ $errors->has('anggota_id') ? ' has-error' : '' }}">
-                            <label for="anggota_id" class="col-md-4 control-label">Anggota</label>
+                            <label for="anggota_id" class="col-md-4 control-label">Nama Kepala Keluarga</label>
                             <div class="col-md-6">
                                 <div class="input-group">
                                 <input id="anggota_judul" type="text" class="form-control"  readonly="" required>
@@ -70,19 +70,19 @@ $(document).ready(function() {
                                         <strong>{{ $errors->first('anggota_id') }}</strong>
                                     </span>
                                 @endif
-                                 
+
                             </div>
                         </div>
 &nbsp; 
                         
                         
-                        <div class="form-group{{ $errors->has('ket') ? ' has-error' : '' }}">
-                            <label for="no_kk" class="col-md-2 control-label">Nomor Kartu Keluarga</label>
+                        <div class="form-group{{ $errors->has('nomor_kk') ? ' has-error' : '' }}">
+                            <label for="nomor_kk" class="col-md-2 control-label">Nomor Kartu Keluarga</label>
                             <div class="col-md-6">
-                                <input id="ket" type="text" class="form-control" name="no_kk" value="{{ old('no_kk') }}" required>
-                                @if ($errors->has('ket'))
+                                <input id="nomor_kk" type="text" class="form-control" name="nomor_kk" value="{{ old('nomor_kk') }}" required>
+                                @if ($errors->has('nomor_kk'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('ket') }}</strong>
+                                        <strong>{{ $errors->first('nomor_kk') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -110,7 +110,7 @@ $(document).ready(function() {
   <div class="modal-dialog modal-lg" role="document" >
     <div class="modal-content" style="background: #fff;">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cari anggota</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Cari kepala keluarga</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
