@@ -118,6 +118,7 @@ $(document).ready(function() {
       <div class="modal-body">
                         <table id="lookup" class="table table-bordered table-hover table-striped">
                             <thead>
+                                
                             <tr>
                                     <th>Nama</th>
                                     <th>Kabupaten</th>
@@ -127,11 +128,11 @@ $(document).ready(function() {
                             </thead>
                             <tbody>
                                 @foreach($anggotas as $data)
+                                @if ($data->sts_dlm_klrg == 'Suami')
                         <tr class="pilih_anggota" data-anggota_id="<?php echo $data->id; ?>" data-anggota_judul="<?php echo $data->nama; ?>" >
                         <td>{{$data->nama}}</td>
                                     <td>{{$data->kota}}</td>
                                     <td>{{$data->asal_grj}}</td>
-                                    
                                     <td>
                          
                          @if($data->sts_anggota == 'Jemaat')
@@ -141,6 +142,7 @@ $(document).ready(function() {
                          @endif
                          </td>
                                 </tr>
+                                @endif
                                 @endforeach
                             </tbody>
                         </table>  
