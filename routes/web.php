@@ -39,6 +39,9 @@ Route::resource('jabatan', 'JabatanController');
 //kepala keluarga
 Route::resource('kk', 'kkController');
 
+//detail kk
+Route::resource('detailkk', 'detKkController');
+
 
 Route::resource('export', 'ExportController');
 Route::resource('kategori', 'KategoriController');

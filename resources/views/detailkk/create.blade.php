@@ -44,7 +44,7 @@ $(document).ready(function() {
 
 @section('content')
 
-<form method="POST" action="{{ route('kk.store') }}" enctype="multipart/form-data">
+<form method="POST" action="{{ route('detailkk.store') }}" enctype="multipart/form-data">
     {{ csrf_field() }}
 
     <div class="row">
@@ -53,10 +53,10 @@ $(document).ready(function() {
                 <div class="col-12">
                   <div class="card">
                     <div class="card-body">
-                      <h4 class="card-title">Tambah Kepala Keluarga</h4>
+                      <h4 class="card-title">Tambah Detail Keluarga</h4>
                       
                         <div class="form-group{{ $errors->has('anggota_id') ? ' has-error' : '' }}">
-                            <label for="anggota_id" class="col-md-4 control-label">Nama Kepala Keluarga</label>
+                            <label for="anggota_id" class="col-md-4 control-label">Nama Keluarga</label>
                             <div class="col-md-6">
                                 <div class="input-group">
                                 <input id="anggota_judul" type="text" class="form-control"  readonly="" required>
@@ -74,17 +74,21 @@ $(document).ready(function() {
                             </div>
                         </div>
 &nbsp; 
-                        
-                        
-                        <div class="form-group{{ $errors->has('nomor_kk') ? ' has-error' : '' }}">
-                            <label for="nomor_kk" class="col-md-2 control-label">Nomor Kartu Keluarga</label>
-                            <div class="col-md-6">
-                                <input id="nomor_kk" type="text" class="form-control" name="nomor_kk" value="{{ old('nomor_kk') }}" required>
-                                @if ($errors->has('nomor_kk'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('nomor_kk') }}</strong>
-                                    </span>
-                                @endif
+
+                            
+                        <div class="form-group{{ $errors->has('sts_dlm_klrg') ? ' has-error' : '' }}">
+                            <label for="sts_dlm_klrg" class="col-md-12 control-label">Status Dalam Keluarga   <b style="color:Tomato;"></b>  </label>
+                            <div class="col-md-12">
+                            
+                            <select class="form-control" name="sts_dlm_klrg" required="">
+                            
+                            
+                                <option value="Istri">Istri</option>
+                                <option value="Anak">Anak</option>
+                                <option value="Lain-lain">Lain-lain</option>
+                                
+                                
+                            </select>
                             </div>
                         </div>
                         
@@ -93,7 +97,7 @@ $(document).ready(function() {
                        <button type="submit" class="btn btn-primary col-md-3" id="submit">
                                     Simpan
                         </button>
-                        <a href="{{route('kk.index')}}" class="btn btn-light pull-right">Kembali</a>
+                        <a href="{{route('detailkk.index')}}" class="btn btn-light pull-right">Kembali</a>
                         </div>
                     </div>
                   </div>

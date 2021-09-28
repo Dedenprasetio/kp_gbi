@@ -29,7 +29,7 @@
 
                 <div class="card-body">
                 
-                        <a href="{{ route('kk.create') }}" class="btn btn-primary  btn-fw col-lg-2"></i> (+) Kepala Keluarga </a>
+                        <a href="{{ route('detailkk.create') }}" class="btn btn-primary  btn-fw col-lg-2"></i> (+) Detail Keluarga </a>
                         </br></br>
                   <div class="table-responsive">
                   <table class="table table-striped" id="table">
@@ -39,10 +39,13 @@
                             NO
                           </th>
                            <th>
-                            NAMA KEPALA KELUARGA
+                            NIK
                           </th>
                           <th>
-                            NOMOR KARTU KELUARGA
+                            NAMA 
+                          </th>
+                          <th>
+                            STATUS HUBUNGAN KELUARGA
                           </th>
                           <th>
                             ACTION
@@ -57,14 +60,18 @@
                         <tr>
                         <td>{{ $no }}</td>
                           <td> 
-                              {{$data->anggota->nama}}
+                              ww
                           </td>
                           <td> 
-                            {{$data->nomor_kk}}
+                            ww
+                          </td>
+
+                          <td> 
+                            ww
                           </td>
                          
                           <td>
-                              <a href="{{route('detailkk.index', ['kk' => $data->nomor_kk])}}" class="btn btn-secondary  btn-sm" style="color:blue">Detail</a>
+                              
 
                               <a href="#" class="btn btn-secondary  btn-sm"><i class="fa fa-cog"></i> </a>
                               <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalDelete_{{ $data->id }}"><i class="fa fa-trash"></i></button>
@@ -98,9 +105,11 @@
                                                               
                                         </div>
 
+                                        
                                     </div>
                                   </div>
                                 </div>
+                                
                               </form>
 
                               </td>
@@ -108,10 +117,18 @@
                       @endforeach
                       </tbody>
                     </table>
+                    
                   </div>
+                 
+                  
                {{--  {!! $datas->links() !!} --}}
                 </div>
+                
               </div>
+              
             </div>
+            
           </div>
+          <a href="{{route('kk.index')}}" class="btn btn-light pull-right" style="background-color:white">Kembali</a>
+          
 @endsection

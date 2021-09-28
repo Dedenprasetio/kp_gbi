@@ -21,7 +21,7 @@ use App\Exports\LaporanExport;
 use Maatwebsite\Excel\Facades\Excel;
 
 
-class kkController extends Controller
+class detKkController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -47,7 +47,7 @@ class kkController extends Controller
         $kk = KartuKeluarga::get();
         $anggota   = Anggota::get();
         
-        return view('kk.index', compact('kk', 'anggota', 'datas1'));
+        return view('detailkk.index', compact('kk', 'anggota', 'datas1'));
   
     }
 
@@ -62,7 +62,7 @@ class kkController extends Controller
         $anggotas = anggota::get();
         
 
-        return view('kk.create' , compact('anggotas'));
+        return view('detailkk.create' , compact('anggotas'));
 
     }
     
@@ -86,7 +86,7 @@ class kkController extends Controller
 
 
         alert()->success('Berhasil.','Data telah ditambahkan!');
-        return redirect()->route('kk.index');
+        return redirect()->route('detailkk.index');
 
     }
 
