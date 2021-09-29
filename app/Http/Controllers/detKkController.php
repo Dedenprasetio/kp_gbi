@@ -7,6 +7,7 @@ use App\User;
 use App\Anggota;
 use App\Talenta;
 use App\KartuKeluarga;
+use App\DetailKartuKeluarga;
 // use App\Jabatan;
 // use App\Gerwil;
 // use App\TransNikah;
@@ -41,13 +42,14 @@ class detKkController extends Controller
             Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
             return redirect()->to('/');
         }
-        $q = KartuKeluarga::query();
+        $q = DetailKartuKeluarga::query();
         $datas1 = $q->get();
 
         $kk = KartuKeluarga::get();
+        $det = DetailKartuKeluarga::get();
         $anggota   = Anggota::get();
         
-        return view('detailkk.index', compact('kk', 'anggota', 'datas1'));
+        return view('detailkk.index', compact('kk', 'anggota', 'det', 'datas1'));
   
     }
 
@@ -77,12 +79,10 @@ class detKkController extends Controller
     public function store(Request $request)
     {   
 
-        $this->validate($request, [
-           
+        $this->validate($request, [     
             'anggota_id' => 'required',
-            'nomor_kk' => 'required',
         ]); 
-        KartuKeluarga::create($request->all());
+        DetailKartuKeluarga::create($request->all());
 
 
         alert()->success('Berhasil.','Data telah ditambahkan!');
@@ -99,7 +99,7 @@ class detKkController extends Controller
     public function show($id)
     {   
         
-        $data = KartuKeluarga::findOrFail($id);
+        $data = DetailKartuKeluarga::findOrFail($id);
     
         if((Auth::user()->level == 'user') && (Auth::user()->id != $id)) {
                 Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
@@ -125,7 +125,7 @@ class detKkController extends Controller
             return redirect()->to('/');
         }
 
-        $data = KartuKeluarga::findOrFail($id);
+        $data = DetailKartuKeluarga::findOrFail($id);
         return view('Talenta.edit', compact('data'));
     }
 
@@ -173,8 +173,8 @@ class detKkController extends Controller
             Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
             return redirect()->to('/');
         }
-        KartuKeluarga::find($id)->delete();
+        DetailKartuKeluarga::find($id)->delete();
         alert()->success('Berhasil.','Data telah dihapus!');
-        return redirect()->route('kk.index');
+        return redirect()->route('detailkk.index');
     }
 }

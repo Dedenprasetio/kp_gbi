@@ -39,7 +39,7 @@
                             NO
                           </th>
                            <th>
-                            NIK
+                            KODE ANGGOTA
                           </th>
                           <th>
                             NAMA 
@@ -54,20 +54,20 @@
                       </thead>
                       <tbody>
                       <?php $no = 0;?>
-                      @foreach($kk as $data)
+                      @foreach($det as $data)
                       <?php $no++ ;?>
           
                         <tr>
                         <td>{{ $no }}</td>
                           <td> 
-                              ww
+                              {{ $data->anggota->kode_anggota}}
                           </td>
                           <td> 
-                            ww
+                            {{ $data->anggota->nama }}
                           </td>
-
+                            
                           <td> 
-                            ww
+                          {{ $data->anggota->sts_dlm_klrg }}
                           </td>
                          
                           <td>
@@ -79,7 +79,7 @@
 
 
                               <!-- Modal -->
-                              <form method="POST" action="{{ route('kk.destroy',['id' => $data->id]) }}">
+                              <form method="POST" action="{{ route('detailkk.destroy',['id' => $data->id]) }}">
                                 <div class="modal fade" id="modalDelete_{{ $data->id }}" tabindex="-1" role="dialog" aria-labelledby="modalDeleteLabel" aria-hidden="true">
                                   <div class="modal-dialog" role="document">
                                     <div class="modal-content">

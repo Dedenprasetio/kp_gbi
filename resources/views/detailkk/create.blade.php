@@ -56,7 +56,7 @@ $(document).ready(function() {
                       <h4 class="card-title">Tambah Detail Keluarga</h4>
                       
                         <div class="form-group{{ $errors->has('anggota_id') ? ' has-error' : '' }}">
-                            <label for="anggota_id" class="col-md-4 control-label">Nama Keluarga</label>
+                            <label for="anggota_id" class="col-md-4 control-label">Anggota Keluarga</label>
                             <div class="col-md-6">
                                 <div class="input-group">
                                 <input id="anggota_judul" type="text" class="form-control"  readonly="" required>
@@ -76,7 +76,7 @@ $(document).ready(function() {
 &nbsp; 
 
                             
-                        <div class="form-group{{ $errors->has('sts_dlm_klrg') ? ' has-error' : '' }}">
+                        <!-- <div class="form-group{{ $errors->has('sts_dlm_klrg') ? ' has-error' : '' }}">
                             <label for="sts_dlm_klrg" class="col-md-12 control-label">Status Dalam Keluarga   <b style="color:Tomato;"></b>  </label>
                             <div class="col-md-12">
                             
@@ -90,7 +90,7 @@ $(document).ready(function() {
                                 
                             </select>
                             </div>
-                        </div>
+                        </div> -->
                         
                        
                         <div class="col-md-12">
@@ -114,7 +114,7 @@ $(document).ready(function() {
   <div class="modal-dialog modal-lg" role="document" >
     <div class="modal-content" style="background: #fff;">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cari kepala keluarga</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Cari anggota keluarga</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -127,16 +127,18 @@ $(document).ready(function() {
                                     <th>Nama</th>
                                     <th>Kabupaten</th>
                                     <th>Asal Gereja</th>
+                                    <th>Status Dalam Keluarga</th>
                                      <th>Status</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($anggotas as $data)
-                                @if ($data->sts_dlm_klrg == 'Suami')
+                                @if ($data->sts_dlm_klrg != 'Suami')
                         <tr class="pilih_anggota" data-anggota_id="<?php echo $data->id; ?>" data-anggota_judul="<?php echo $data->nama; ?>" >
                         <td>{{$data->nama}}</td>
                                     <td>{{$data->kota}}</td>
                                     <td>{{$data->asal_grj}}</td>
+                                    <td>{{$data->sts_dlm_klrg}}</td>
                                     <td>
                          
                          @if($data->sts_anggota == 'Jemaat')
