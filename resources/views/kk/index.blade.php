@@ -66,7 +66,7 @@
                           <td>
                               <a href="{{route('detailkk.index', ['kk' => $data->nomor_kk])}}" class="btn btn-secondary  btn-sm" style="color:blue">Detail</a>
 
-                              <a href="#" class="btn btn-secondary  btn-sm"><i class="fa fa-cog"></i> </a>
+                              <a href="{{route('kk.edit', $data->id)}}" class="btn btn-secondary  btn-sm"><i class="fa fa-cog"></i> </a>
                               <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalDelete_{{ $data->id }}"><i class="fa fa-trash"></i></button>
 
 

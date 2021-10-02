@@ -28,6 +28,26 @@
               <div class="card">
 
                 <div class="card-body">
+
+                <form method="get">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group mb-0">
+                                        <label class="control-label">Nama Kepala Keluarga : </label>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group mb-0">
+                                        <label class="control-label">Nomor Kartu Keluarga : </label>
+                                        
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                 
                         <a href="{{ route('detailkk.create') }}" class="btn btn-primary  btn-fw col-lg-2"></i> (+) Detail Keluarga </a>
                         </br></br>
@@ -73,7 +93,7 @@
                           <td>
                               
 
-                              <a href="#" class="btn btn-secondary  btn-sm"><i class="fa fa-cog"></i> </a>
+                              
                               <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalDelete_{{ $data->id }}"><i class="fa fa-trash"></i></button>
 
 

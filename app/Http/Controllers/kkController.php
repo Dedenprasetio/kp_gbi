@@ -126,7 +126,7 @@ class kkController extends Controller
         }
 
         $data = KartuKeluarga::findOrFail($id);
-        return view('Talenta.edit', compact('data'));
+        return view('kk.edit', compact('data'));
     }
 
     /**
