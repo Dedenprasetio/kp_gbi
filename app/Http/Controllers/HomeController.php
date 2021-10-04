@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Anggota;
 use App\User;
 use App\Talenta;
+use App\KartuKeluarga;
 use Auth;
 use DB;
 
@@ -32,6 +33,7 @@ class HomeController extends Controller
         $user      = User::get();
         $talentas  = Talenta::get();
         $anggota   = Anggota::get();
+        $kk        = KartuKeluarga::get();
 
         //menyiapkan data untuk chart
         $categories= [];
@@ -44,7 +46,7 @@ class HomeController extends Controller
 
         //dd($categories);
 
-        return view('layouts.dashboard',array( 'data' => $data ,'categories' => $categories,'talenta' => $talentas, 'anggota' => $anggota, 'anggotas' => $anggotas,   'user' => $user));
+        return view('layouts.dashboard',array( 'data' => $data , 'kk' => $kk ,'categories' => $categories,'talenta' => $talentas, 'anggota' => $anggota, 'anggotas' => $anggotas,   'user' => $user));
     
         
 

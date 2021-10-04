@@ -17,7 +17,7 @@
 
 
     
-          <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
+          <div class="col-xl-3 col-lg-3 col-md-3 col-sm-5 grid-margin stretch-card">
             <div class="card card-statistics bg-primary">
                 <div class="card-body">
                   <div class="clearfix">
@@ -26,7 +26,6 @@
                     </div>
                     <div class="float-right">
                     <h5 class="mb-0 text-light">ANGGOTA</h5>
-                      
                       <div class="fluid-container">
                         <h1 class="font-weight-medium float-right text-light mb-0"> <b>{{$anggota->count()}}</b></h1>
                       </div>
@@ -38,9 +37,33 @@
                 </div>
               </div>
             </div>
+
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-5 grid-margin stretch-card">
+            <div class="card card-statistics bg-primary">
+                <div class="card-body">
+                  <div class="clearfix">
+                    <div class="float-left">
+                      <i class="mdi mdi-chart-line text-light icon-lg"></i>
+                    </div>
+                    <div class="float-right">
+                    <h5 class="mb-0 text-light">KEPALA KELUARGA</h5>
+                      <div class="fluid-container">
+                        <h1 class="font-weight-medium float-right text-light mb-0"> <b>{{$kk->count()}}</b></h1>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="text-light mt-3 mb-0">
+                  <i class="mdi mdi-chart-arc mr-1" aria-hidden="true"></i>SELURUH KEPALA KELUARGA
+                  </p>
+                </div>
+              </div>
+            </div>
+
+
+            
          
         
-            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-5 grid-margin stretch-card">
               <div class="card card-statistics bg-success">
                 <div class="card-body">
                   <div class="clearfix">
@@ -63,7 +86,7 @@
               </div>
             </div>
 
-            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-5 grid-margin stretch-card">
               <div class="card card-statistics bg-warning">
                 <div class="card-body">
                   <div class="clearfix">

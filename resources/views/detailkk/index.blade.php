@@ -29,11 +29,12 @@
 
                 <div class="card-body">
 
-                <form method="get">
+                
+                @foreach($kk as $data)
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="form-group mb-0">
-                                        <label class="control-label">Nama Kepala Keluarga : </label>
+                                        <label class="control-label">Nama Kepala Keluarga : {{ $data->anggota->nama }}</label>
                                         
                                     </div>
                                 </div>
@@ -41,13 +42,15 @@
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="form-group mb-0">
-                                        <label class="control-label">Nomor Kartu Keluarga : </label>
+                                        <label class="control-label">Nomor Kartu Keluarga : {{ $data->nomor_kk }}</label>
                                         
                                         
                                     </div>
                                 </div>
                             </div>
-                        </form>
+                            @endforeach
+                        
+
                 
                         <a href="{{ route('detailkk.create') }}" class="btn btn-primary  btn-fw col-lg-2"></i> (+) Detail Keluarga </a>
                         </br></br>
@@ -74,7 +77,7 @@
                       </thead>
                       <tbody>
                       <?php $no = 0;?>
-                      @foreach($det as $data)
+                     @foreach($det as $data) 
                       <?php $no++ ;?>
           
                         <tr>
