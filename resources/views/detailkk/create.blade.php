@@ -140,7 +140,7 @@ $(document).ready(function() {
                                     <td>{{$data->asal_grj}}</td>
                                     <td>{{$data->sts_dlm_klrg}}</td>
                                     <td>
-                         
+                                
                          @if($data->sts_anggota == 'Jemaat')
                          <label class="btn btn-success btn-sm col-md-12 align-center">{{$data->sts_anggota}}</label>
                          @else($data->sts_anggota == 'Simpatisan')

@@ -49,7 +49,8 @@ class detKkController extends Controller
         $det = DetailKartuKeluarga::get();
         $anggota   = Anggota::get();
         
-        return view('detailkk.index', compact('kk', 'anggota', 'det', 'datas1'));
+        
+        return view('detailkk.index', compact('det', 'kk', 'anggota', 'datas1'));
   
     }
 
@@ -108,7 +109,7 @@ class detKkController extends Controller
         
         $anggotas = anggota::get();
 
-        return view('kk.show', compact('data', 'anggotas'));
+        return view('dettailkk.show', compact('data', 'anggotas'));
         
     }
 
@@ -126,7 +127,7 @@ class detKkController extends Controller
         }
 
         $data = DetailKartuKeluarga::findOrFail($id);
-        return view('Talenta.edit', compact('data'));
+        return view('detailkk.edit', compact('data'));
     }
 
     /**

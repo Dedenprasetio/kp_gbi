@@ -142,23 +142,10 @@ class kkController extends Controller
             Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
             return redirect()->to('/');
         }
-        
-        Anggota::find($id)->update($request->all());
-        
-        if($request->file('gambar') == '') {
-            $gambar = NULL;
-        } else {
-            $file = $request->file('gambar');
-            $dt = Carbon::now();
-            $acak  = $file->getClientOriginalExtension();
-            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
-            $request->file('gambar')->move("images/anggota", $fileName);
-            //$upload_image = $request->myimage->store('anggota');
-            $gambar = $fileName;
-        }
+        KartuKeluarga::find($id)->update($request->all());
 
         alert()->success('Berhasil.','Data telah diubah!');
-        return redirect()->to('anggota');
+        return redirect()->to('kk');
     }
 
     /**

@@ -30,25 +30,28 @@
                 <div class="card-body">
 
                 
-                @foreach($kk as $data)
+                @foreach($kk as $index => $item)
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="form-group mb-0">
-                                        <label class="control-label">Nama Kepala Keluarga : {{ $data->anggota->nama }}</label>
+                                        <label class="control-label">Nama Kepala Keluarga : <b>{{$item->anggota->nama}}</b></label>
                                         
                                     </div>
                                 </div>
                             </div>
+                            
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="form-group mb-0">
-                                        <label class="control-label">Nomor Kartu Keluarga : {{ $data->nomor_kk }}</label>
+                                        <label class="control-label">Nomor Kartu Keluarga : </label>
                                         
                                         
                                     </div>
                                 </div>
+                                
                             </div>
-                            @endforeach
+                            @endforeach        
+                           
                         
 
                 

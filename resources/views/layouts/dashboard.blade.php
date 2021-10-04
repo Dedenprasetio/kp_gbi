@@ -39,7 +39,7 @@
             </div>
 
             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-5 grid-margin stretch-card">
-            <div class="card card-statistics bg-primary">
+            <div class="card card-statistics bg-danger">
                 <div class="card-body">
                   <div class="clearfix">
                     <div class="float-left">

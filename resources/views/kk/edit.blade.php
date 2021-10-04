@@ -35,7 +35,7 @@ $(document).ready(function() {
 
 @section('content')
 
-<form action="##" method="post" enctype="multipart/form-data">
+<form action="{{ route('kk.update', $data->id) }}" method="post" enctype="multipart/form-data">
         {{ csrf_field() }}
         {{ method_field('put') }}
 <div class="row">
