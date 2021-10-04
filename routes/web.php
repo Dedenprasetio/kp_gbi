@@ -75,5 +75,6 @@ Route::get('/laporan/kategori/excel', 'LaporanController@kategoriExcel');
 Route::get('/laporan/dashboard', 'LaporanController@dashboard');
 Route::get('/laporan/dashboard/pdf', 'LaporanController@dashboardPdf');
 
-
+//Download per anggota
+Route::get('/anggota/cetak_pdf/{$id}', ['uses' => 'AnggotaController@cetak_pdf', 'as' => 'anggota.cetak_pdf']);
 

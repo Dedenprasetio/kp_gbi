@@ -14,6 +14,7 @@ use Session;
 use Illuminate\Support\Facades\Redirect;
 use Auth;
 use DB;
+use PDF;
 use RealRashid\SweetAlert\Facades\Alert;
 
 use App\Exports\LaporanExport;
@@ -211,5 +212,13 @@ class AnggotaController extends Controller
         Anggota::find($id)->delete();
         alert()->success('Berhasil.','Data telah dihapus!');
         return redirect()->route('anggota.index');
+    }
+
+    public function cetak_pdf($id)
+    {
+        $agt = Anggota::find($id);
+       // return view('laporan.transaksi_pdf', compact('datas'));
+       $pdf = PDF::loadView('anggota.laporan', ['anggota' => $agt]);
+       return $pdf->download('laporan_anggota_'.date('Y-m-d_H-i-s').'.pdf');
     }
 }
