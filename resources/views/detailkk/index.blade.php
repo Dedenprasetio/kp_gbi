@@ -29,8 +29,10 @@
 
                 <div class="card-body">
 
-                
-                @foreach($kk as $index => $item)
+             
+
+
+                <!-- @foreach($kk as $index => $item)
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="form-group mb-0">
@@ -43,14 +45,14 @@
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="form-group mb-0">
-                                        <label class="control-label">Nomor Kartu Keluarga : </label>
+                                        <label class="control-label">Nomor Kartu Keluarga : <b>{{$item->nomor_kk}}</b></label>
                                         
                                         
                                     </div>
                                 </div>
                                 
                             </div>
-                            @endforeach        
+                            @endforeach         -->
                            
                         
 

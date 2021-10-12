@@ -55,6 +55,19 @@ $(document).ready(function() {
                     <div class="card-body">
                       <h4 class="card-title">Tambah Detail Keluarga</h4>
                       
+                      <div class="form-group{{ $errors->has('kartukeluarga_id') ? ' has-error' : '' }}">
+                        
+                        <label for="kartukeluarga_id" class="col-md-7 control-label">Kode Anggota <b style="color:Tomato;">*</b> </label>
+                        <div class="col-md-12">
+                            <input id="kartukeluarga_id" type="text" class="form-control" name="kartukeluarga_id" value="{{ $kk }}" readonly="">
+                            @if ($errors->has('kartukeluarga_id'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('kartukeluarga_id') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                    </div>
+
                         <div class="form-group{{ $errors->has('anggota_id') ? ' has-error' : '' }}">
                             <label for="anggota_id" class="col-md-4 control-label">Anggota Keluarga</label>
                             <div class="col-md-6">

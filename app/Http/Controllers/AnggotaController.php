@@ -83,6 +83,7 @@ class AnggotaController extends Controller
 
         $talentas = Talenta::get();
         $anggotas = Anggota::get();
+
         return view('anggota.create', compact('kode',  'talentas', 'anggotas'));
 
     }
@@ -222,3 +223,4 @@ class AnggotaController extends Controller
        return $pdf->download('laporan_anggota_'.date('Y-m-d_H-i-s').'.pdf');
     }
 }
+

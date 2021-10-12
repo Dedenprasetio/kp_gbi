@@ -64,6 +64,7 @@ Route::get('/laporan/gwl/pdf', 'LaporanController@gerwilPdf');
 Route::get('/laporan/agt', 'LaporanController@anggota');
 Route::get('/laporan/agt/pdf', 'LaporanController@anggotaPdf');
 
+
 Route::get('/laporan/trs', 'LaporanController@transaksi');
 Route::get('/laporan/trs/pdf', 'LaporanController@transaksiPdf');
 Route::get('/laporan/trs/excel', 'LaporanController@transaksiExcel');
@@ -76,5 +77,8 @@ Route::get('/laporan/dashboard', 'LaporanController@dashboard');
 Route::get('/laporan/dashboard/pdf', 'LaporanController@dashboardPdf');
 
 //Download per anggota
-Route::get('/anggota/cetak_pdf/{$id}', ['uses' => 'AnggotaController@cetak_pdf', 'as' => 'anggota.cetak_pdf']);
+
+Route::get('/anggota/cetak_pdf/{$id}', 'AnggotaController@cetak_pdf');
+
+//Route::get('/anggota/cetak_pdf/{$id}', ['uses' => 'AnggotaController@cetak_pdf', 'as' => 'anggota.cetak_pdf']);
 

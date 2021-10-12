@@ -34,8 +34,8 @@ class TalentaController extends Controller
             Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
             return redirect()->to('/');
         }
-        $q = Talenta::query();
-        $datas1 = $q->get();
+        // $q = Talenta::query();
+        // $datas1 = $q->get();
 
         $talenta = Talenta::get();
         $anggota   = Anggota::get();
@@ -49,7 +49,7 @@ class TalentaController extends Controller
         //     $datas = Talenta::get();
         // } 
         // return view('Talenta.index', compact('datas'));
-        return view('talenta.index', compact('talenta', 'anggota', 'datas1'));
+        return view('talenta.index', compact('talenta', 'anggota'));
     
     }
 

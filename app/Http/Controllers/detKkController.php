@@ -37,6 +37,7 @@ class detKkController extends Controller
 
     public function index()
     {
+        // $det = DetailKartuKeluarga::findOrFail($id);
         //Selain admin dilarang akses 
         if(Auth::user()->level == 'user') {
             Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
@@ -62,10 +63,17 @@ class detKkController extends Controller
             Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
             return redirect()->to('/');
         }     
-        $anggotas = anggota::get();
-        
+        $kk = KartuKeluarga::get();
 
-        return view('detailkk.create' , compact('anggotas'));
+        $anggotas = anggota::get();
+        $anggotas = Anggota::WhereNotExists(function($query) {
+            $query->select(DB::raw(1))
+            ->from('detail_kartu_keluarga')
+            ->whereRaw('detail_kartu_keluarga.anggota_id = anggota.id');
+         })->get();
+        
+         
+        return view('detailkk.create' , compact('anggotas','kk'));
 
     }
     
@@ -82,6 +90,8 @@ class detKkController extends Controller
 
         $this->validate($request, [     
             'anggota_id' => 'required',
+            'kartukeluarga_id' => 'required'
+            
         ]); 
         DetailKartuKeluarga::create($request->all());
 

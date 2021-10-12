@@ -38,12 +38,13 @@
                         <th>
                             NO
                           </th>
-                           <th>
-                            NAMA KEPALA KELUARGA
-                          </th>
                           <th>
                             NOMOR KARTU KELUARGA
                           </th>
+                           <th>
+                            NAMA KEPALA KELUARGA
+                          </th>
+                          
                           <th>
                             ACTION
                           </th>
@@ -56,16 +57,17 @@
           
                         <tr>
                         <td>{{ $no }}</td>
+                        <td> 
+                            {{$data->nomor_kk}}
+                          </td>
                           <td> 
                               {{$data->anggota->nama}}
                           </td>
-                          <td> 
-                            {{$data->nomor_kk}}
-                          </td>
+                          
                          
                           <td>
-                              <a href="{{route('detailkk.index', ['kk' => $data->nomor_kk])}}" class="btn btn-secondary  btn-sm" style="color:blue">Detail</a>
-
+                              <a href="{{route('detailkk.index', ['kk' => $data->id])}}" class="btn btn-secondary  btn-sm" style="color:blue">Detail</a>
+                              <a href="{{route('detailkk.index', $data->id)}}"> 
                               <a href="{{route('kk.edit', $data->id)}}" class="btn btn-secondary  btn-sm"><i class="fa fa-cog"></i> </a>
                               <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalDelete_{{ $data->id }}"><i class="fa fa-trash"></i></button>
 

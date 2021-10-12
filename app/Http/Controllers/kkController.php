@@ -58,11 +58,40 @@ class kkController extends Controller
         if(Auth::user()->level == 'user') {
             Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
             return redirect()->to('/');
-        }     
-        $anggotas = anggota::get();
+        } 
+
+        //MENGITUNG KODE ANGGOTA SECARA OTOMATIS
+        $getRow = KartuKeluarga::orderBy('id', 'DESC')->get();
+        $rowCount = $getRow->count();
+        $lastId = $getRow->first();
+        $kode = "KKGN00001";
+        if ($rowCount > 0) {
+            if ($lastId->id < 9) {
+                    $kode = "KKGN0000".''.($lastId->id + 1);
+            } else if ($lastId->id < 99) {
+                    $kode = "KKGN000".''.($lastId->id + 1);
+            } else if ($lastId->id < 999) {
+                    $kode = "KKGN00".''.($lastId->id + 1);
+            } else if ($lastId->id < 9999) {
+                    $kode = "KKGN0".''.($lastId->id + 1);
+            } else {
+                    $kode = "KKGN".''.($lastId->id + 1);
+            }
+        }
+
+
+
+        
+                    $anggotas = Anggota::WhereNotExists(function($query) {
+                        $query->select(DB::raw(1))
+                        ->from('kartu_keluargas')
+                        ->whereRaw('kartu_keluargas.anggota_id = anggota.id');
+                     })->get();
+
+        //$anggotas = anggota::get();
         
 
-        return view('kk.create' , compact('anggotas'));
+        return view('kk.create' , compact('kode','anggotas'));
 
     }
     
@@ -76,6 +105,7 @@ class kkController extends Controller
      */
     public function store(Request $request)
     {   
+        $count = KartuKeluarga::where('nomor_kk',$request->input('nomor_kk'))->count();
 
         $this->validate($request, [
            

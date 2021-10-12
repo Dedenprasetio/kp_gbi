@@ -55,6 +55,20 @@ $(document).ready(function() {
                     <div class="card-body">
                       <h4 class="card-title">Tambah Kepala Keluarga</h4>
                       
+                      <div class="form-group{{ $errors->has('nomor_kk') ? ' has-error' : '' }}">
+                        
+                        <label for="nomor_kk" class="col-md-6 control-label">Nomor Keluarga <b style="color:Tomato;">*</b> </label>
+                        <div class="col-md-6">
+                            <input id="nomor_kk" type="text" class="form-control" name="nomor_kk" value="{{ $kode }}" readonly="">
+                            @if ($errors->has('nomor_kk'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('nomor_kk') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                    </div>
+
+
                         <div class="form-group{{ $errors->has('anggota_id') ? ' has-error' : '' }}">
                             <label for="anggota_id" class="col-md-4 control-label">Nama Kepala Keluarga</label>
                             <div class="col-md-6">
@@ -76,17 +90,7 @@ $(document).ready(function() {
 &nbsp; 
                         
                         
-                        <div class="form-group{{ $errors->has('nomor_kk') ? ' has-error' : '' }}">
-                            <label for="nomor_kk" class="col-md-2 control-label">Nomor Kartu Keluarga</label>
-                            <div class="col-md-6">
-                                <input id="nomor_kk" type="text" class="form-control" name="nomor_kk" value="{{ old('nomor_kk') }}" required>
-                                @if ($errors->has('nomor_kk'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('nomor_kk') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+                        
                         
                        
                         <div class="col-md-12">
