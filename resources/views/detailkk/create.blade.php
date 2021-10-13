@@ -7,10 +7,16 @@
                 document.getElementById("anggota_id").value = $(this).attr('data-anggota_id');
                 $('#myModal2').modal('hide');
             });
-
+            
             $(document).on('click', '.pilih_istri', function (e) {
                 document.getElementById("istri_judul").value = $(this).attr('data-istri_judul');
                 document.getElementById("istri_id").value = $(this).attr('data-istri_id');
+                $('#myModal3').modal('hide');
+            });
+
+            $(document).on('click', '.pilih_kartukeluarga', function (e) {
+                document.getElementById("kartukeluarga_judul").value = $(this).attr('data-kartukeluarga_judul');
+                document.getElementById("kartukeluarga_id").value = $(this).attr('data-kartukeluarga_id');
                 $('#myModal3').modal('hide');
             });
 
@@ -55,7 +61,7 @@ $(document).ready(function() {
                     <div class="card-body">
                       <h4 class="card-title">Tambah Detail Keluarga</h4>
                       
-                      <div class="form-group{{ $errors->has('kartukeluarga_id') ? ' has-error' : '' }}">
+                      <!-- <div class="form-group{{ $errors->has('kartukeluarga_id') ? ' has-error' : '' }}">
                         
                         <label for="kartukeluarga_id" class="col-md-7 control-label">Kode Anggota <b style="color:Tomato;">*</b> </label>
                         <div class="col-md-12">
@@ -66,7 +72,26 @@ $(document).ready(function() {
                                 </span>
                             @endif
                         </div>
-                    </div>
+                    </div> -->
+
+                        <div class="form-group{{ $errors->has('kartukeluarga_id') ? ' has-error' : '' }}">
+                            <label for="kartukeluarga_id" class="col-md-4 control-label">Kepala Keluarga</label>
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                <input id="kartukeluarga_judul" type="text" class="form-control"  readonly="" required>
+                                <input id="kartukeluarga_id" type="hidden" name="kartukeluarga_id" value="{{ old('kartukeluarga_id') }}" required readonly="">
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-success btn-secondary" data-toggle="modal" data-target="#myModal2"><b>Cari</b> <span class="fa fa-search"></span></button>
+                                </span>
+                                </div>
+                                @if ($errors->has('kartukeluarga_id'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('kartukeluarga_id') }}</strong>
+                                    </span>
+                                @endif
+
+                            </div>
+                        </div>
 
                         <div class="form-group{{ $errors->has('anggota_id') ? ' has-error' : '' }}">
                             <label for="anggota_id" class="col-md-4 control-label">Anggota Keluarga</label>
@@ -75,7 +100,7 @@ $(document).ready(function() {
                                 <input id="anggota_judul" type="text" class="form-control"  readonly="" required>
                                 <input id="anggota_id" type="hidden" name="anggota_id" value="{{ old('anggota_id') }}" required readonly="">
                                 <span class="input-group-btn">
-                                    <button type="button" class="btn btn-success btn-secondary" data-toggle="modal" data-target="#myModal2"><b>Cari</b> <span class="fa fa-search"></span></button>
+                                    <button type="button" class="btn btn-success btn-secondary" data-toggle="modal" data-target="#myModal3"><b>Cari</b> <span class="fa fa-search"></span></button>
                                 </span>
                                 </div>
                                 @if ($errors->has('anggota_id'))
@@ -86,6 +111,7 @@ $(document).ready(function() {
 
                             </div>
                         </div>
+                        
 &nbsp; 
 
                             
@@ -127,7 +153,7 @@ $(document).ready(function() {
   <div class="modal-dialog modal-lg" role="document" >
     <div class="modal-content" style="background: #fff;">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cari anggota keluarga</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Cari Kepala Keluarga</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -137,31 +163,35 @@ $(document).ready(function() {
                             <thead>
                                 
                             <tr>
-                                    <th>Nama</th>
-                                    <th>Kabupaten</th>
-                                    <th>Asal Gereja</th>
+                                    <th>NOMOR KARTU KELUARGA</th>
+                                    <th>NAMA KEPALA KELUARGA</th>
+                                    <th>PERAN KELUARGA</th>
+                                    <th>ACTION</th>
+                                    <!-- <th>Asal Gereja</th>
                                     <th>Status Dalam Keluarga</th>
-                                     <th>Status</th>
+                                     <th>Status</th> -->
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($anggotas as $data)
-                                @if ($data->sts_dlm_klrg != 'Suami')
-                        <tr class="pilih_anggota" data-anggota_id="<?php echo $data->id; ?>" data-anggota_judul="<?php echo $data->nama; ?>" >
-                        <td>{{$data->nama}}</td>
-                                    <td>{{$data->kota}}</td>
-                                    <td>{{$data->asal_grj}}</td>
-                                    <td>{{$data->sts_dlm_klrg}}</td>
-                                    <td>
+                                @foreach($kk as $data)
                                 
-                         @if($data->sts_anggota == 'Jemaat')
+                        <tr  class="pilih_kartukeluarga" data-kartukeluarga_id="<?php echo $data->id; ?>" data-kartukeluarga_judul="<?php echo $data->anggota->nama; ?>"  >
+                        <td>{{$data->nomor_kk}}</td>
+                                    <td>{{$data->anggota->nama}}</td>
+                                   
+                                    <!-- <td>{{$data->asal_grj}}</td>
+                                    <td>{{$data->sts_dlm_klrg}}</td> -->
+                                    <td>{{$data->anggota->sts_dlm_klrg}}</td>
+                                    <td><label class="pilih_kartukeluarga btn btn-success btn-sm col-md-12 align-center" data-kartukeluarga_id="<?php echo $data->id; ?>" data-kartukeluarga_judul="<?php echo $data->nama; ?>">PILIH</label> </td>
+                                
+                         <!-- @if($data->sts_anggota == 'Jemaat')
                          <label class="btn btn-success btn-sm col-md-12 align-center">{{$data->sts_anggota}}</label>
                          @else($data->sts_anggota == 'Simpatisan')
                          <label class="btn btn-warning btn-sm col-md-12  align-center">{{$data->sts_anggota}}</label>
                          @endif
                          </td>
-                                </tr>
-                                @endif
+                                </tr> -->
+                                
                                 @endforeach
                             </tbody>
                         </table>  
@@ -185,16 +215,20 @@ $(document).ready(function() {
                         <table id="lookup" class="table table-bordered table-hover table-striped">
                             <thead>
                                 <tr>
-                                    <th>Nama</th>
-                                     <th>Status</th>
+                                    <th>NAMA</th>
+                                     <th>PERAN KELUARGA</th>
+                                     <th>ACTION</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($anggotas as $data)
-                        <tr class="pilih_istri" data-istri_id="<?php echo $data->id; ?>" data-istri_judul="<?php echo $data->nama; ?>" >
+                                @if ($data->sts_dlm_klrg != 'Suami')
+                        <tr class="pilih_anggota" data-anggota_id="<?php echo $data->id; ?>" data-anggota_judul="<?php echo $data->nama; ?>" >
                                     <td>{{$data->nama}}</td>
-                                    <td>{{$data->sts_anggota}}</td>
+                                    <td>{{$data->sts_dlm_klrg}}</td>
+                                    <td><label class="pilih_anggota btn btn-success btn-sm col-md-12 align-center" data-anggota_id="<?php echo $data->id; ?>" data-anggota_judul="<?php echo $data->nama; ?>">PILIH</label> </td>
                                 </tr>
+                                @endif
                                 @endforeach
                             </tbody>
                         </table>  

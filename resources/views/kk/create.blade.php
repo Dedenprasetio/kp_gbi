@@ -87,6 +87,25 @@ $(document).ready(function() {
 
                             </div>
                         </div>
+
+                        <!-- <div class="form-group{{ $errors->has('anggota_id') ? ' has-error' : '' }}">
+                            <label for="anggota_id" class="col-md-4 control-label">Nama Istri</label>
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                <input id="istri_judul" type="text" class="form-control"  readonly="" required>
+                                <input id="anggota_id" type="hidden" name="anggota_id" value="{{ old('anggota_id') }}" required readonly="">
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-success btn-secondary" data-toggle="modal" data-target="#myModal3"><b>Cari</b> <span class="fa fa-search"></span></button>
+                                </span>
+                                </div>
+                                @if ($errors->has('anggota_id'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('anggota_id') }}</strong>
+                                    </span>
+                                @endif
+
+                            </div>
+                        </div> -->
 &nbsp; 
                         
                         
@@ -127,6 +146,7 @@ $(document).ready(function() {
                                     <th>Nama</th>
                                     <th>Kabupaten</th>
                                     <th>Asal Gereja</th>
+                                    <th>Peran Keluarga</th>
                                      <th>Status</th>
                                 </tr>
                             </thead>
@@ -134,6 +154,53 @@ $(document).ready(function() {
                                 @foreach($anggotas as $data)
                                 @if ($data->sts_dlm_klrg == 'Suami')
                         <tr class="pilih_anggota" data-anggota_id="<?php echo $data->id; ?>" data-anggota_judul="<?php echo $data->nama; ?>" >
+                        <td>{{$data->nama}}</td>
+                                    <td>{{$data->kota}}</td>
+                                    <td>{{$data->asal_grj}}</td>
+                                    <td>{{$data->sts_dlm_klrg}}</td>
+                                    <td>
+                                
+                         @if($data->sts_anggota == 'Jemaat')
+                         <label class="btn btn-success btn-sm col-md-12 align-center">{{$data->sts_anggota}}</label>
+                         @else($data->sts_anggota == 'Simpatisan')
+                         <label class="btn btn-warning btn-sm col-md-12  align-center">{{$data->sts_anggota}}</label>
+                         @endif
+                         </td>
+                                </tr>
+                                @endif
+                                @endforeach
+                            </tbody>
+                        </table>  
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Istri
+<div class="modal fade bd-example-modal-lg" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >
+  <div class="modal-dialog modal-lg" role="document" >
+    <div class="modal-content" style="background: #fff;">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Cari istri</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+                        <table id="lookup" class="table table-bordered table-hover table-striped">
+                            <thead>
+                                
+                            <tr>
+                                    <th>Nama</th>
+                                    <th>Kabupaten</th>
+                                    <th>Asal Gereja</th>
+                                     <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($anggotas as $data)
+                                @if ($data->sts_dlm_klrg == 'Istri')
+                        <tr class="pilih_anggota" data-anggota_id="<?php echo $data->id; ?>" data-anggota_istri="<?php echo $data->nama; ?>" >
                         <td>{{$data->nama}}</td>
                                     <td>{{$data->kota}}</td>
                                     <td>{{$data->asal_grj}}</td>
@@ -153,7 +220,8 @@ $(document).ready(function() {
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
+
 
         
  <!-- Modal -->
@@ -170,16 +238,31 @@ $(document).ready(function() {
                         <table id="lookup" class="table table-bordered table-hover table-striped">
                             <thead>
                                 <tr>
-                                    <th>Nama</th>
-                                     <th>Status</th>
+                                <th>Nama</th>
+                                    <th>Kabupaten</th>
+                                    <th>Asal Gereja</th>
+                                    <th>Peran Keluarga</th>
+                                    <th>Status</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($anggotas as $data)
+                                @if ($data->sts_dlm_klrg == 'Istri')
                         <tr class="pilih_istri" data-istri_id="<?php echo $data->id; ?>" data-istri_judul="<?php echo $data->nama; ?>" >
                                     <td>{{$data->nama}}</td>
                                     <td>{{$data->sts_anggota}}</td>
+                                    <td>{{$data->kota}}</td>
+                                    <td>{{$data->asal_grj}}</td>
+                                    <td>
+                                
+                         @if($data->sts_anggota == 'Jemaat')
+                         <label class="btn btn-success btn-sm col-md-12 align-center">{{$data->sts_anggota}}</label>
+                         @else($data->sts_anggota == 'Simpatisan')
+                         <label class="btn btn-warning btn-sm col-md-12  align-center">{{$data->sts_anggota}}</label>
+                         @endif
+                         </td>
                                 </tr>
+                                @endif
                                 @endforeach
                             </tbody>
                         </table>  

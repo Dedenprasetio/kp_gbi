@@ -65,7 +65,7 @@ class detKkController extends Controller
         }     
         $kk = KartuKeluarga::get();
 
-        $anggotas = anggota::get();
+        $anggotas = Anggota::get();
         $anggotas = Anggota::WhereNotExists(function($query) {
             $query->select(DB::raw(1))
             ->from('detail_kartu_keluarga')
@@ -101,6 +101,18 @@ class detKkController extends Controller
 
     }
 
+    // public function buat($id)
+    // {
+    //     $data = KartuKeluarga::findOrfail($id);
+    //     $anggotas = Anggota::get();
+    //     $anggotas = Anggota::WhereNotExists(function($query) {
+    //         $query->select(DB::raw(1))
+    //         ->from('detail_kartu_keluarga')
+    //         ->whereRaw('detail_kartu_keluarga.anggota_id = anggota.id');
+    //      })->get();
+    //     return view('detailkk.create' , compact('anggotas','data'));
+    // }
+
     /**
      * Display the specified resource.
      *
@@ -117,7 +129,7 @@ class detKkController extends Controller
                 return redirect()->to('/');
         }
         
-        $anggotas = anggota::get();
+        $anggotas = Anggota::get();
 
         return view('dettailkk.show', compact('data', 'anggotas'));
         

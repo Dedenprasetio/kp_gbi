@@ -82,3 +82,4 @@ Route::get('/anggota/cetak_pdf/{$id}', 'AnggotaController@cetak_pdf');
 
 //Route::get('/anggota/cetak_pdf/{$id}', ['uses' => 'AnggotaController@cetak_pdf', 'as' => 'anggota.cetak_pdf']);
 
+Route::get('kk/{id}/buat', 'detKKController@buat');

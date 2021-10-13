@@ -7,6 +7,7 @@ use App\User;
 use App\Anggota;
 use App\Talenta;
 use App\KartuKeluarga;
+use App\DetailKartuKeluarga;
 // use App\Jabatan;
 // use App\Gerwil;
 // use App\TransNikah;
@@ -135,10 +136,11 @@ class kkController extends Controller
                 Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
                 return redirect()->to('/');
         }
-        
-        $anggotas = anggota::get();
+        $kk = KartuKeluarga::get();
+        $anggotas = Anggota::get();
+        $det = DetailKartuKeluarga::get();
 
-        return view('kk.show', compact('data', 'anggotas'));
+        return view('kk.show', compact('data', 'anggotas','kk','det'));
         
     }
 

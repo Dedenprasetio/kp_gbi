@@ -45,20 +45,18 @@
                 <li class="nav-item">
                   <a class="nav-link {{ setActive(['talenta*']) }}" href="{{route('talenta.index')}}">Data Pelayanan</a>
                 </li>
-                
-                <li class="nav-item">
-                  <a class="nav-link {{ setActive(['user*']) }}" href="{{route('user.index')}}">Data Pengguna</a>
-                </li>
-
 
                 <li class="nav-item">
                   <a class="nav-link {{ setActive(['kk*']) }}" href="{{route('kk.index')}}">Data Kepala Keluarga</a>
                 </li>
 
                 <li class="nav-item">
-                  <a class="nav-link {{ setActive(['detkk*']) }}" href="{{route('detailkk.index')}}">Detail Kepala Keluarga</a>
+                  <a class="nav-link {{ setActive(['detkk*']) }}" href="{{route('detailkk.index')}}">Data Anggota Keluarga</a>
                 </li>
                 
+                <li class="nav-item">
+                  <a class="nav-link {{ setActive(['user*']) }}" href="{{route('user.index')}}">Data Pengguna</a>
+                </li>
                 
 
                 

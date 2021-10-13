@@ -45,7 +45,7 @@
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="form-group mb-0">
-                                        <label class="control-label">Nomor Kartu Keluarga : <b>{{$item->nomor_kk}}</b></label>
+                                        <label class="control-label">Nomor Kartu Keluarga : <b></b></label>
                                         
                                         
                                     </div>
@@ -67,13 +67,10 @@
                             NO
                           </th>
                            <th>
-                            KODE ANGGOTA
+                            NAMA
                           </th>
                           <th>
-                            NAMA 
-                          </th>
-                          <th>
-                            STATUS HUBUNGAN KELUARGA
+                            PERAN KELUARGA
                           </th>
                           <th>
                             ACTION
@@ -88,15 +85,13 @@
                         <tr>
                         <td>{{ $no }}</td>
                           <td> 
-                              {{ $data->anggota->kode_anggota}}
+                          {{ $data->anggota->nama }}
                           </td>
                           <td> 
-                            {{ $data->anggota->nama }}
+                            {{ $data->anggota->sts_dlm_klrg }}
                           </td>
                             
-                          <td> 
-                          {{ $data->anggota->sts_dlm_klrg }}
-                          </td>
+                      
                          
                           <td>
                               
