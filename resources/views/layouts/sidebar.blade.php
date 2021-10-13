@@ -47,12 +47,19 @@
                 </li>
                 
                 <li class="nav-item">
-                  <a class="nav-link {{ setActive(['kk*']) }}" href="{{route('kk.index')}}">Data Kepala Keluarga</a>
-                </li>
-                
-                <li class="nav-item">
                   <a class="nav-link {{ setActive(['user*']) }}" href="{{route('user.index')}}">Data Pengguna</a>
                 </li>
+
+
+                <li class="nav-item">
+                  <a class="nav-link {{ setActive(['kk*']) }}" href="{{route('kk.index')}}">Data Kepala Keluarga</a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link {{ setActive(['detkk*']) }}" href="{{route('detailkk.index')}}">Detail Kepala Keluarga</a>
+                </li>
+                
+                
 
                 
               </ul>
