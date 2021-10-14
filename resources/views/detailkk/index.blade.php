@@ -25,7 +25,35 @@
 
 <div class="row" style="margin-top: 20px;">
 <div class="col-lg-12 grid-margin stretch-card">
-              <div class="card">
+<!-- <a href="{{ route('detailkk.create') }}" class="btn btn-primary  btn-fw col-lg-2"></i> (+) Detail Keluarga </a>
+  @foreach($det as $data)
+    <div class="card">
+      <div class="card-header">
+        {{ $data->kartukeluarga->anggota->nama }} - {{ $data->kartukeluarga->nomor_kk }}
+      </div>
+      <div class="table-responsive">
+        <table class="card-table table">
+          <thead>
+            <tr>
+              <th scope="col">No</th>
+              <th scope="col">Nama</th>
+              <th scope="col">Peran Keluarga</th>
+              
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ $loop->iteration }}</td>
+              <td>{{ $data->anggota->nama }}</td>
+              <td>{{ $data->anggota->sts_dlm_klrg }}</td>
+              
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    @endforeach -->
+    <div class="card">
 
                 <div class="card-body">
 
@@ -59,7 +87,39 @@
                 
                         <a href="{{ route('detailkk.create') }}" class="btn btn-primary  btn-fw col-lg-2"></i> (+) Detail Keluarga </a>
                         </br></br>
-                  <div class="table-responsive">
+                        
+      <!-- @foreach($det as $data)
+    <div class="card">
+      <div class="card-header">
+        {{ $data->kartukeluarga->anggota->nama }} - {{ $data->kartukeluarga->nomor_kk }}
+      </div>
+      <div class="table-responsive">
+        <table class="card-table table">
+          <thead>
+            <tr>
+              <th scope="col">No</th>
+              <th scope="col">Nama</th>
+              <th scope="col">Peran Keluarga</th>
+              
+            </tr>
+            
+          </thead>
+          
+          <tbody>
+          
+            <tr>
+              <td>{{ $loop->iteration }}</td>
+              <td>{{ $data->anggota->nama }}</td>
+              <td>{{ $data->anggota->sts_dlm_klrg }}</td>
+              
+            </tr>
+          
+          </tbody>
+        </table>
+      </div>
+    </div>
+    @endforeach -->
+    <div class="table-responsive">
                   <table class="table table-striped" id="table">
                       <thead>
                         <tr>
@@ -71,6 +131,9 @@
                           </th>
                           <th>
                             PERAN KELUARGA
+                          </th>
+                          <th>
+                            KEPALA KELUARGA KELUARGA
                           </th>
                           <th>
                             ACTION
@@ -89,6 +152,10 @@
                           </td>
                           <td> 
                             {{ $data->anggota->sts_dlm_klrg }}
+                          </td>
+                          
+                          <td> 
+                            {{ $data->kartukeluarga->anggota->nama }}
                           </td>
                             
                       

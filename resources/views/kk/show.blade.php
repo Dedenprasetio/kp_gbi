@@ -74,14 +74,7 @@
                         <td>{{ $data->anggota->nama }}</td>    
                         <td>{{ $data->anggota->sts_dlm_klrg }}</td>   
                         @endforeach
-                        
-                                             
-                          
-
                               
-
-                        
-
                                     </div>
                                   </div>
                                 </div>
