@@ -30,7 +30,7 @@
                 <div class="card-body">
                 
                 <div class="row">
-                                <!-- <div class="col-sm-12">
+                                {{-- <div class="col-sm-12">
                                     <div class="form-group mb-0">
                                         <label class="control-label">Nama Kepala Keluarga : <b></b></label>
                                         
@@ -45,8 +45,8 @@
                                         
                                         
                                     </div>
-                                </div>
-                                 -->
+                                </div> --}}
+                                 
                             </div>
                   <div class="table-responsive">
                   <table class="table table-striped" id="table">
@@ -66,13 +66,16 @@
                       <tbody>
                       <?php $no = 0;?>
                       @foreach($det as $data)
-                 
+                     
+                          
+                     
                       <?php $no++ ;?>
                       
                         <tr>
                         <td>{{ $no }}</td>
-                        <td>{{ $data->anggota->nama }}</td>    
-                        <td>{{ $data->anggota->sts_dlm_klrg }}</td>   
+                        <td>{{ $data->nama }}</td>    
+                        <td>{{ $data->sts_dlm_klrg }}</td>   
+                         
                         @endforeach
                               
                                     </div>
@@ -85,6 +88,7 @@
                      
                       </tbody>
                     </table>
+                    </br>
                     <a href="{{route('kk.index')}}" class="btn btn-light pull-right">Back</a>
                   </div>
                {{--  {!! $datas->links() !!} --}}

@@ -85,10 +85,11 @@
 </head>
 <body>
 <h1 class="center">LAPORAN DATA ANGGOTA</h1>
-<h1 class="center">{{ $datas->nama }}</h1>
+{{-- <h1 class="center">{{ $datas->nama }}</h1> --}}
 <h1 class="center">GBI NGADINEGARAN YOGYAKARTA</h1>
 
  <table id="pseudo-demo">
+   {{-- <h1> {{$anggota}} </h1> --}}
                       <thead>
                         <tr>
                           <th>
@@ -116,7 +117,7 @@
                         </tr>
                       </thead>
                       <tbody>
-                      @foreach($datas as $data)
+                      {{-- @foreach($datas as $data)
                        <tr>
                           <td>   
                           <a href="{{route('anggota.show', $data->id)}}">                  
@@ -147,7 +148,7 @@
                             {{$data->sts_anggota}}
                           </td>
                         </tr>
-                      @endforeach
+                      @endforeach --}}
                       </tbody>
                     </table>
 </body>

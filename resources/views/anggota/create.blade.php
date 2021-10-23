@@ -53,7 +53,7 @@
                   <div class="card">
                     <div class="card-body">
                       
-
+                        
                         <div class="form-group{{ $errors->has('kode_anggota') ? ' has-error' : '' }}">
                         
                             <label for="kode_anggota" class="col-md-7 control-label">Kode Anggota <b style="color:Tomato;">*</b> </label>

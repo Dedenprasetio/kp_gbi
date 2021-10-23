@@ -155,6 +155,7 @@
                           </td>
                           
                           <td> 
+                            
                             {{ $data->kartukeluarga->anggota->nama }}
                           </td>
                             

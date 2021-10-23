@@ -130,8 +130,9 @@ class detKkController extends Controller
         }
         
         $anggotas = Anggota::get();
+        $det = DetailKartuKeluarga::get();
 
-        return view('dettailkk.show', compact('data', 'anggotas'));
+        return view('detailkk.show', compact('data', 'anggotas','det'));
         
     }
 

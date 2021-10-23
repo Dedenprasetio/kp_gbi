@@ -130,17 +130,21 @@ class kkController extends Controller
     public function show($id)
     {   
         
-        $data = KartuKeluarga::findOrFail($id);
+        $data = KartuKeluarga::find($id);
+
     
         if((Auth::user()->level == 'user') && (Auth::user()->id != $id)) {
                 Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
                 return redirect()->to('/');
         }
-        $kk = KartuKeluarga::get();
-        $anggotas = Anggota::get();
-        $det = DetailKartuKeluarga::get();
+        // $kk = KartuKeluarga::get();
+        // $anggotas = Anggota::get();
+        $det = DetailKartuKeluarga::join('kartu_keluargas', 'kartu_keluargas.id', '=' , 'detail_kartu_keluarga.kartukeluarga_id')
+        ->join('anggota', 'anggota.id', '=' , 'detail_kartu_keluarga.anggota_id')
+        ->where('kartukeluarga_id', $id)
+        ->get(['anggota.nama','anggota.sts_dlm_klrg']);
 
-        return view('kk.show', compact('data', 'anggotas','kk','det'));
+        return view('kk.show', compact('det'));
         
     }
 

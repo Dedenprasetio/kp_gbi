@@ -219,8 +219,9 @@ class AnggotaController extends Controller
     {
         $agt = Anggota::find($id);
        // return view('laporan.transaksi_pdf', compact('datas'));
-       $pdf = PDF::loadView('anggota.laporan', ['anggota' => $agt]);
-       return $pdf->download('laporan_anggota_'.date('Y-m-d_H-i-s').'.pdf');
+    //    $pdf = PDF::loadView('anggota.laporan', ['anggota' => $agt]);
+    //    return $pdf->download('laporan_anggota_'.date('Y-m-d_H-i-s').'.pdf');
+        return view('anggota.laporan');
     }
 }
 
