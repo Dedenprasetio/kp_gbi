@@ -50,7 +50,7 @@ $(document).ready(function() {
                         <div class="form-group{{ $errors->has('ket') ? ' has-error' : '' }}">
                             <label for="ket" class="col-md-4 control-label">Nomor Kartu Keluarga </label>
                             <div class="col-md-6">
-                                <input id="nomor_kk" type="text" class="form-control" name="nomor_kk" value="{{ $data->nomor_kk}}" required>
+                                <input id="nomor_kk" type="text" class="form-control" name="nomor_kk" value="{{ $data->nomor_kk}}" required readonly="">
                                 @if ($errors->has('nomor_kk'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('nomor_kk') }}</strong>
@@ -58,8 +58,11 @@ $(document).ready(function() {
                                 @endif
 
                             </div>
-                        </div>
 
+                            
+                        </div>
+                        
+                        
                         <button type="submit" class="btn btn-primary" id="submit">
                                     Update
                         </button>

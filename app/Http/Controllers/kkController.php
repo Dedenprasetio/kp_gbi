@@ -130,7 +130,7 @@ class kkController extends Controller
     public function show($id)
     {   
         
-        $data = KartuKeluarga::find($id);
+        $data = KartuKeluarga::findOrFail($id);
 
     
         if((Auth::user()->level == 'user') && (Auth::user()->id != $id)) {
@@ -144,7 +144,7 @@ class kkController extends Controller
         ->where('kartukeluarga_id', $id)
         ->get(['anggota.nama','anggota.sts_dlm_klrg']);
 
-        return view('kk.show', compact('det'));
+        return view('kk.show', compact('det','data'));
         
     }
 
@@ -156,12 +156,12 @@ class kkController extends Controller
      */
     public function edit($id)
     {   
+        $data = KartuKeluarga::findOrFail($id);
         if(Auth::user()->level == 'user') {
             Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
             return redirect()->to('/');
         }
 
-        $data = KartuKeluarga::findOrFail($id);
         return view('kk.edit', compact('data'));
     }
 

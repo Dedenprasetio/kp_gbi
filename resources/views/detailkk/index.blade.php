@@ -85,7 +85,7 @@
                         
 
                 
-                        <a href="{{ route('detailkk.create') }}" class="btn btn-primary  btn-fw col-lg-2"></i> (+) Detail Keluarga </a>
+                        <a href="{{ route('detailkk.create') }}" class="btn btn-primary  btn-fw col-lg-2"></i> (+) Anggota Keluarga </a>
                         </br></br>
                         
       <!-- @foreach($det as $data)
@@ -136,6 +136,9 @@
                             KEPALA KELUARGA KELUARGA
                           </th>
                           <th>
+                            NOMOR KK
+                          </th>
+                          <th>
                             ACTION
                           </th>
                         </tr>
@@ -157,6 +160,10 @@
                           <td> 
                             
                             {{ $data->kartukeluarga->anggota->nama }}
+                          </td>
+                          <td> 
+                            
+                            {{ $data->kartukeluarga->nomor_kk }}
                           </td>
                             
                       
@@ -220,6 +227,6 @@
             </div>
             
           </div>
-          <a href="{{route('kk.index')}}" class="btn btn-light pull-right" style="background-color:white">Kembali</a>
+         
           
 @endsection

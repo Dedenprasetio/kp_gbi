@@ -70,7 +70,7 @@
                               
 
                           <a href="{{route('kk.show', $data->id)}}" class="btn btn-warning  btn-sm">Detail </a>
-                              <a href="{{route('kk.edit', $data->id)}}" class="btn btn-secondary  btn-sm"><i class="fa fa-cog"></i> </a>
+                              {{-- <a href="{{route('kk.edit', $data->id)}}" class="btn btn-secondary  btn-sm"><i class="fa fa-cog"></i> </a> --}}
                               <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalDelete_{{ $data->id }}"><i class="fa fa-trash"></i></button>
 
 
@@ -92,7 +92,8 @@
                                       {{ csrf_field() }}
                                         {{ method_field('delete') }}
 
-                                        <p>Apakah anda yakin ingin menghapus data <b>{{$data->anggota->nama}}</b> ?</p>
+                                        <p>Apakah anda yakin ingin menghapus data kepala keluarga dari</p>
+                                        <p><b>{{$data->anggota->nama}}</b> ?</p>
 
                                       </div>
 
