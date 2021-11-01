@@ -38,6 +38,7 @@ class TalentaController extends Controller
         // $datas1 = $q->get();
 
         $talenta = Talenta::get();
+        $talenta = Talenta::orderBy('updated_at','desc')->get();
         $anggota   = Anggota::get();
         
         
@@ -65,6 +66,7 @@ class TalentaController extends Controller
             return redirect()->to('/');
         }     
         $anggotas = anggota::get();
+        $anggotas = anggota::orderBy('updated_at','desc')->get();
         
 
         return view('talenta.create' , compact('anggotas'));

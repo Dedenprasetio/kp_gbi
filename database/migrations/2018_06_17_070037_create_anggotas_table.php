@@ -31,30 +31,24 @@ class CreateAnggotasTable extends Migration
             $table->enum('gerwil', ['Tengah', 'Timur', 'Barat', 'Selatan', 'Utara','Belum']);
             $table->string('pekerjaan')->nullable();
             $table->string('pernikahan')->nullable(); 
-            $table->string('sts_keluarga')->nullable();
             $table->string('gambar')->nullable();
             $table->string('hp')->nullable(); 
             $table->enum('sts_anggota', ['Jemaat', 'Simpatisan']);
 
             //TAMBAHAN
             $table->string('sts_dlm_klrg')->nullable();
-            $table->enum('sts_pernikahan', ['Belum', 'Menikah', 'Janda', 'Duda']); 
-            
+            $table->enum('sts_pernikahan', ['Belum', 'Menikah', 'Janda', 'Duda']);      
             $table->string('alamat_domisili')->nullable();
             $table->string('kelurahan_domisili')->nullable();
             $table->string('kecamatan_domisili')->nullable();
             $table->string('kota_domisili')->nullable();
             $table->string('provinsi_domisili')->nullable();
-            
             $table->enum('goldar', ['A', 'B', 'AB', 'O', 'RH+', 'RH'])->nullable();
-
             $table->string('pendidikan')->nullable();
             $table->string('jurusan')->nullable();
-
             $table->date('tgl_baptis')->nullable();
             $table->string('grj_baptis')->nullable();
             $table->string('asal_grj')->nullable();
-
             $table->string('ayah')->nullable();
             $table->string('ibu')->nullable();
             $table->timestamps();

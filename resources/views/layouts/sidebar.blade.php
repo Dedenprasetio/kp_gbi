@@ -36,7 +36,7 @@
               <span class="menu-title">Master Data</span>
               <i class="menu-arrow"></i>
             </a>
-            <div class="collapse {{ setShow(['Anggota*', 'acara*', 'user*']) }}" id="ui-basic">
+            <div class="collapse {{ setShow(['Anggota*', 'acara*', 'user*', 'detailkk*']) }}" id="ui-basic">
               <ul class="nav flex-column sub-menu">
                 
                 <li class="nav-item">

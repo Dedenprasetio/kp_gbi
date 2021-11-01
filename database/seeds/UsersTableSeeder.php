@@ -26,9 +26,9 @@ class UsersTableSeeder extends Seeder
             ],
             [
               'id'  			=> 2,
-              'name'  			=> 'TEKNIK - DWIKAHARAP',
+              'name'  			=> 'TEKNIK',
               'username'		=> 'teknik',
-              'email' 			=> 'user_teknik@gmail.com',
+              'email' 			=> 'teknik@gmail.com',
               'password'		=> bcrypt('teknik'),
               'gambar'			=> NULL,
               'level'			=> 'admin',

@@ -36,7 +36,7 @@ var check = function() {
     </script>
 @stop
 
-@extends('layouts.app')
+@extends('layouts2.app')
 
 @section('content')
 
@@ -51,8 +51,8 @@ var check = function() {
                       <h4 class="card-title">Tambah User Baru</h4>
                       
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Name</label>
-                            <div class="col-md-6">
+                            <label for="name" class="col-md-12 control-label">Nama</label>
+                            <div class="col-md-12">
                                 <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required>
                                 @if ($errors->has('name'))
                                     <span class="help-block">
@@ -63,7 +63,7 @@ var check = function() {
                         </div>
                         <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
                             <label for="username" class="col-md-4 control-label">Username</label>
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <input id="username" type="text" class="form-control" name="username" value="{{ old('username') }}" required>
                                 @if ($errors->has('username'))
                                     <span class="help-block">
@@ -75,7 +75,7 @@ var check = function() {
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
                                 @if ($errors->has('email'))
                                     <span class="help-block">
@@ -87,7 +87,7 @@ var check = function() {
  
                         <div class="form-group">
                             <label for="email" class="col-md-4 control-label">Gambar</label>
-                            <div class="col-md-6">
+                            <div class="col-md-10">
                                 <img class="product" width="200" height="200" />
                                 <input type="file" class="uploads form-control" style="margin-top: 20px;" name="gambar">
                             </div>

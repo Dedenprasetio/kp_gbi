@@ -31,7 +31,7 @@ $(document).ready(function() {
         </script>
 @stop
 
-@extends('layouts.app')
+@extends('layouts2.app')
 
 @section('content')
 

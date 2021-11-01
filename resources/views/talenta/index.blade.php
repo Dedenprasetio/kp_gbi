@@ -8,7 +8,7 @@
 } );
 </script>
 @stop
-@extends('layouts.app')
+@extends('layouts2.app')
 
 @section('content')
 <div class="row">
@@ -28,8 +28,7 @@
                 <div class="card-body">
                 <a href="{{ route('talenta.create') }}" class="btn btn-primary  btn-fw col-lg-2"><i class="fa fa-plus"></i> Tambah Pelayanan</a>
                         </br></br>
-                  <h4 class="card-title">Data talenta</h4>
-                  
+             
                   <div class="table-responsive">
                     <table class="table table-striped" id="table">
                       <thead>
@@ -96,20 +95,16 @@
 
                         <td>                      
                          @if($data->anggota->sts_anggota == 'Jemaat')
-                         <label class="btn btn-success btn-sm col-md-12">{{$data->anggota->sts_anggota}}</label>
-                         @else($data->sts_anggota == 'Simpatisan')
-                         <label class="btn btn-warning btn-sm col-md-12">{{$data->anggota->sts_anggota}}</label>
-                         @endif
+                         <label class="text-success">{{$data->anggota->sts_anggota}}</label>
+                         @else($data->anggota->sts_anggota == 'Simpatisan')
+                         <label class="text-warning">{{$data->anggota->sts_anggota}}</label>
+                         @endif 
                          </td>
-
-
-                         <td>
-                            {{$data->updated_at}}
-                          </td>
+                         <td class="text-left">{{ $data->updated_at->diffForHumans() }}</td>
                           <td>
 
 
-                  <a href="#" class="btn btn-secondary  btn-sm"><i class="fa fa-download"></i> </a>
+                  <!-- <a href="#" class="btn btn-secondary  btn-sm"><i class="fa fa-download"></i> </a> -->
                 
                   <a href="{{route('talenta.edit', $data->id)}}" class="btn btn-secondary  btn-sm"><i class="fa fa-cog"></i> </a>
                   <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalDelete_{{ $data->id }}"><i class="fa fa-trash"></i></button>

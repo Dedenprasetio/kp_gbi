@@ -40,7 +40,7 @@ $(document).ready(function() {
         </script>
 @stop
 
-@extends('layouts.app')
+@extends('layouts2.app')
 
 @section('content')
 
@@ -69,24 +69,17 @@ $(document).ready(function() {
                     </div>
 
 
-                        <div class="form-group{{ $errors->has('anggota_id') ? ' has-error' : '' }}">
-                            <label for="anggota_id" class="col-md-4 control-label">Nama Kepala Keluarga</label>
-                            <div class="col-md-6">
-                                <div class="input-group">
-                                <input id="anggota_judul" type="text" class="form-control"  readonly="" required>
-                                <input id="anggota_id" type="hidden" name="anggota_id" value="{{ old('anggota_id') }}" required readonly="">
-                                <span class="input-group-btn">
-                                    <button type="button" class="btn btn-success btn-secondary" data-toggle="modal" data-target="#myModal2"><b>Cari</b> <span class="fa fa-search"></span></button>
-                                </span>
-                                </div>
-                                @if ($errors->has('anggota_id'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('anggota_id') }}</strong>
-                                    </span>
-                                @endif
+                    <div class="container  col-md-12">                               
+                                                <label>Kepala Keluarga <b style="color:Tomato;">*</b></label>
+                                                <select required="required" name="anggota_id" class="custom-select mb-3" >
+                                                  <option value="">Pilih Kepala Keluarga</option>
+                                                  @foreach($anggotas as $a)
+                                                  <option value="{{ $a->id }}">{{ $a->kode_anggota }}-{{ $a->nama }}({{ $a->sts_dlm_klrg }})</option>
+                                                  @endforeach
+                                                </select>
+                                              </div>
 
-                            </div>
-                        </div>
+                   
 
                         <!-- <div class="form-group{{ $errors->has('anggota_id') ? ' has-error' : '' }}">
                             <label for="anggota_id" class="col-md-4 control-label">Nama Istri</label>
@@ -113,7 +106,7 @@ $(document).ready(function() {
                         
                        
                         <div class="col-md-12">
-                       <button type="submit" class="btn btn-primary col-md-3" id="submit">
+                       <button type="submit" class="btn btn-primary col-md-5" id="submit">
                                     Simpan
                         </button>
                         <a href="{{route('kk.index')}}" class="btn btn-light pull-right">Kembali</a>
@@ -129,7 +122,7 @@ $(document).ready(function() {
 </form>
 
  <!-- Modal -->
-<div class="modal fade bd-example-modal-lg" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >
+<!--<div class="modal fade bd-example-modal-lg" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >
   <div class="modal-dialog modal-lg" role="document" >
     <div class="modal-content" style="background: #fff;">
       <div class="modal-header">
@@ -174,7 +167,7 @@ $(document).ready(function() {
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <!-- Modal Istri
 <div class="modal fade bd-example-modal-lg" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >

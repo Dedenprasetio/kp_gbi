@@ -8,7 +8,7 @@
 } );
 </script>
 @stop
-@extends('layouts.app')
+@extends('layouts2.app')
 
 @section('content')
 <div class="row">
@@ -67,9 +67,9 @@
                         <td>{{ $no }}</td>
                           <td class="py-1">
                           @if($data->gambar)
-                            <img src="{{url('images/user', $data->gambar)}}" alt="image" style="margin-right: 10px;" />
+                            <img width="50" height="50" src="{{url('images/user', $data->gambar)}}" alt="image" style="margin-right: 10px;" />
                           @else
-                            <img src="{{url('images/user/default.png')}}" alt="image" style="margin-right: 10px;" />
+                            <img width="50" height="50" src="{{url('images/user/default.png')}}" alt="image" style="margin-right: 10px;" />
 
                           @endif
 

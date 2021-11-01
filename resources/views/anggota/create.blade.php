@@ -35,7 +35,7 @@
 @section('css')
 
 @stop
-@extends('layouts.app')
+@extends('layouts2.app')
 
 @section('content')
 
@@ -88,7 +88,7 @@
                         <div class="form-group{{ $errors->has('nama') ? ' has-error' : '' }}">
                             <label for="nama" class="col-md-4 control-label">Nama Lengkap  <b style="color:Tomato;">*</b> </label>
                             <div class="col-md-12">
-                                <input id="nama" type="text" class="form-control" name="nama" value="{{ old('nama') }}" required>
+                                <input placeholder="Masukan Nama Lengkap . . ." id="nama" type="text" class="form-control" name="nama" value="{{ old('nama') }}" required>
                                 @if ($errors->has('nama'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('nama') }}</strong>
@@ -143,7 +143,7 @@
                             <div class="col-md-12">
                             
                             <select class="form-control" name="sts_dlm_klrg" required="">
-                            
+                            <option >Status Dalam Keluarga</option>
                             <option value="Suami">Suami</option>
                                 <option value="Istri">Istri</option>
                                 <option value="Anak">Anak</option>
@@ -160,7 +160,7 @@
                             <div class="col-md-12">
                             
                             <select class="form-control" name="sts_pernikahan" required="">
-                            
+                            <option >Status Pernikahan</option>
                             <option value="Belum">Belum Menikah</option>
                                 <option value="Menikah">Menikah</option>
                                 <option value="Janda">Janda</option>
@@ -555,25 +555,7 @@
                             </div>
                         </div>
 
-                        </br>
-                        <div class="form-group{{ $errors->has('sts_keluarga') ? ' has-error' : '' }}">
-                            <label for="sts_keluarga" class="col-md-12 control-label">Silsilah Keluarga (Jika tidak ada isi - )</label>
-                            <div class="col-md-12">
-                                <div class="input-group"  >
-                                <input id="sts_keluarga" type="text" class="form-control"     >
-                                <input id="sts_keluarga" type="hidden" multiple="multiple" name="sts_keluarga" value="{{ old('sts_keluarga') }}" readonly="">
-                                <span class="input-group-btn">
-                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal4"><b>Cari</b> <span class="fa fa-search"></span></button>
-                                </span>
-                                </div>
-                                @if ($errors->has('sts_keluarga'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('sts_keluarga') }}</strong>
-                                    </span>
-                                @endif
-                                 
-                            </div>
-                        </div>
+                    
 
                         </br>
                         <div class="form-group">

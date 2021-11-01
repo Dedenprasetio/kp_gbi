@@ -8,7 +8,7 @@
 } );
 </script>
 @stop
-@extends('layouts.app')
+@extends('layouts2.app')
 
 @section('content')
 <div class="row">
@@ -75,14 +75,14 @@
                         <td>{{ $no }}</td>
                         <td>
                         @if($data->gambar)
-                            <img src="{{asset('images/anggota', $data->gambar)}}" alt="image" style="margin-right: 10px;" />
+                            <img width="50" height="50"src="{{asset('images/anggota', $data->gambar)}}" alt="image" style="margin-right: 10px;" />
                           @else
-                            <img src="{{url('images/anggota/default.png')}}" alt="image" style="margin-right: 10px;" />
+                            <img  width="50" height="50"src="{{url('images/anggota/default.png')}}" alt="image" style="margin-right: 10px;" />
 
                           @endif
 
                           <a href="{{route('anggota.show', $data->id)}}"> 
-                            <b> {{$data->kode_anggota}}</b>
+                            <b><u> {{$data->kode_anggota}}</u></b>
                             </a>
                            
                           
@@ -106,14 +106,14 @@
 
                           <td>
                           @if($data->sts_anggota == 'Jemaat')
-                          <label class="btn btn-success btn-sm col-md-12">{{$data->sts_anggota}}</label>
+                          <label class="text-success">{{$data->sts_anggota}}</label>
                           @else($data->sts_anggota == 'Simpatisan')
-                          <label class="btn btn-warning btn-sm col-md-12">{{$data->sts_anggota}}</label>
+                          <label class="text-warning">{{$data->sts_anggota}}</label>
                           @endif
                           </td>
                           
                           <td>
-                            {{$data->updated_at}}
+                            {{$data->updated_at->diffForHumans()}}
                           </td>
                        
                           

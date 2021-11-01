@@ -40,7 +40,7 @@ $(document).ready(function() {
         </script>
 @stop
 
-@extends('layouts.app')
+@extends('layouts2.app')
 
 @section('content')
 
@@ -54,7 +54,7 @@ $(document).ready(function() {
                     <div class="card-body">
                       <h4 class="card-title">Tambah Talenta</h4>
                       
-                        <div class="form-group{{ $errors->has('anggota_id') ? ' has-error' : '' }}">
+                        <!-- <div class="form-group{{ $errors->has('anggota_id') ? ' has-error' : '' }}">
                             <label for="anggota_id" class="col-md-4 control-label">Anggota</label>
                             <div class="col-md-6">
                                 <div class="input-group">
@@ -71,7 +71,17 @@ $(document).ready(function() {
                                 @endif
                                  
                             </div>
-                        </div>
+                        </div> -->
+                        <br>
+                        <div class="container  col-md-12">                               
+                                                <label>Anggota <b style="color:Tomato;">*</b></label>
+                                                <select required="required" name="anggota_id" class="custom-select mb-3" >
+                                                  <option value="">Pilih Anggota</option>
+                                                  @foreach($anggotas as $a)
+                                                  <option value="{{ $a->id }}">{{ $a->kode_anggota }}-{{ $a->nama }}({{ $a->jk }})</option>
+                                                  @endforeach
+                                                </select>
+                                              </div>
 &nbsp; 
                         
                         <div class="form-group{{ $errors->has('nama_talenta') ? ' has-error' : '' }}">
@@ -132,12 +142,12 @@ $(document).ready(function() {
                        
                         <div class="col-md-12">
                        <button type="submit" class="btn btn-primary col-md-3" id="submit">
-                                    Submit
+                                    Kirim
                         </button>
                         <button type="reset" class="btn btn-danger col-md-3">
                                     Reset
                         </button>
-                        <a href="{{route('anggota.index')}}" class="btn btn-light pull-right">Back</a>
+                        <a href="{{route('anggota.index')}}" class="btn btn-light pull-right">Kembali</a>
                         </div>
                     </div>
                   </div>

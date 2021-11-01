@@ -46,7 +46,7 @@ $(document).ready(function() {
         </script>
 @stop
 
-@extends('layouts.app')
+@extends('layouts2.app')
 
 @section('content')
 
@@ -60,6 +60,30 @@ $(document).ready(function() {
                   <div class="card">
                     <div class="card-body">
                       <h4 class="card-title">Tambah Detail Keluarga</h4>
+
+                      <br>
+
+                      <div class="container  col-md-12">                               
+                                                <label>Kepala Keluarga <b style="color:Tomato;">*</b></label>
+                                                <select required="required" name="anggota_id" class="custom-select mb-3" >
+                                                  <option value="">Pilih Kepala Keluarga</option>
+                                                  @foreach($anggotas as $a)
+                                                  <option value="{{ $a->id }}">{{ $a->kode_anggota }}-{{ $a->nama }}({{ $a->sts_dlm_klrg }})</option>
+                                                  @endforeach
+                                                </select>
+                                              </div>
+
+                                              <div class="container  col-md-12">                               
+                                                <label>Anggota Keluarga <b style="color:Tomato;">*</b></label>
+                                                <select required="required" name="anggota_id" class="custom-select mb-3" >
+                                                  <option value="">Pilih Anggota Keluarga</option>
+                                                  @foreach($anggotas as $a)
+                                                  @if ($a->sts_dlm_klrg != 'Suami')
+                                                  <option value="{{ $a->id }}">{{ $a->kode_anggota }}-{{ $a->nama }}({{ $a->sts_dlm_klrg }})</option>
+                                                  @endif
+                                                  @endforeach
+                                                </select>
+                                              </div>
                       
                       <!-- <div class="form-group{{ $errors->has('kartukeluarga_id') ? ' has-error' : '' }}">
                         
@@ -74,9 +98,9 @@ $(document).ready(function() {
                         </div>
                     </div> -->
 
-                        <div class="form-group{{ $errors->has('kartukeluarga_id') ? ' has-error' : '' }}">
-                            <label for="kartukeluarga_id" class="col-md-4 control-label">Kepala Keluarga</label>
-                            <div class="col-md-6">
+                        <!--<div class="form-group{{ $errors->has('kartukeluarga_id') ? ' has-error' : '' }}">
+                            <label for="kartukeluarga_id" class="col-md-12 control-label">Kepala Keluarga</label>
+                            <div class="col-md-12">
                                 <div class="input-group">
                                 <input id="kartukeluarga_judul" type="text" class="form-control"  readonly="" required>
                                 <input id="kartukeluarga_id" type="hidden" name="kartukeluarga_id" value="{{ old('kartukeluarga_id') }}" required readonly="">
@@ -91,11 +115,11 @@ $(document).ready(function() {
                                 @endif
 
                             </div>
-                        </div>
+                        </div> -->
 
-                        <div class="form-group{{ $errors->has('anggota_id') ? ' has-error' : '' }}">
-                            <label for="anggota_id" class="col-md-4 control-label">Anggota Keluarga</label>
-                            <div class="col-md-6">
+                        <!--<div class="form-group{{ $errors->has('anggota_id') ? ' has-error' : '' }}">
+                            <label for="anggota_id" class="col-md-12 control-label">Anggota Keluarga</label>
+                            <div class="col-md-12">
                                 <div class="input-group">
                                 <input id="anggota_judul" type="text" class="form-control"  readonly="" required>
                                 <input id="anggota_id" type="hidden" name="anggota_id" value="{{ old('anggota_id') }}" required readonly="">
@@ -110,7 +134,7 @@ $(document).ready(function() {
                                 @endif
 
                             </div>
-                        </div>
+                        </div> -->
                         
 &nbsp; 
 
@@ -133,7 +157,7 @@ $(document).ready(function() {
                         
                        
                         <div class="col-md-12">
-                       <button type="submit" class="btn btn-primary col-md-3" id="submit">
+                       <button type="submit" class="btn btn-primary col-md-5" id="submit">
                                     Simpan
                         </button>
                         <a href="{{route('detailkk.index')}}" class="btn btn-light pull-right">Kembali</a>

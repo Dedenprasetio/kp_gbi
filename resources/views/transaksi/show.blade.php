@@ -1,73 +1,108 @@
-@extends('layouts.app')
+@section('js')
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#table').DataTable({
+      "iDisplayLength": 10
+    });
+
+} );
+</script>
+@stop
+@extends('layouts2.app')
 
 @section('content')
 
-<div class="row">
-            <div class="col-md-12 d-flex align-items-stretch grid-margin">
+
+<section class="content-header">
+      <div class="container-fluid">
+        <div class="row">
+
+
+
+<div class="col-sm-6">
+
+
+      </div>
+
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="/">Home</a></li>
+              <li class="breadcrumb-item active"><a href="/transaksi">Transaksi</a></li>
+              <li class="breadcrumb-item active">{{$transaksi->kategori->kategori}}</li>
+            </ol>
+          </div>
+          
+
+
+     
+          <div class=" table-responsive col-md-12 col-sm-6 col-12">
+          
+            
+             <!--area ditambah-->   
+<!--area diisi-->         
+<div class="card card-secondary">
+  <div class="card-body">
+    
+  <div class="align-items-center">
+
+    
+        <div class="col-lg-6 mx-auto">
+       
+        <div class="col-md-4 d-flex align-items-center grid-margin " >
               <div class="row flex-grow">
-                <div class="col-12">
+                <div class="col-12 ">
                   <div class="card">
                     <div class="card-body">
-                      <h4 class="card-title">Detail <b>{{$data->kode_transaksi}}</b></h4>
-                        <div class="form-group">
-                            <div class="col-md-6">
-                                <img width="200" height="200" @if($data->acara->cover) src="{{ asset('images/acara/'.$data->acara->cover) }}" @endif />
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('kode_transaksi') ? ' has-error' : '' }}">
-                            <label for="kode_transaksi" class="col-md-4 control-label">Kode Donasi</label>
-                            <div class="col-md-6">
-                                <input id="kode_transaksi" type="text" class="form-control" name="kode_transaksi" value="{{$data->kode_transaksi}}" required readonly="">
-                            </div>
-                            </div>
                       
-                         <div class="form-group{{ $errors->has('tgl_lunas') ? ' has-error' : '' }}">
-                            <label for="tgl_lunas" class="col-md-4 control-label">Tanggal lunas</label>
-                            <div class="col-md-6">
-                                <input id="tgl_lunas" type="date"  class="form-control" name="tgl_lunas" value="{{ date('Y-m-d', strtotime($data->tgl_lunas)) }}" readonly="">
+                      <form class="forms-sample">
+                    
+                   <h4 class="col-md-12" ><b>{{$transaksi->kategori->kategori}}</b></h4>
+                      
+                      
+          
+                            </br>
+                            <div class="col-md-12">
+                            <img width="400" height="400" @if($transaksi->cover) src="{{ asset('images/Transaksi/'.$transaksi->cover) }}" @endif />
                             </div>
-                        </div>
-
-
-                  
-                        <div class="form-group">
-                            <label for="jemaat_id" class="col-md-4 control-label">Jemaat</label>
-                            <div class="col-md-6">
-                                <input id="anggota_nama" type="text" class="form-control" readonly="" value="{{$data->Jemaat->nama}}">
-
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('status') ? ' has-error' : '' }}">
-                            <label for="status" class="col-md-4 control-label">Status</label>
-                            <div class="col-md-6">
-                                @if($data->status == 'belum')
-                                  <label class="badge badge-warning">Belum</label>
-                                @else
-                                  <label class="badge badge-success">Lunas</label>
-                                @endif
-                            </div>
-                        </div>
-
+                            </br>
+                        
+                            
+                    
 
                       
+                         
 
-                        <div class="form-group{{ $errors->has('ket') ? ' has-error' : '' }}">
-                            <label for="ket" class="col-md-4 control-label">Keterangan</label>
-                            <div class="col-md-6">
-                                <input id="ket" type="text" class="form-control" name="ket" value="{{ $data->ket }}" readonly="">
-                            </div>
-                        </div>
-
-                        <a href="{{route('transaksi.index')}}" class="btn btn-light pull-right">Back</a>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
+        </div>
 
+        
+
+
+
+
+
+
+
+        
+        </div>
+
+      </div>
+</div>
+</div>
+                     
+</div>
 </div>
 
+        
+
+
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
 
 @endsection
+
+

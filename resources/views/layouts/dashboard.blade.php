@@ -9,7 +9,7 @@
 </script>
 @stop
 
-@extends('layouts.app')
+@extends('layouts2.app')
 @section('content')
 <div class="row" style="margin-top: 20px;">
 @if(Auth::user()->level == 'admin')
@@ -211,7 +211,7 @@
 @endif
 
 @endsection
-
+ 
 @section('footer')
 <script src="https://code.highcharts.com/highcharts.js"></script>
 
