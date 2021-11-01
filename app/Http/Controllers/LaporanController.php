@@ -8,6 +8,8 @@ use App\acara;
 use App\Anggota;
 use App\Gerwil;
 use App\Transaksi;
+use App\KartuKeluarga;
+use App\DetailKartuKeluarga;
 use Carbon\Carbon;
 use Session;
 use Illuminate\Support\Facades\Redirect;
@@ -43,6 +45,9 @@ class LaporanController extends Controller
         $pdf = PDF::loadView('laporan.acara_pdf', compact('datas'));
         return $pdf->download('laporan_acara_'.date('Y-m-d_H-i-s').'.pdf');
     }
+
+    //EXPORT KK
+    
 
 
     // EXPORT TRANSAKSI

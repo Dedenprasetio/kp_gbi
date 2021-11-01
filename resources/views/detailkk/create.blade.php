@@ -65,10 +65,12 @@ $(document).ready(function() {
 
                       <div class="container  col-md-12">                               
                                                 <label>Kepala Keluarga <b style="color:Tomato;">*</b></label>
-                                                <select required="required" name="anggota_id" class="custom-select mb-3" >
+                                                <select required="required" name="kartukeluarga_id" class="custom-select mb-3" >
                                                   <option value="">Pilih Kepala Keluarga</option>
-                                                  @foreach($anggotas as $a)
-                                                  <option value="{{ $a->id }}">{{ $a->kode_anggota }}-{{ $a->nama }}({{ $a->sts_dlm_klrg }})</option>
+                                                  @foreach($kk as $a)
+                                                 
+                                                  <option value="{{ $a->id }}">{{ $a->anggota->kode_anggota }}-{{ $a->anggota->nama }}({{ $a->anggota->sts_dlm_klrg }})</option>
+                                                
                                                   @endforeach
                                                 </select>
                                               </div>
@@ -98,7 +100,7 @@ $(document).ready(function() {
                         </div>
                     </div> -->
 
-                        <!--<div class="form-group{{ $errors->has('kartukeluarga_id') ? ' has-error' : '' }}">
+                        <!-- <div class="form-group{{ $errors->has('kartukeluarga_id') ? ' has-error' : '' }}">
                             <label for="kartukeluarga_id" class="col-md-12 control-label">Kepala Keluarga</label>
                             <div class="col-md-12">
                                 <div class="input-group">
@@ -117,7 +119,7 @@ $(document).ready(function() {
                             </div>
                         </div> -->
 
-                        <!--<div class="form-group{{ $errors->has('anggota_id') ? ' has-error' : '' }}">
+                        <!-- <div class="form-group{{ $errors->has('anggota_id') ? ' has-error' : '' }}">
                             <label for="anggota_id" class="col-md-12 control-label">Anggota Keluarga</label>
                             <div class="col-md-12">
                                 <div class="input-group">

@@ -76,6 +76,8 @@ Route::get('/laporan/kategori/excel', 'LaporanController@kategoriExcel');
 Route::get('/laporan/dashboard', 'LaporanController@dashboard');
 Route::get('/laporan/dashboard/pdf', 'LaporanController@dashboardPdf');
 
+Route::get('/laporan/kk', 'LaporanController@kk');
+
 //Download per anggota
 
 Route::get('/anggota/cetak_pdf/{$id}', 'AnggotaController@cetak_pdf');

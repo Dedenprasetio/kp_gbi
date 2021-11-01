@@ -39,7 +39,16 @@
                             <a class="dropdown-item" href="{{url('laporan/gwl/pdf?gerwil=Utara')}}"> Utara </a>
                             <a class="dropdown-item" href="{{url('laporan/gwl/pdf?gerwil=Belum')}}"> Belum Bergabung </a>
                           </div>
-                        </div>     
+                        </div>
+                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+                       <div class=" col-lg-2">
+                          <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <b><i class="fa fa-download"></i> Export Kartu Keluarga</b>
+                          </button>
+                          <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 30px, 0px);">
+                            <a class="dropdown-item" href="{{url('laporan/gwl/pdf')}}"></a>
+                          </div>
+                        </div>          
 
                        
                         <!-- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
