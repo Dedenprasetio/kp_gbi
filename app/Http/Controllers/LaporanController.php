@@ -47,7 +47,25 @@ class LaporanController extends Controller
     }
 
     //EXPORT KK
-    
+    public function kk()
+    {
+        return view('laporan.kk');
+    }
+
+    public function kkPdf($id)
+    {
+        $data = KartuKeluarga::findOrFail($id);
+
+        $det = DetailKartuKeluarga::join('kartu_keluargas', 'kartu_keluargas.id', '=' , 'detail_kartu_keluarga.kartukeluarga_id')
+        ->join('anggota', 'anggota.id', '=' , 'detail_kartu_keluarga.anggota_id')
+        ->where('kartukeluarga_id',$id )
+        ->get(['anggota.nama','anggota.sts_dlm_klrg']);
+
+        
+        $pdf = PDF::loadView('laporan.kk_pdf', compact('det','datas'));
+        return $pdf->download('laporan_kk_'.date('Y-m-d_H-i-s').'.pdf');
+    }
+
 
 
     // EXPORT TRANSAKSI

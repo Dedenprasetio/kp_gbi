@@ -46,7 +46,12 @@
                             <b><i class="fa fa-download"></i> Export Kartu Keluarga</b>
                           </button>
                           <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 30px, 0px);">
-                            <a class="dropdown-item" href="{{url('laporan/gwl/pdf')}}"></a>
+                            
+                            @foreach($kk as $data)
+                            <a class="dropdown-item" href="" target="_blank" value="{{ $data->id }}">
+                              {{ $data->anggota->kode_anggota }}-{{ $data->anggota->nama }}({{ $data->anggota->sts_dlm_klrg }})
+                            </a>
+                            @endforeach
                           </div>
                         </div>          
 

@@ -10,6 +10,8 @@ use Auth;
 use DB;
 use Excel;
 use PDF;
+use App\KartuKeluarga;
+use App\Anggota;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class ExportController extends Controller
@@ -31,8 +33,13 @@ class ExportController extends Controller
         //     Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
         //     return redirect()->to('/');
         // }
+        $q = KartuKeluarga::query();
+        $datas1 = $q->get();
 
-        return view('export.index');
+        $kk = KartuKeluarga::get();
+        $anggotas   = Anggota::get();
+
+        return view('export.index', compact('kk', 'anggotas', 'datas1'));
     }
    
   //TAG TUTUP  

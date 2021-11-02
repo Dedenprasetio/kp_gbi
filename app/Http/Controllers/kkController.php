@@ -148,6 +148,28 @@ class kkController extends Controller
         
     }
 
+    public function pdf($id)
+    {   
+        
+        $data = KartuKeluarga::findOrFail($id);
+
+    
+        if((Auth::user()->level == 'user') && (Auth::user()->id != $id)) {
+                Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+                return redirect()->to('/');
+        }
+        // $kk = KartuKeluarga::get();
+        // $anggotas = Anggota::get();
+        $det = DetailKartuKeluarga::join('kartu_keluargas', 'kartu_keluargas.id', '=' , 'detail_kartu_keluarga.kartukeluarga_id')
+        ->join('anggota', 'anggota.id', '=' , 'detail_kartu_keluarga.anggota_id')
+        ->where('kartukeluarga_id', $id)
+        ->get(['anggota.nama','anggota.sts_dlm_klrg']);
+
+        $pdf = PDF::loadView('laporan.kk_pdf', compact('det','datas'));
+        return $pdf->download('laporan_kk_'.date('Y-m-d_H-i-s').'.pdf');
+        
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

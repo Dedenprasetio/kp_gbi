@@ -121,8 +121,8 @@
                      
                 <td>
                 
-                  {{-- <a href="/anggota/cetak_pdf/{{ $data->id }}" class="btn btn-secondary  btn-sm" tooltip ><i class="fa fa-download"></i> </a>              --}}
-                  <a href="anggota.cetak_pdf", {{ $data->id }} class="btn btn-secondary  btn-sm" tooltip ><i class="fa fa-download"></i> </a>             
+                  {{-- <a href="{{ route('anggota.cetak_pdf', $data->id) }}" class="btn btn-secondary  btn-sm" tooltip ><i class="fa fa-download"></i> </a>              --}}
+                  {{-- <a href="anggota.cetak_pdf", {{ $data->id }} class="btn btn-secondary  btn-sm" tooltip ><i class="fa fa-download"></i> </a>              --}}
 
                   <a href="{{route('anggota.edit', $data->id)}}" class="btn btn-secondary  btn-sm"><i class="fa fa-cog"></i> </a>
                   <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalDelete_{{ $data->id }}"><i class="fa fa-trash"></i></button>

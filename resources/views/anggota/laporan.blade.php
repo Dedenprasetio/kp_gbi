@@ -117,19 +117,17 @@
                         </tr>
                       </thead>
                       <tbody>
-                      {{-- @foreach($datas as $data)
+                      @foreach($anggota as $data)
                        <tr>
                           <td>   
                           <a href="{{route('anggota.show', $data->id)}}">                  
                             {{$data->kode_anggota}}       
                             </a>            
                           </td>
-
-                          <!-- <td class="py-1">
-                         
+                          
+                          <td>
                             {{$data->nama}}
-                          </td> -->
-
+                          </td>
                           
                           <td>
                             {{$data->tgl_lahir->format('d-m-Y')}}
@@ -148,7 +146,7 @@
                             {{$data->sts_anggota}}
                           </td>
                         </tr>
-                      @endforeach --}}
+                      @endforeach
                       </tbody>
                     </table>
 </body>

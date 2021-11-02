@@ -30,6 +30,11 @@ Route::post('/user-register', 'UserController@store');
 Route::get('/user-edit/{id}', 'UserController@edit');
 
 Route::resource('user', 'UserController');
+// Route::group(['prefix' => 'agt'], function (){
+//     Route::resource('/anggota', 'AnggotaController');
+//     Route::get('/cetak_pdf/{$id}', ['uses' => 'AnggotaController@cetak_pdf', 'as' => 'anggota.cetak_pdf']);
+// });
+
 Route::resource('anggota', 'AnggotaController');
 Route::resource('gerwil', 'GerwilController');
 Route::resource('talenta', 'TalentaController');
@@ -77,10 +82,11 @@ Route::get('/laporan/dashboard', 'LaporanController@dashboard');
 Route::get('/laporan/dashboard/pdf', 'LaporanController@dashboardPdf');
 
 Route::get('/laporan/kk', 'LaporanController@kk');
+Route::get('/laporan/kk/pdf', 'LaporanController@kkPdf');
 
 //Download per anggota
 
-Route::get('/anggota/cetak_pdf/{$id}', 'AnggotaController@cetak_pdf');
+Route::get('/anggota/cetak_pdf', 'AnggotaController@cetak_pdf');
 
 //Route::get('/anggota/cetak_pdf/{$id}', ['uses' => 'AnggotaController@cetak_pdf', 'as' => 'anggota.cetak_pdf']);
 
