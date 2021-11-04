@@ -67,12 +67,7 @@
                   </a>
                 </li>
 
-                <li class="nav-item {{ setActive(['/export', 'export']) }}"> 
-                <a class="nav-link" href="{{url('/export')}}">
-                <i class="fas fa-cloud-download-alt"></i>
-                  <span class="menu-title">Laporan</span>
-                  </a>
-                </li>
+                
                 
               </ul>
             </div>
@@ -83,6 +78,13 @@
        <div class="d-flex border-bottom">
               
                 </div>
+
+                <li class="nav-item {{ setActive(['/export', 'export']) }}"> 
+                <a class="nav-link" href="{{url('/export')}}">
+                <i class="fas fa-cloud-download-alt"></i>
+                  <span class="menu-title">Laporan</span>
+                  </a>
+                </li>
         
 
 

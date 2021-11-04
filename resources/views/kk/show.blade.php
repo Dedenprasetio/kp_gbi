@@ -131,7 +131,7 @@
                       </tbody>
                     </table>
                     </br>
-                    <a href="{{route('kk.index')}}" class="btn btn-light pull-right">Back</a>
+                    <a href="{{route('kk.index')}}" class="btn btn-light pull-right">Kembali</a>
                   </div>
                {{--  {!! $datas->links() !!} --}}
                 </div>

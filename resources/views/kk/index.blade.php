@@ -29,7 +29,7 @@
 
                 <div class="card-body">
                 
-                        <a href="{{ route('kk.create') }}" class="btn btn-primary  btn-fw col-lg-2"></i> (+) Kepala Keluarga </a>
+                        <a href="{{ route('kk.create') }}" class="btn btn-primary  btn-fw col-lg-2"> <i class="fa fa-plus"></i> Kepala Keluarga </a>
                         </br></br>
                   <div class="table-responsive">
                   <table class="table table-striped" id="table">
@@ -69,10 +69,12 @@
                           <td>
                               
 
-                          <a href="{{route('kk.show', $data->id)}}" class="btn btn-warning  btn-sm">Detail </a>
+                          <a href="{{route('kk.show', $data->id)}}" class="btn btn-warning  btn-sm" > <i class="fa fa-list-alt" aria-hidden="true"></i> Detail </a>
+                          
+                      
                          <!-- <a href="{{ route('kk.edit', $data->id) }}" class="btn btn-secondary  btn-sm" tooltip ><i class="fa fa-download"></i> </a> -->
                               {{-- <a href="{{route('kk.edit', $data->id)}}" class="btn btn-secondary  btn-sm"><i class="fa fa-cog"></i> </a> --}}
-                              <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalDelete_{{ $data->id }}"><i class="fa fa-trash"></i></button>
+                              <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalDelete_{{ $data->id }}"><i class="fa fa-trash"></i> Hapus</button>
 
 
 

@@ -31,7 +31,7 @@ $(document).ready(function() {
         </script>
 @stop
 
-@extends('layouts.app')
+@extends('layouts2.app')
 
 @section('content')
 
@@ -48,7 +48,8 @@ $(document).ready(function() {
                       <form class="forms-sample">
 
                       <div class="form-group{{ $errors->has('nama_talenta') ? ' has-error' : '' }}">
-                        
+                    <br>
+                      <br>
                         <label for="nama_talenta"  class="col-md-2 control-label">Telenta    </label>
                           <div class="col-md-12" >
                                            
@@ -101,9 +102,9 @@ $(document).ready(function() {
                         </div>
 
                         <button type="submit" class="btn btn-primary" id="submit">
-                                    Update
+                                    Kirim
                         </button>
-                        <a href="{{route('talenta.index')}}" class="btn btn-light pull-right">Back</a>
+                        <a href="{{route('talenta.index')}}" class="btn btn-light pull-right">Kembali</a>
                     </div>
                   </div>
                 </div>

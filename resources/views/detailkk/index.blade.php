@@ -85,7 +85,7 @@
                         
 
                 
-                        <a href="{{ route('detailkk.create') }}" class="btn btn-primary  btn-fw col-lg-2"></i> (+) Anggota Keluarga </a>
+                        <a href="{{ route('detailkk.create') }}" class="btn btn-primary  btn-fw col-lg-2"><i class="fa fa-plus"></i> Anggota Keluarga </a>
                         </br></br>
                         
       <!-- @foreach($det as $data)
@@ -172,7 +172,7 @@
                               
 
                               
-                              <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalDelete_{{ $data->id }}"><i class="fa fa-trash"></i></button>
+                              <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalDelete_{{ $data->id }}"><i class="fa fa-trash"></i> Hapus</button>
 
 
 

@@ -573,12 +573,12 @@
                         </br>
                         <div class="col-md-12">
                        <button type="submit" class="btn btn-primary col-md-4" id="submit">
-                                    Submit
+                                    Kirim
                         </button>
                         <button type="reset" class="btn btn-danger col-md-4">
                                     Reset
                         </button>
-                        <a href="{{route('anggota.index')}}" class="btn btn-light pull-right col-md-3">Back</a>
+                        <a href="{{route('anggota.index')}}" class="btn btn-light pull-right col-md-3">Kembali</a>
                         </div>
                         </br>
 

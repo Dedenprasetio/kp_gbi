@@ -37,7 +37,7 @@ $(document).ready(function() {
                     
                       
                         <div class="form-group{{ $errors->has('nama') ? ' has-error' : '' }}">
-                            <label for="nama" class="col-md-4 control-label">Nama Anggota</label>
+                            <label for="nama" class="col-md-6 control-label">Nama Anggota</label>
                             <div class="col-md-6">
                                 <input id="nama" type="text" class="form-control" name="nama" value="{{ $data->nama }}" required>
                                 @if ($errors->has('nama'))
@@ -81,7 +81,7 @@ $(document).ready(function() {
                         
                    
                         <div class="form-group{{ $errors->has('sts_anggota') ? ' has-error' : '' }}">
-                              <label for="goldar" class="col-md-2 control-label" >Status Anggota    </label>
+                              <label for="goldar" class="col-md-12 control-label" >Status Anggota    </label>
                               
                                 <label>
                                     <input type="radio" name="sts_anggota" value="Jemaat">
@@ -106,12 +106,12 @@ $(document).ready(function() {
                         
                         <div class="col-md-12">
                        <button type="submit" class="btn btn-primary col-md-3" id="submit">
-                                    Submit
+                                    Kirim
                         </button>
                         <button type="reset" class="btn btn-danger col-md-3">
                                     Reset
                         </button>
-                        <a href="{{route('anggota.index')}}" class="btn btn-light pull-right">Back</a>
+                        <a href="{{route('anggota.index')}}" class="btn btn-light pull-right">Kembali</a>
                         </div>    
                     
                     </div>
