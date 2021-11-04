@@ -14,6 +14,8 @@
                     </p>
                   </a>
                 </li>
+                
+         
 
 
 
@@ -71,20 +73,24 @@
                 
               </ul>
             </div>
+            <li class="nav-item {{ setActive(['/export', 'export']) }}"> 
+                <a class="nav-link {{ setActive(['export*']) }}" href="{{url('/export')}}">
+                    <i class="nav-icon fas fa-cloud-download-alt"></i>
+                    <p>
+                      Laporan
+                    
+                    </p>
+                  </a>
+                </li>
           </li>
           @endif
-        
+          
 
        <div class="d-flex border-bottom">
               
                 </div>
 
-                <li class="nav-item {{ setActive(['/export', 'export']) }}"> 
-                <a class="nav-link" href="{{url('/export')}}">
-                <i class="fas fa-cloud-download-alt"></i>
-                  <span class="menu-title">Laporan</span>
-                  </a>
-                </li>
+                
         
 
 

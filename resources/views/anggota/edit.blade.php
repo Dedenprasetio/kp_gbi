@@ -79,7 +79,23 @@ $(document).ready(function() {
                         </div>
                         </br>
                         
-                   
+                        <div class="form-group{{ $errors->has('sts_dlm_klrg') ? ' has-error' : '' }}">
+                            <label for="sts_dlm_klrg" class="col-md-12 control-label">Status Dalam Keluarga   <b style="color:Tomato;">*</b>  </label>
+                            <div class="col-md-12">
+                            
+                            <select class="form-control" name="sts_dlm_klrg" required="">
+                            <option >Status Dalam Keluarga</option>
+                            <option value="Suami">Suami</option>
+                                <option value="Istri">Istri</option>
+                                <option value="Anak">Anak</option>
+                                <option value="Lain-lain">Lain-lain</option>
+                                
+                                
+                            </select>
+                            </div>
+                        </div>
+
+                        </br>
                         <div class="form-group{{ $errors->has('sts_anggota') ? ' has-error' : '' }}">
                               <label for="goldar" class="col-md-12 control-label" >Status Anggota    </label>
                               
@@ -119,6 +135,7 @@ $(document).ready(function() {
                 </div>
               </div>
             </div>
+            
 
 </div>
 </form>
