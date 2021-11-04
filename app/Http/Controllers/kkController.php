@@ -16,6 +16,7 @@ use Session;
 use Illuminate\Support\Facades\Redirect;
 use Auth;
 use DB;
+use PDF;
 use RealRashid\SweetAlert\Facades\Alert;
 
 use App\Exports\LaporanExport;
@@ -61,7 +62,7 @@ class kkController extends Controller
             return redirect()->to('/');
         } 
 
-        //MENGITUNG KODE ANGGOTA SECARA OTOMATIS
+        //MENGITUNG NOMOR KK SECARA OTOMATIS
         $getRow = KartuKeluarga::orderBy('id', 'DESC')->get();
         $rowCount = $getRow->count();
         $lastId = $getRow->first();
@@ -145,7 +146,6 @@ class kkController extends Controller
         ->get(['anggota.nama','anggota.sts_dlm_klrg']);
 
         return view('kk.show', compact('det','data'));
-        
     }
 
     public function pdf($id)
@@ -164,7 +164,7 @@ class kkController extends Controller
         ->join('anggota', 'anggota.id', '=' , 'detail_kartu_keluarga.anggota_id')
         ->where('kartukeluarga_id', $id)
         ->get(['anggota.nama','anggota.sts_dlm_klrg']);
-
+        
         $pdf = PDF::loadView('laporan.kk_pdf', compact('det','datas'));
         return $pdf->download('laporan_kk_'.date('Y-m-d_H-i-s').'.pdf');
         
@@ -185,6 +185,23 @@ class kkController extends Controller
         }
 
         return view('kk.edit', compact('data'));
+
+        // $data = KartuKeluarga::findOrFail($id);
+
+    
+        // if((Auth::user()->level == 'user') && (Auth::user()->id != $id)) {
+        //         Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+        //         return redirect()->to('/');
+        // }
+        // // $kk = KartuKeluarga::get();
+        // // $anggotas = Anggota::get();
+        // $det = DetailKartuKeluarga::join('kartu_keluargas', 'kartu_keluargas.id', '=' , 'detail_kartu_keluarga.kartukeluarga_id')
+        // ->join('anggota', 'anggota.id', '=' , 'detail_kartu_keluarga.anggota_id')
+        // ->where('kartukeluarga_id', $id)
+        // ->get(['anggota.nama','anggota.sts_dlm_klrg']);
+        
+        // $pdf = PDF::loadView('laporan.kk_pdf', compact('det','datas'));
+        // return $pdf->download('laporan_kk_'.date('Y-m-d_H-i-s').'.pdf');
     }
 
     /**

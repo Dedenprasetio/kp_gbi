@@ -82,7 +82,9 @@ Route::get('/laporan/dashboard', 'LaporanController@dashboard');
 Route::get('/laporan/dashboard/pdf', 'LaporanController@dashboardPdf');
 
 Route::get('/laporan/kk', 'LaporanController@kk');
-Route::get('/laporan/kk/pdf', 'LaporanController@kkPdf');
+// Route::get('/laporan/kk/{$id}', 'LaporanController@kkPdf');
+
+Route::get('laporan/kk/{id}', ['as' => 'laporan.kk_pdf', 'uses' => 'LaporanController@kkPdf']);
 
 //Download per anggota
 

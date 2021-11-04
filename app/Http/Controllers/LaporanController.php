@@ -58,11 +58,10 @@ class LaporanController extends Controller
 
         $det = DetailKartuKeluarga::join('kartu_keluargas', 'kartu_keluargas.id', '=' , 'detail_kartu_keluarga.kartukeluarga_id')
         ->join('anggota', 'anggota.id', '=' , 'detail_kartu_keluarga.anggota_id')
-        ->where('kartukeluarga_id',$id )
-        ->get(['anggota.nama','anggota.sts_dlm_klrg']);
-
+        ->where('kartukeluarga_id', $id)
+        ->get(['anggota.kode_anggota','anggota.jk','anggota.gerwil','anggota.tgl_lahir','anggota.sts_anggota','anggota.nama','anggota.sts_dlm_klrg']);
         
-        $pdf = PDF::loadView('laporan.kk_pdf', compact('det','datas'));
+        $pdf = PDF::loadView('laporan.kk_pdf', compact('det','data'));
         return $pdf->download('laporan_kk_'.date('Y-m-d_H-i-s').'.pdf');
     }
 
