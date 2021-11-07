@@ -12,6 +12,7 @@ use Carbon\Carbon;
 use Session;
 use Illuminate\Support\Facades\Redirect;
 use Auth;
+use PDF;
 use DB;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -164,5 +165,14 @@ class TalentaController extends Controller
         Talenta::find($id)->delete();
         alert()->success('Berhasil.','Data telah dihapus!');
         return redirect()->route('talenta.index');
+    }
+
+    public function cetak_pdf($id)
+    {
+        $talenta = Talenta::find($id);
+        $datas = $talenta->get();
+        $pdf = PDF::loadView('talenta.laporan', compact('talenta'));
+        return $pdf->download('laporan_talenta_'.$talenta->anggota->nama.'.pdf');
+        // return view('laporan.kk_pdf');
     }
 }

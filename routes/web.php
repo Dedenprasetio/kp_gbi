@@ -69,6 +69,9 @@ Route::get('/laporan/gwl/pdf', 'LaporanController@gerwilPdf');
 Route::get('/laporan/agt', 'LaporanController@anggota');
 Route::get('/laporan/agt/pdf', 'LaporanController@anggotaPdf');
 
+// Talenta
+Route::get('/laporan/talenta/pdf', 'LaporanController@talentaPdf');
+Route::get('talenta/pdf/{id}', ['as' => 'talenta.laporan', 'uses' => 'TalentaController@cetak_pdf']);
 
 Route::get('/laporan/trs', 'LaporanController@transaksi');
 Route::get('/laporan/trs/pdf', 'LaporanController@transaksiPdf');
@@ -84,12 +87,11 @@ Route::get('/laporan/dashboard/pdf', 'LaporanController@dashboardPdf');
 Route::get('/laporan/kk', 'LaporanController@kk');
 // Route::get('/laporan/kk/{$id}', 'LaporanController@kkPdf');
 
+Route::get('kk/pdf/{id}', ['as' => 'laporan.kk_pdf', 'uses' => 'kkController@cetak_pdf']);
 Route::get('laporan/kk/{id}', ['as' => 'laporan.kk_pdf', 'uses' => 'LaporanController@kkPdf']);
 
 //Download per anggota
 
-Route::get('/anggota/cetak_pdf', 'AnggotaController@cetak_pdf');
+// Route::get('/anggota/cetak_pdf', 'AnggotaController@cetak_pdf');
 
-//Route::get('/anggota/cetak_pdf/{$id}', ['uses' => 'AnggotaController@cetak_pdf', 'as' => 'anggota.cetak_pdf']);
-
-Route::get('kk/{id}/buat', 'detKKController@buat');
+Route::get('anggota/pdf/{id}', ['as' => 'anggota.laporan', 'uses' => 'AnggotaController@cetak_pdf']);

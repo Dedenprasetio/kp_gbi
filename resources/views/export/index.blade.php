@@ -25,6 +25,23 @@
                            
                           </div>
                         </div>
+                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+                        <div class=" col-lg-2">
+                          <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <b><i class="fa fa-download"></i> Export PDF Talenta</b>
+                          </button>
+                          <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 30px, 0px);">
+                            <a class="dropdown-item" href="{{url('laporan/talenta/pdf')}}"> Semua  </a>
+                            <a class="dropdown-item" href="{{url('laporan/talenta/pdf?nama_talenta=Khotbah')}}"> Khotbah  </a>
+                            <a class="dropdown-item" href="{{url('laporan/talenta/pdf?nama_talenta=Pengajar')}}"> Pengajar  </a>
+                            <a class="dropdown-item" href="{{url('laporan/talenta/pdf?nama_talenta=Pendoa')}}"> Pendoa  </a>
+                            <a class="dropdown-item" href="{{url('laporan/talenta/pdf?nama_talenta=Konselor')}}"> Konselor  </a>
+                            <a class="dropdown-item" href="{{url('laporan/talenta/pdf?nama_talenta=Musik')}}"> Musik  </a>
+                            <a class="dropdown-item" href="{{url('laporan/talenta/pdf?nama_talenta=Singer')}}"> Singer  </a>
+                            <a class="dropdown-item" href="{{url('laporan/talenta/pdf?nama_talenta=Worship Leader')}}"> Worship Leader  </a>
+                            <a class="dropdown-item" href="{{url('laporan/talenta/pdf?nama_talenta=Multimedia')}}"> Multimedia  </a>
+                          </div>
+                        </div>
                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
                        <div class=" col-lg-2">
                           <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -41,7 +58,7 @@
                           </div>
                         </div>
                         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
-                       <div class=" col-lg-2">
+                       <!-- <div class=" col-lg-2">
                           <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <b><i class="fa fa-download"></i> Export PDF Kartu Keluarga</b>
                           </button>
@@ -53,7 +70,7 @@
                             </a>
                             @endforeach
                           </div>
-                        </div>          
+                        </div>           -->
 
                        
                         <!-- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 

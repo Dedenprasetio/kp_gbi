@@ -148,7 +148,7 @@ class kkController extends Controller
         return view('kk.show', compact('det','data'));
     }
 
-    public function pdf($id)
+    public function cetak_pdf($id)
     {   
         
         $data = KartuKeluarga::findOrFail($id);

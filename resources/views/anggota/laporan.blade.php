@@ -4,6 +4,7 @@
 
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<style type="text/css">
+    .upper { text-transform: uppercase; }
 		    table {
     border-spacing: 0;
     width: 100%;
@@ -85,69 +86,88 @@
 </head>
 <body>
 <h1 class="center">LAPORAN DATA ANGGOTA</h1>
-{{-- <h1 class="center">{{ $datas->nama }}</h1> --}}
+<h1 class="center upper">{{ $anggota->nama }}</h1> 
 <h1 class="center">GBI NGADINEGARAN YOGYAKARTA</h1>
 
- <table id="pseudo-demo">
-   {{-- <h1> {{$anggota}} </h1> --}}
-                      <thead>
-                        <tr>
-                          <th>
-                            NO ANGGOTA
-                          </th>
-                          <th>
-                            NAMA
-                          </th>
-                          <th>
-                            TGL LAHIR
-                          </th>
-                          <th>
-                            JK
-                          </th>
+                      
+                      
+          
+                            </br>
+                            <div class="col-md-12">
+                                <img class="product" width="200" height="200" @if($anggota->gambar) src="{{ asset('images/anggota/'.$anggota->gambar) }}" @endif />
+                            </div>
+                            </br>
+                        
+                            
+                    
+
+                      
+                            <p class="col-md-12"><b>NOMER INDUK : </b> {{$anggota->kode_anggota}}</p>
+                            <p class="col-md-12"><b>STATUS KEANGGOTAAN : </b> {{$anggota->sts_anggota}}</p>
+                            <p class="col-md-12"><b>NAMA : </b> {{$anggota->nama}}</p>
+                            <p class="col-md-12"><b>TEMPAT LAHIR : </b> {{$anggota->tempat_lahir}}</p>
+                            <p class="col-md-12"><b>TANGGAL LAHIR : </b> {{$anggota->tgl_lahir}}</p>
+                            <p class="col-md-12"><b>JENIS KELAMIN : </b> {{$anggota->jk}}</p>
+                            <p class="col-md-12"><b>GOLONGAN DARAH  : </b> {{$anggota->goldar}}</p>
+                            
+                           
                          
-                         
-                          <th>
-                            GER-WIL
-                          </th>
-                          
-                          <th>
-                            STATUS KEANGGOTAAN
-                          </th>
-                          
-                        </tr>
-                      </thead>
-                      <tbody>
-                      @foreach($anggota as $data)
-                       <tr>
-                          <td>   
-                          <a href="{{route('anggota.show', $data->id)}}">                  
-                            {{$data->kode_anggota}}       
-                            </a>            
-                          </td>
-                          
-                          <td>
-                            {{$data->nama}}
-                          </td>
-                          
-                          <td>
-                            {{$data->tgl_lahir->format('d-m-Y')}}
-                          </td>
-                         
-                          <td>
-                            {{$data->jk}}
-                          </td>
-                          
-                          <td>
-                            {{$data->gerwil}}
-                          </td>
+
+  
 
 
-                          <td>
-                            {{$data->sts_anggota}}
-                          </td>
-                        </tr>
-                      @endforeach
-                      </tbody>
-                    </table>
+
+      
+                    
+                    <p class="col-md-12"><b>STATUS DALAM KELUARGA : </b> {{$anggota->sts_dlm_klrg}}</p>
+                            <p class="col-md-12"><b>STATUS PERNIKAHAN : </b> {{$anggota->sts_pernikahan}}</p>
+                            
+
+                            </br>
+                            </br>
+                            <p class="col-md-12"><b>AYAH : </b> {{$anggota->ayah}}</p>
+                    <p class="col-md-12"><b>IBU : </b> {{$anggota->ibu}}</p>
+                            </br>
+                            <p class="col-md-12"><b>STATUS KELUARGA : </b> {{$anggota->sts_keluarga}}</p>
+                            </br>
+                            </br>
+                            
+                    <p class="col-md-12"><b>TANGGAL BAPTIS : </b> {{$anggota->tgl_baptis}}</p>
+                    <p class="col-md-12"><b>BAPTIS DI  : </b> {{$anggota->grj_baptis}}</p>
+                    <p class="col-md-12"><b>ASAL GEREJA  : </b> {{$anggota->asal_grj}}</p>
+                 
+                    <p class="col-md-12"><b>PENDIDIKAN  : </b> {{$anggota->pendidikan}}</p>
+                    <p class="col-md-12"><b>BIDANG ILMU  : </b> {{$anggota->jurusan}}</p>
+                    <p class="col-md-12"><b>PEKERJAAN : </b> {{$anggota->pekerjaan}}</p>
+                    </br>                       
+ 
+  
+
+     
+                    <p class="col-md-12"><b>GEREJA WILAYAH : </b> {{$anggota->gerwil}}</p>
+                    </br>
+                    </br>
+                            <p class="col-md-12"><b>ALAMAT KTP : </b></p>
+                            <p class="col-md-12"><b>ALAMAT : </b> {{$anggota->alamat}}</p>
+                            <p class="col-md-12"><b>KELURAHAN : </b> {{$anggota->kelurahan}}</p>
+                            <p class="col-md-12"><b>KECAMATAN : </b> {{$anggota->kecamatan}}</p>
+                            <p class="col-md-12"><b>KOTA : </b> {{$anggota->kota}}</p>
+                            <p class="col-md-12"><b>PROVINSI : </b> {{$anggota->provinsi}}</p>
+                            </br>
+                            </br>
+                            <p class="col-md-12"><b>ALAMAT DOMISILI : </b></p>
+                            <p class="col-md-12"><b>ALAMAT : </b> {{$anggota->alamat_domisili}}</p>
+                            <p class="col-md-12"><b>KELURAHAN : </b> {{$anggota->kelurahan_domisili}}</p>
+                            <p class="col-md-12"><b>KECAMATAN : </b> {{$anggota->kecamatan_domisili}}</p>
+                            <p class="col-md-12"><b>KOTA : </b> {{$anggota->kota_domisili}}</p>
+                            <p class="col-md-12"><b>PROVINSI : </b> {{$anggota->provinsi_domisili}}</p>
+                            </br>
+                            </br>
+                            
+
+
+
+
 </body>
+
 </html>

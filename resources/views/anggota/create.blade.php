@@ -478,13 +478,13 @@
                                 <input type="radio" name="goldar" value="O" required>
                                 O
                                 </label> &nbsp;
-                                <label>
+                                <!-- <label>
                                 <input type="radio" name="goldar" value="RH" required>
                                 RH
                                 </label> &nbsp;   
                                 <label>
                                 <input type="radio" name="goldar" value="RH+" required>
-                                RH+
+                                RH+ -->
                                 </label>                                     
                         </div>
                         </br>

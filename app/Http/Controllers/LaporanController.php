@@ -7,6 +7,7 @@ use App\User;
 use App\acara;
 use App\Anggota;
 use App\Gerwil;
+use App\Talenta;
 use App\Transaksi;
 use App\KartuKeluarga;
 use App\DetailKartuKeluarga;
@@ -46,6 +47,48 @@ class LaporanController extends Controller
         return $pdf->download('laporan_acara_'.date('Y-m-d_H-i-s').'.pdf');
     }
 
+    // EXPORT TALENTA
+    public function talentaPdf(Request $request)
+    {
+        $q = Talenta::query();
+        
+        
+        if($request->get('nama_talenta')) 
+        {
+            
+
+            if($request->get('nama_talenta') == 'Khotbah') {
+                $q->where('nama_talenta', 'Khotbah');
+            } elseif($request->get('nama_talenta') == 'Pengajar') {
+                $q->where('nama_talenta', 'Pengajar');
+            } elseif($request->get('nama_talenta') == 'Pendoa') {
+                $q->where('nama_talenta', 'Pendoa');
+            } elseif($request->get('nama_talenta') == 'Konselor') {
+                $q->where('nama_talenta', 'Konselor');
+            } elseif($request->get('nama_talenta') == 'Musik') {
+                $q->where('nama_talenta', 'Musik');
+            } elseif($request->get('nama_talenta') == 'Singer') {
+                $q->where('nama_talenta', 'Singer');
+            } elseif($request->get('nama_talenta') == 'Worship Leader') {
+                $q->where('nama_talenta', 'Worship Leader');
+            } elseif($request->get('nama_talenta') == 'Multimedia') {
+                $q->where('nama_talenta', 'Multimedia');
+            }
+            
+        }
+
+        if(Auth::user()->level == 'user')
+        {
+            $q->where('anggota_id', Auth::user()->Anggota->id);
+        }
+
+        $datas = $q->get();
+
+       // return view('laporan.transaksi_pdf', compact('datas'));
+       $pdf = PDF::loadView('laporan.talenta_pdf', compact('datas'));
+       return $pdf->download('laporan_talenta_'.date('Y-m-d_H-i-s').'.pdf');
+    }
+    
     //EXPORT KK
     public function kk()
     {
@@ -62,7 +105,7 @@ class LaporanController extends Controller
         ->get(['anggota.kode_anggota','anggota.jk','anggota.gerwil','anggota.tgl_lahir','anggota.sts_anggota','anggota.nama','anggota.sts_dlm_klrg']);
         
         $pdf = PDF::loadView('laporan.kk_pdf', compact('det','data'));
-        return $pdf->download('laporan_kk_'.date('Y-m-d_H-i-s').'.pdf');
+        return $pdf->download('laporan_kk_'.$data->anggota->nama.'.pdf');
     }
 
 

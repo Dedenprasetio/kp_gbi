@@ -68,8 +68,9 @@
                          
                           <td>
                               
-
+                          <a href="{{route('laporan.kk_pdf', $data->id) }}" class="btn btn-success  btn-sm" tooltip ><i class="fa fa-download"></i> Download</a> 
                           <a href="{{route('kk.show', $data->id)}}" class="btn btn-warning  btn-sm" > <i class="fa fa-list-alt" aria-hidden="true"></i> Detail </a>
+                          
                           
                       
                          <!-- <a href="{{ route('kk.edit', $data->id) }}" class="btn btn-secondary  btn-sm" tooltip ><i class="fa fa-download"></i> </a> -->

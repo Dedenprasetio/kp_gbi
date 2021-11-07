@@ -105,7 +105,7 @@
 
 
                   <!-- <a href="#" class="btn btn-secondary  btn-sm"><i class="fa fa-download"></i> </a> -->
-                
+                  <a href="{{route('talenta.laporan', $data->id) }}" class="btn btn-success  btn-sm" tooltip ><i class="fa fa-download"></i> Download</a> 
                   <a href="{{route('talenta.edit', $data->id)}}" class="btn btn-secondary  btn-sm"><i class="fa fa-cog"></i> Ubah </a>
                   <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalDelete_{{ $data->id }}"><i class="fa fa-trash"></i> Hapus</button>
                   

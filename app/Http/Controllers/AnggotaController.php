@@ -218,8 +218,9 @@ class AnggotaController extends Controller
     public function cetak_pdf($id)
     {
         $anggota = Anggota::find($id);
-        $pdf = PDF::loadView('anggota.laporan', ['anggota' => $anggota]);
-        return $pdf->download('laporan-anggota-pdf.pdf');
+        $datas = $anggota->get();
+        $pdf = PDF::loadView('anggota.laporan', compact('anggota'));
+        return $pdf->download('laporan_anggota_'.$anggota->nama.'.pdf');
         // return view('laporan.kk_pdf');
     }
 }
