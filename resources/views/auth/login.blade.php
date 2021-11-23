@@ -15,22 +15,26 @@
   <link rel="stylesheet" href="{{asset('css/style.css')}}">
   <!-- endinject -->
   <link rel="shortcut icon" href="{{asset('favicon.ico')}}" />
+
 </head>
+
+
 
 <body>
 <form method="POST" action="{{ route('login') }}">
 {{ csrf_field() }}
-  <div class="container-scroller">
+  <div class="container-scroller" >
     <div class="container-fluid page-body-wrapper full-page-wrapper auth-page">
       <div class="content-wrapper d-flex align-items-center auth theme-one">
 
-        <div class="row w-100">
+        <div class="row w-100" >
         <div class="col-md-12" style="margin-bottom: 20px;">
-        <h2 style="text-align: center;">SILAHKAN LOGIN</h2>
+        <img id="img-n"  width="300" style="display:block; margin:auto;" src="img/gbi.png"/>
         </div>
+ 
         <div class="col-lg-4 mx-auto">
             <div class="auto-form-wrapper">
-
+            
                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}"">
                   <label class="label">Username</label>
                   <div class="input-group">
@@ -64,7 +68,7 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <button class="btn btn-primary submit-btn btn-block" type="submit">Login</button>
+                  <button class="btn btn-primary submit-btn btn-block" type="submit">LOGIN</button>
                 </div>
             </div>
             <p class="footer-text text-center" style="margin-top: 20px;color: #308ee0">Copyright © {{date('Y')}} GBI Ngadinegaran</p>

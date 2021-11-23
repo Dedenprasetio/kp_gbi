@@ -97,6 +97,8 @@ class LaporanController extends Controller
 
     public function kkPdf($id)
     {
+
+       
         $data = KartuKeluarga::findOrFail($id);
 
         $det = DetailKartuKeluarga::join('kartu_keluargas', 'kartu_keluargas.id', '=' , 'detail_kartu_keluarga.kartukeluarga_id')
@@ -108,6 +110,25 @@ class LaporanController extends Controller
         return $pdf->download('laporan_kk_'.$data->anggota->nama.'.pdf');
     }
 
+
+    public function Header()
+	{
+		//Logo
+		$this->Image('logo-ubl.jpg',10,8);
+		//Arial bold 15
+		$this->SetFont('Arial','B',15);
+		//pindah ke posisi ke tengah untuk membuat judul
+		$this->Cell(80);
+		//judul
+		$this->Cell(30,10,'LAPORAN REKAPITULASI PENERIMAAN MAHASISWA BARU',0,0,'C');
+		//pindah baris
+		$this->Ln(20);
+		//buat garis horisontal
+		$this->Line(10,25,200,25);
+
+        
+
+	}
 
 
     // EXPORT TRANSAKSI

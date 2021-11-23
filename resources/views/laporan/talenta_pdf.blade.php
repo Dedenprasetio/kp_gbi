@@ -84,6 +84,14 @@
 	<title>Laporan Data Talenta</title>
 </head>
 <body>
+
+<img id="img-n" width="10000" height="600000" style="display:block; margin:auto;" src="img/gbi.png"/>
+
+<h2 class="center">GEREJA BAPTIS INDONESIA <br> NGADINEGARAN YOGYARKARTA</h2>
+<h6 class="center">Alamat: Jalan D.I. Panjaitan No.29 Yogyakarta 55142 INDONESIA<br>
+Akte Notaris No.37Th.1973. Terdaftar pada: Dep.Agama RI No.E/Ket/392/1385/75 Telp: 00274-384267 <br>
+<hr width="100%" align="center"> </h6>
+
 <h1 class="center">LAPORAN DATA TALENTA </h1>
 <h1 class="center">GBI NGADINEGARAN YOGYAKARTA</h1>
 

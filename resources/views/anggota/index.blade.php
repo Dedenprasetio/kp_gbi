@@ -63,7 +63,7 @@
                             DATA UPDATE
                           </th>
                           <th>
-                            ACTION
+                            AKSI
                           </th>
                         </tr>
                       </thead>
