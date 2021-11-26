@@ -56,26 +56,68 @@ class detKkController extends Controller
     }
 
 
-
-    public function create()
+    public function tambah_kk($id)
     {
-        if(Auth::user()->level == 'user') {
-            Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
-            return redirect()->to('/');
-        }     
-        $kk = KartuKeluarga::get();
+        $det = DetailKartuKeluarga::join('kartu_keluargas', 'kartu_keluargas.id', '=' , 'detail_kartu_keluarga.kartukeluarga_id')
+        ->join('anggota', 'anggota.id', '=' , 'detail_kartu_keluarga.anggota_id')
+        ->where('kartukeluarga_id', $id)
+        ->get(['anggota.nama','anggota.sts_dlm_klrg']);
 
-        $anggotas = Anggota::get();
+        $dt = DetailKartuKeluarga::where([
+            ['kartukeluarga_id', '=', 'kartu_keluargas.id']
+        ])->get();
+
+        $data = KartuKeluarga::findOrFail($id);
+
+        $kk = KartuKeluarga::get();
+        
         $anggotas = Anggota::WhereNotExists(function($query) {
             $query->select(DB::raw(1))
             ->from('detail_kartu_keluarga')
             ->whereRaw('detail_kartu_keluarga.anggota_id = anggota.id');
          })->get();
+
+         return view('detailkk.create' , compact('anggotas','kk','det','dt','data'));
+    }
+
+    public function tambah_istri()
+    {
+        $kk = KartuKeluarga::get();
+        
+        $anggotas = Anggota::WhereNotExists(function($query) {
+            $query->select(DB::raw(1))
+            ->from('detail_kartu_keluarga')
+            ->whereRaw('detail_kartu_keluarga.anggota_id = anggota.id');
+         })->get();
+
+         return view('detailkk.istri' , compact('anggotas','kk','det','dt','data'));
+    }
+
+    // public function create()
+    // {
+
+    //     $det = DetailKartuKeluarga::join('kartu_keluargas', 'kartu_keluargas.id', '=' , 'detail_kartu_keluarga.kartukeluarga_id')
+    //     ->join('anggota', 'anggota.id', '=' , 'detail_kartu_keluarga.anggota_id')
+    //     ->where('kartukeluarga_id', $id)
+    //     ->get(['anggota.nama','anggota.sts_dlm_klrg']);
+
+    //     if(Auth::user()->level == 'user') {
+    //         Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+    //         return redirect()->to('/');
+    //     }     
+    //     $kk = KartuKeluarga::get();
+
+    //     $anggotas = Anggota::get();
+    //     $anggotas = Anggota::WhereNotExists(function($query) {
+    //         $query->select(DB::raw(1))
+    //         ->from('detail_kartu_keluarga')
+    //         ->whereRaw('detail_kartu_keluarga.anggota_id = anggota.id');
+    //      })->get();
         
          
-        return view('detailkk.create' , compact('anggotas','kk'));
+    //     return view('detailkk.create' , compact('anggotas','kk','dt','td'));
 
-    }
+    // }
     
 
 
@@ -97,7 +139,7 @@ class detKkController extends Controller
 
 
         alert()->success('Berhasil.','Data telah ditambahkan!');
-        return redirect()->route('detailkk.index');
+        return redirect()->route('kk.index');
 
     }
 
@@ -199,6 +241,13 @@ class detKkController extends Controller
         }
         DetailKartuKeluarga::find($id)->delete();
         alert()->success('Berhasil.','Data telah dihapus!');
-        return redirect()->route('detailkk.index');
+        return redirect()->route('kk.index');
+    }
+
+    public function hapus($id)
+    {
+        DetailKartuKeluarga::find($id)->delete();
+        alert()->success('Berhasil.','Data telah dihapus!');
+        return redirect()->route('kk.index');
     }
 }

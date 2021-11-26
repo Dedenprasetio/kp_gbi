@@ -28,7 +28,7 @@
               <div class="card">
 
                 <div class="card-body">
-                
+                <a href="/detailkk/create/{{ $data->id }}" class="btn btn-primary  btn-fw col-lg-2"> <i class="fa fa-plus"></i> Anggota Keluarga </a>
                 <div class="row">
                                 <div class="col-sm-12">
                                     <div class="form-group mb-0">
@@ -37,7 +37,19 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="row">
+
+                            <div class="col-sm-12">
+                                    <div class="form-group mb-0">
+                                    
+                                        <label class="control-label">Nama Istri : <b>{{ $data->istri }}</b></label>
+                                   
+                                    </div>
+                                </div>
+                            </div>
                             
+                            
+
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="form-group mb-0">
@@ -46,7 +58,7 @@
                                 </div>
                       
                             </div>
-                            <br>
+                            
                             
                   <div class="table-responsive">
                   <table class="table table-striped" id="table">
@@ -61,9 +73,9 @@
                            <th>
                             PERAN KELUARGA
                           </th>
-                          {{-- <th>
+                          <!-- <th>
                             ACTION
-                          </th> --}}
+                          </th>  -->
                         </tr>
                       </thead>
                       <tbody>
@@ -78,13 +90,13 @@
                         <td>{{ $no }}</td>
                         <td>{{ $data->nama }}</td>    
                         <td>{{ $data->sts_dlm_klrg }}</td>   
-                        {{-- <td>
-                          <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalDelete_{{ $data->id }}"><i class="fa fa-trash"></i></button>
+                        <!-- <td>
+                          <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalDelete_{{ $data->id }}"><i class="fa fa-trash"></i> Hapus</button>
 
 
 
                               <!-- Modal -->
-                              <form method="POST" action="{{ route('detailkk.destroy',['id' => $data->id]) }}">
+                              <form method="POST" action="/detailkk/destroy/{{ $data->id }}">
                                 <div class="modal fade" id="modalDelete_{{ $data->id }}" tabindex="-1" role="dialog" aria-labelledby="modalDeleteLabel" aria-hidden="true">
                                   <div class="modal-dialog" role="document">
                                     <div class="modal-content">
@@ -116,7 +128,7 @@
                                 </div>
                                 
                               </form>
-                        </td>    --}}
+                        </td>   
                          
                         @endforeach
                               

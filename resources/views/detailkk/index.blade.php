@@ -85,8 +85,8 @@
                         
 
                 
-                        <a href="{{ route('detailkk.create') }}" class="btn btn-primary  btn-fw col-lg-2"><i class="fa fa-plus"></i> Anggota Keluarga </a>
-                        </br></br>
+                        <!-- <a href="{{ route('detailkk.create') }}" class="btn btn-primary  btn-fw col-lg-2"><i class="fa fa-plus"></i> Anggota Keluarga </a> -->
+                       
                         
       <!-- @foreach($det as $data)
     <div class="card">

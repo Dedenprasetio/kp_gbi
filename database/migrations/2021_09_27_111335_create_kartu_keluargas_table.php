@@ -17,7 +17,16 @@ class CreateKartuKeluargasTable extends Migration
             $table->increments('id');
             $table->integer('anggota_id')->unsigned();
             $table->foreign('anggota_id')->references('id')->on('anggota')->onDelete('cascade')->onUpdate('cascade');
+            // $table->integer('istri_id')->unsigned();
+            // $table->foreign('istri_id')->references('id')->on('anggota')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('istri')->nullable();
             $table->string('nomor_kk')->nullable();
+            $table->string('tempat')->nullable();
+            $table->string('alamat')->nullable();
+            $table->string('oleh')->nullable();
+            $table->string('jam_nikah')->nullable();
+            $table->string('jam_sipil')->nullable();
+            $table->date('tgl_nikah')->nullable();
             $table->timestamps();
         });
     }

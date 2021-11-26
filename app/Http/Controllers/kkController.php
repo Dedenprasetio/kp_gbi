@@ -48,8 +48,9 @@ class kkController extends Controller
 
         $kk = KartuKeluarga::get();
         $anggota   = Anggota::get();
+        $istri = Anggota::where('sts_dlm_klrg', 'Istri')->get(['anggota.nama']);
         
-        return view('kk.index', compact('kk', 'anggota', 'datas1'));
+        return view('kk.index', compact('kk', 'anggota', 'datas1','istri'));
   
     }
 
@@ -57,29 +58,30 @@ class kkController extends Controller
 
     public function create()
     {
+       
         if(Auth::user()->level == 'user') {
             Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
             return redirect()->to('/');
         } 
 
         //MENGITUNG NOMOR KK SECARA OTOMATIS
-        $getRow = KartuKeluarga::orderBy('id', 'DESC')->get();
-        $rowCount = $getRow->count();
-        $lastId = $getRow->first();
-        $kode = "KKGN00001";
-        if ($rowCount > 0) {
-            if ($lastId->id < 9) {
-                    $kode = "KKGN0000".''.($lastId->id + 1);
-            } else if ($lastId->id < 99) {
-                    $kode = "KKGN000".''.($lastId->id + 1);
-            } else if ($lastId->id < 999) {
-                    $kode = "KKGN00".''.($lastId->id + 1);
-            } else if ($lastId->id < 9999) {
-                    $kode = "KKGN0".''.($lastId->id + 1);
-            } else {
-                    $kode = "KKGN".''.($lastId->id + 1);
-            }
-        }
+        // $getRow = KartuKeluarga::orderBy('id', 'DESC')->get();
+        // $rowCount = $getRow->count();
+        // $lastId = $getRow->first();
+        // $kode = "KKGN00001";
+        // if ($rowCount > 0) {
+        //     if ($lastId->id < 9) {
+        //             $kode = "KKGN0000".''.($lastId->id + 1);
+        //     } else if ($lastId->id < 99) {
+        //             $kode = "KKGN000".''.($lastId->id + 1);
+        //     } else if ($lastId->id < 999) {
+        //             $kode = "KKGN00".''.($lastId->id + 1);
+        //     } else if ($lastId->id < 9999) {
+        //             $kode = "KKGN0".''.($lastId->id + 1);
+        //     } else {
+        //             $kode = "KKGN".''.($lastId->id + 1);
+        //     }
+        // }
 
 
 
@@ -87,13 +89,19 @@ class kkController extends Controller
                     $anggotas = Anggota::WhereNotExists(function($query) {
                         $query->select(DB::raw(1))
                         ->from('kartu_keluargas')
-                        ->whereRaw('kartu_keluargas.anggota_id = anggota.id');
+                        ->whereRaw('kartu_keluargas.anggota_id = anggota.id' );
+                     })->get();
+
+                     $istris = Anggota::WhereNotExists(function($query) {
+                        $query->select(DB::raw(1))
+                        ->from('kartu_keluargas')
+                        ->whereRaw('kartu_keluargas.istri = anggota.nama', );
                      })->get();
 
         //$anggotas = anggota::get();
         
 
-        return view('kk.create' , compact('kode','anggotas'));
+        return view('kk.create' , compact('anggotas','istris'));
 
     }
     
@@ -107,12 +115,19 @@ class kkController extends Controller
      */
     public function store(Request $request)
     {   
-        $count = KartuKeluarga::where('nomor_kk',$request->input('nomor_kk'))->count();
+        // $count = KartuKeluarga::where('nomor_kk',$request->input('nomor_kk'))->count();
 
         $this->validate($request, [
            
             'anggota_id' => 'required',
+            'istri' => 'required',
             'nomor_kk' => 'required',
+            'tempat' => 'required',
+            'alamat' => 'required',
+            'oleh' => 'required',
+            'jam_nikah' => 'required',
+            'jam_sipil' => 'required',
+            'tgl_nikah' => 'required',
         ]); 
         KartuKeluarga::create($request->all());
 
@@ -132,7 +147,13 @@ class kkController extends Controller
     {   
         
         $data = KartuKeluarga::findOrFail($id);
+        $datakk = DetailKartuKeluarga::find('id');
+        $anggotas = anggota::get();
+        $dt = DetailKartuKeluarga::where([
+            ['id']
+        ])->get();
 
+        
     
         if((Auth::user()->level == 'user') && (Auth::user()->id != $id)) {
                 Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
@@ -145,7 +166,7 @@ class kkController extends Controller
         ->where('kartukeluarga_id', $id)
         ->get(['anggota.nama','anggota.sts_dlm_klrg']);
 
-        return view('kk.show', compact('det','data'));
+        return view('kk.show', compact('det','data','dt','anggotas'));
     }
 
     public function cetak_pdf($id)

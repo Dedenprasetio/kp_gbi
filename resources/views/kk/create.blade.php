@@ -53,13 +53,13 @@ $(document).ready(function() {
                 <div class="col-12">
                   <div class="card">
                     <div class="card-body">
-                      <h4 class="card-title">Tambah Kepala Keluarga</h4>
+                      <h4 class="card-title">Tambah Kartu Keluarga</h4>
                       
                       <div class="form-group{{ $errors->has('nomor_kk') ? ' has-error' : '' }}">
-                        
-                        <label for="nomor_kk" class="col-md-6 control-label">Nomor Keluarga <b style="color:Tomato;">*</b> </label>
-                        <div class="col-md-6">
-                            <input id="nomor_kk" type="text" class="form-control" name="nomor_kk" value="{{ $kode }}" readonly="">
+                        <br>
+                        <label for="nomor_kk" class="col-md-6 control-label">Nomor Kartu Keluarga <b style="color:Tomato;">*</b> </label>
+                        <div class="col-md-12">
+                            <input id="nomor_kk" type="text" class="form-control" name="nomor_kk">
                             @if ($errors->has('nomor_kk'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('nomor_kk') }}</strong>
@@ -82,7 +82,91 @@ $(document).ready(function() {
                                                 </select>
                                               </div>
 
-                   
+                                              <div class="container  col-md-12">                               
+                                                <label>Istri <b style="color:Tomato;">*</b></label>
+                                                <select required="required" name="istri" class="custom-select mb-3" >
+                                                  <option value="">Pilih Istri</option>
+                                                  @foreach($istris as $a)
+                                                  @if  ( $a->sts_dlm_klrg == 'Istri')
+                                                  <option value="{{ $a->nama }}">{{ $a->kode_anggota }}-{{ $a->nama }}({{ $a->sts_dlm_klrg }})</option>
+                                                  @endif
+                                                  @endforeach
+                                                </select>
+                                              </div>
+
+                                              <div class="form-group{{ $errors->has('tempat') ? ' has-error' : '' }}">
+                                                <label for="tempat" class="col-md-4 control-label">Tempat Nikah <b style="color:Tomato;">*</b> </label>
+                                                <div class="col-md-12">
+                                                    <input id="tempat" type="text" class="form-control" name="tempat" value="{{ old('tempat') }}" required>
+                                                    @if ($errors->has('tempat'))
+                                                        <span class="help-block">
+                                                            <strong>{{ $errors->first('tempat') }}</strong>
+                                                        </span>
+                                                    @endif
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group{{ $errors->has('alamat') ? ' has-error' : '' }}">
+                                                <label for="alamat" class="col-md-4 control-label">Alamat <b style="color:Tomato;">*</b> </label>
+                                                <div class="col-md-12">
+                                                    <input id="alamat" type="text" class="form-control" name="alamat" value="{{ old('alamat') }}" required>
+                                                    @if ($errors->has('alamat'))
+                                                        <span class="help-block">
+                                                            <strong>{{ $errors->first('alamat') }}</strong>
+                                                        </span>
+                                                    @endif
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group{{ $errors->has('oleh') ? ' has-error' : '' }}">
+                                                <label for="oleh" class="col-md-4 control-label">Oleh <b style="color:Tomato;">*</b> </label>
+                                                <div class="col-md-12">
+                                                    <input id="oleh" type="text" class="form-control" name="oleh" value="{{ old('oleh') }}" required>
+                                                    @if ($errors->has('oleh'))
+                                                        <span class="help-block">
+                                                            <strong>{{ $errors->first('oleh') }}</strong>
+                                                        </span>
+                                                    @endif
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group{{ $errors->has('jam_nikah') ? ' has-error' : '' }}">
+                                                <label for="jam_nikah" class="col-md-4 control-label">Jam Nikah <b style="color:Tomato;">*</b> </label>
+                                                <div class="col-md-12">
+                                                    <input id="jam_nikah" type="text" class="form-control" name="jam_nikah" value="{{ old('jam_nikah') }}" required>
+                                                    @if ($errors->has('jam_nikah'))
+                                                        <span class="help-block">
+                                                            <strong>{{ $errors->first('jam_nikah') }}</strong>
+                                                        </span>
+                                                    @endif
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group{{ $errors->has('jam_sipil') ? ' has-error' : '' }}">
+                                                <label for="jam_sipil" class="col-md-4 control-label">Jam Sipil <b style="color:Tomato;">*</b> </label>
+                                                <div class="col-md-12">
+                                                    <input id="jam_sipil" type="text" class="form-control" name="jam_sipil" value="{{ old('jam_sipil') }}" required>
+                                                    @if ($errors->has('jam_sipil'))
+                                                        <span class="help-block">
+                                                            <strong>{{ $errors->first('jam_sipil') }}</strong>
+                                                        </span>
+                                                    @endif
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group{{ $errors->has('tgl_nikah') ? ' has-error' : '' }}">
+                                            <label for="tgl_nikah" class="col-md-4 control-label">Tanggal Nikah  <b style="color:Tomato;">*</b> </label>
+                                            <div class="col-md-12">
+                                                <input id="tgl_nikah" type="date" class="form-control" name="tgl_nikah" value="{{ date('d-m-Y', strtotime(Carbon\Carbon::today()->toDateString())) }}" required @if(Auth::user()->level == 'user') readonly @endif>
+                                                @if ($errors->has('tgl_nikah'))
+                                                    <span class="help-block">
+                                                        <strong>{{ $errors->first('tgl_nikah') }}</strong>
+                                                    </span>
+                                                @endif
+                                            </div>
+                                        </div>
+
+                                            
 
                         <!-- <div class="form-group{{ $errors->has('anggota_id') ? ' has-error' : '' }}">
                             <label for="anggota_id" class="col-md-4 control-label">Nama Istri</label>

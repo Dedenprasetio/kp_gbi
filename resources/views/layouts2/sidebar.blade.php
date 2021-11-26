@@ -51,7 +51,7 @@
                 <li class="nav-item">
                   <a class="nav-link {{ setActive(['kk*']) }}" href="{{route('kk.index')}}">
                   <i class="nav-icon fas fa-user"></i>
-                  <p>Data Kepala Keluarga</p>
+                  <p>Data Kartu Keluarga</p>
                   </a>
                 </li>
 

@@ -105,6 +105,13 @@ Akte Notaris No.37Th.1973. Terdaftar pada: Dep.Agama RI No.E/Ket/392/1385/75 Tel
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="form-group mb-0">
+                                        <label class="control-label">Nama Istri : <b>{{$data->istri}}</b></label>
+                                        
+                                    </div>
+                                </div>
+                            </div>
                             
                             <div class="row">
                                 <div class="col-sm-12">

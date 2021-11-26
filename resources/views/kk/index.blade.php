@@ -29,7 +29,7 @@
 
                 <div class="card-body">
                 
-                        <a href="{{ route('kk.create') }}" class="btn btn-primary  btn-fw col-lg-2"> <i class="fa fa-plus"></i> Kepala Keluarga </a>
+                        <a href="{{ route('kk.create') }}" class="btn btn-primary  btn-fw col-lg-2"> <i class="fa fa-plus"></i> Kartu Keluarga </a>
                         </br></br>
                   <div class="table-responsive">
                   <table class="table table-striped" id="example1">
@@ -44,10 +44,13 @@
                            <th>
                             NAMA KEPALA KELUARGA
                           </th>
-                          
+                          <th>
+                            NAMA ISTRI
+                          </th>
                           <th>
                             AKSI
                           </th>
+                
                         </tr>
                       </thead>
                       <tbody>
@@ -65,11 +68,35 @@
                               {{$data->anggota->nama}}
                           </td>
                           
+                          
+                          <td> 
+                              {{ $data->istri }}
+                          </td>
+                          
                          
                           <td>
-                              
-                          <a href="{{route('laporan.kk_pdf', $data->id) }}" class="btn btn-success  btn-sm" tooltip ><i class="fa fa-download"></i> Download</a> 
+                          <div class="">
+                          <a type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <b><i class="fa fa-download"></i> Download</b>
+                          </a>
+                          <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 30px, 0px);">
+                            <a class="dropdown-item" href="{{url('laporan/agt/pdf')}}"> Buku Pernikahan  </a>
+                            
+                            <a class="dropdown-item" href="{{route('laporan.kk_pdf', $data->id) }}"> Kartu Keluarga </a>
+             
+                          </div>
+                        </div>
+                        <div>
+                        <!-- <a href="#" class="btn btn-success btn-sm" tooltip ><i class="fa fa-download"></i> Download</a> 
+                        <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 30px, 0px);">
+                            <a class="dropdown-item" href="{{url('laporan/agt/pdf')}}"> Buku Pernikahan  </a>
+                            
+                            <a class="dropdown-item" href="{{route('laporan.kk_pdf', $data->id) }}"> Kartu Keluarga </a>
+             
+                        </div> -->
+                          
                           <a href="{{route('kk.show', $data->id)}}" class="btn btn-warning  btn-sm" > <i class="fa fa-list-alt" aria-hidden="true"></i> Detail </a>
+                          
                           
                           
                       

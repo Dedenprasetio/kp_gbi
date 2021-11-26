@@ -79,11 +79,11 @@ $(document).ready(function() {
                                               </div> -->
 
                                               <div class="container  col-md-12">                               
-                                                <label>Anggota Keluarga <b style="color:Tomato;">*</b></label>
+                                                <label>Istri <b style="color:Tomato;">*</b></label>
                                                 <select required="required" name="anggota_id" class="custom-select mb-3" >
-                                                  <option value="">Pilih Anggota Keluarga</option>
+                                                  <option value="">Pilih Istri</option>
                                                   @foreach($anggotas as $a)
-                                                  @if ($a->sts_dlm_klrg != 'Suami' AND $a->sts_dlm_klrg != 'Istri')
+                                                  @if ($a->sts_dlm_klrg == 'Istri')
                                                   <option value="{{ $a->id }}">{{ $a->kode_anggota }}-{{ $a->nama }}({{ $a->sts_dlm_klrg }})</option>
                                                   @endif
                                                   @endforeach
@@ -251,7 +251,7 @@ $(document).ready(function() {
                             </thead>
                             <tbody>
                                 @foreach($anggotas as $data)
-                                @if ($data->sts_dlm_klrg != 'Suami')
+                                @if ($data->sts_dlm_klrg == 'Istri')
                         <tr class="pilih_anggota" data-anggota_id="<?php echo $data->id; ?>" data-anggota_judul="<?php echo $data->nama; ?>" >
                                     <td>{{$data->nama}}</td>
                                     <td>{{$data->sts_dlm_klrg}}</td>

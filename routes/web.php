@@ -44,9 +44,13 @@ Route::resource('jabatan', 'JabatanController');
 //kepala keluarga
 Route::resource('kk', 'kkController');
 
+
+
 //detail kk
 Route::resource('detailkk', 'detKkController');
-
+Route::get('/detailkk/create/{id}', 'detKKController@tambah_kk');
+Route::get('/detailkk/create/istri', 'detKKController@tambah_istri');
+Route::get('/detailkk/destroy/{id}', 'detKKController@hapus');
 
 Route::resource('export', 'ExportController');
 Route::resource('kategori', 'KategoriController');
