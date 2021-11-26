@@ -93,8 +93,8 @@ Akte Notaris No.37Th.1973. Terdaftar pada: Dep.Agama RI No.E/Ket/392/1385/75 Tel
 
 
 
-<h1 class="center">LAPORAN KARTU KELUARGAA</h1>
-<h1 class="center">GBI NGADINEGARAN YOGYAKARTA</h1>
+<h3 class="center">LAPORAN KARTU KELUARGAA</h3>
+<h3 class="center">GBI NGADINEGARAN YOGYAKARTA</h3>
 
 
 
