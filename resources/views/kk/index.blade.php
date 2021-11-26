@@ -32,7 +32,7 @@
                         <a href="{{ route('kk.create') }}" class="btn btn-primary  btn-fw col-lg-2"> <i class="fa fa-plus"></i> Kepala Keluarga </a>
                         </br></br>
                   <div class="table-responsive">
-                  <table class="table table-striped" id="table">
+                  <table class="table table-striped" id="example1">
                       <thead>
                         <tr>
                         <th>

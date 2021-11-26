@@ -143,7 +143,7 @@
                             <div class="col-md-12">
                             
                             <select class="form-control" name="sts_dlm_klrg" required="">
-                            <option >Status Dalam Keluarga</option>
+                            <option value="" >Status Dalam Keluarga</option>
                             <option value="Suami">Suami</option>
                                 <option value="Istri">Istri</option>
                                 <option value="Anak">Anak</option>
@@ -559,8 +559,8 @@
 
                         </br>
                         <div class="form-group">
-                            <label for="email" class="col-md-12 control-label">Gambar</label>
-                            <div class="col-md-6">
+                            <label for="email" class="col-md-4 control-label">Gambar</label>
+                            <div class="col-md-10">
                                 <img class="product" width="200" height="200" />
                                 <input type="file" class="uploads form-control" style="margin-top: 20px;" name="gambar">
                             </div>

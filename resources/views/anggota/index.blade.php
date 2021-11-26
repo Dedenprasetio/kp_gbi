@@ -13,6 +13,8 @@
 @section('content')
 <div class="row">
 
+
+
                         
                   <div class="col-lg-12">
                   @if (Session::has('message'))
@@ -23,79 +25,72 @@
 
 
 
-<div class="row" style="margin-top: 20px;">
+<div class="row">
 <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
 
                 <div class="card-body">
                 
                         <a href="{{ route('anggota.create') }}" class="btn btn-primary  btn-fw col-lg-2"><i class="fa fa-plus"></i> Tambah Anggota</a>
-                        </br></br>
+                        <ol class="breadcrumb float-sm-right bg-white">
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item active">Transaksi</li>
+                        </ol> 
+                      
                   <div class="table-responsive">
-                    <table class="table table-striped" id="table">
-                      <thead>
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>
                         <tr>
-                        <th>
-                            NO
-                          </th>
-                        <th>
-                            NO ANGGOTA
-                          </th>
-                          <th>
-                            NAMA
-                          </th>
-                          <th>
-                            TGL LAHIR
-                          </th>
-                          <th>
-                            JK
-                          </th>
-                         
-                         
-                          <th>
-                            GER-WIL
-                          </th>
-                          
-                          <th>
-                            STATUS KEANGGOTAAN
-                          </th>
-                          <th>
-                            DATA UPDATE
-                          </th>
-                          <th>
-                            AKSI
-                          </th>
+                        <th width="1%">NO</th>
+                        <th class="text-center">KODE</th>
+                       
+                        <th class="text-center">NAMA</th>
+                        <th class="text-center">JK</th>
+                        <th class="text-center">GER-WIL</th>
+                        <!-- <th class="text-center">JENIS</th> -->
+
+                        <th class="text-center" >UPDATE</th>
+                        
+                        @if(Auth::user()->level == 'admin')
+                        <th class="text-center col-md-2" width="10%">OPSI</th>
+                        @endif
                         </tr>
-                      </thead>
-                      <tbody>
-                      <?php $no = 0;?>
-                      @foreach($anggota as $data)
-                      <?php $no++ ;?>
-                        <tr> 
-                        <td>{{ $no }}</td>
-                        <td>
-                        @if($data->gambar)
+                        </thead>
+                        <tbody>
+                    @php
+                    $no = 1;
+                    @endphp
+                    @foreach($anggota as $data)
+                    <tr>
+                      <td class="text-left">{{ $no++ }}</td>
+                      <!-- <td>
+                      
+                          </td> -->
+                          <td>
+                          @if($data->sts_anggota == 'Jemaat')
+                          @if($data->gambar)
                             <img width="50" height="50"src="{{asset('images/anggota', $data->gambar)}}" alt="image" style="margin-right: 10px;" />
                           @else
                             <img  width="50" height="50"src="{{url('images/anggota/default.png')}}" alt="image" style="margin-right: 10px;" />
 
                           @endif
+                          <label class="text-success">{{$data->kode_anggota}}</label>
+                          @else($data->sts_anggota == 'Simpatisan')
+                          @if($data->gambar)
+                            <img width="50" height="50"src="{{asset('images/anggota', $data->gambar)}}" alt="image" style="margin-right: 10px;" />
+                          @else
+                            <img  width="50" height="50"src="{{url('images/anggota/default.png')}}" alt="image" style="margin-right: 10px;" />
 
-                          <a href="{{route('anggota.show', $data->id)}}"> 
-                            <b><u> {{$data->kode_anggota}}</u></b>
-                            </a>
-                           
-                          
+                          @endif
+                          <label class="text-warning">{{$data->kode_anggota}}</label>
+                          @endif
                           </td>
-
+                          
+                     
                           <td class="py-1">
                             {{$data->nama}}
                           </td>
 
-                          
-                          <td>
-                            {{$data->tgl_lahir->format('d-m-Y')}}
-                          </td>
                           <td>
                             {{$data->jk}}
                           </td>
@@ -104,28 +99,18 @@
                             {{$data->gerwil}}
                           </td>
 
-                          <td>
-                          @if($data->sts_anggota == 'Jemaat')
-                          <label class="text-success">{{$data->sts_anggota}}</label>
-                          @else($data->sts_anggota == 'Simpatisan')
-                          <label class="text-warning">{{$data->sts_anggota}}</label>
-                          @endif
-                          </td>
-                          
-                          <td>
-                            {{$data->updated_at->diffForHumans()}}
-                          </td>
-                       
-                          
-                          
-                     
-                <td>
-                
-                  <a href="{{ route('anggota.laporan', $data->id) }}" class="btn btn-success  btn-sm" tooltip ><i class="fa fa-download"></i> Download</a> 
+                      
+                      <td class="text-left">{{ $data->updated_at->diffForHumans() }}</td>
+                      
+                      
+                      @if(Auth::user()->level == 'admin')
+                      <td class="text-center">
+                      <a href="{{ route('anggota.show', $data->id) }}" class="btn btn-primary  btn-sm" tooltip ><i class="fa fa-eye"></i></a> 
+                  <a href="{{ route('anggota.laporan', $data->id) }}" class="btn btn-success  btn-sm" tooltip ><i class="fa fa-download"></i></a> 
                   
 
-                  <a href="{{route('anggota.edit', $data->id)}}" class="btn btn-secondary  btn-sm"><i class="fa fa-cog"></i> Ubah </a>
-                  <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalDelete_{{ $data->id }}"><i class="fa fa-trash"></i> Hapus</button>
+                  <a href="{{route('anggota.edit', $data->id)}}" class="btn btn-secondary  btn-sm"><i class="fa fa-cog"></i> </a>
+                  <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalDelete_{{ $data->id }}"><i class="fa fa-trash"></i></button>
                   
                   
 
@@ -165,13 +150,12 @@
                   </form>
 
                 </td>
-
-
-
-                        </tr>
-                      @endforeach
-                      </tbody>
-                    </table>
+                      @endif             
+                        
+                    </tr>
+                    @endforeach
+                        </tbody>
+                      </table>
                   </div>
                {{--  {!! $datas->links() !!} --}}
                 </div>

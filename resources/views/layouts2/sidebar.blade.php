@@ -29,7 +29,7 @@
               </p>
             </a>
 
-            <div class="collapse {{ setShow(['talenta*','kas*', 'user*']) }}" id="ui-basic">
+            <div class="collapse {{ setShow(['talenta*','anggota*', 'user*', 'detailkk*', 'kk*']) }}" id="ui-basic">
               <ul class="nav flex-column sub-menu">
 
 

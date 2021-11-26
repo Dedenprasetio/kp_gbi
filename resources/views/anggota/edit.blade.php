@@ -1,44 +1,59 @@
 @section('js')
-
 <script type="text/javascript">
-        function readURL() {
-            var input = this;
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                    $(input).prev().attr('src', e.target.result);
-                }
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
+  $(document).ready(function() {
+    $('#table').DataTable({
+      "iDisplayLength": 10
+    });
 
-
-
-$(document).ready(function() {
-    $(".users").select2();
-});
-
+} );
 </script>
 @stop
-
 @extends('layouts2.app')
 
 @section('content')
 
-<form action="{{ route('anggota.update', $data->id) }}" method="post" enctype="multipart/form-data">
+
+<div class="row" style="margin-center: 20px;">
+
+
+          
+
+  <div class="col-lg-12 grid-margin stretch-card ">
+
+    <div class="card  ">
+      <div class="card-body">
+      
+
+      
+
+        @if (session('error'))
+        <div class="alert alert-danger">
+          {{ session('error') }}
+        </div>
+        @endif
+        @if (session('success'))
+        <div class="alert alert-success">
+          {{ session('success') }}
+        </div>
+        @endif
+
+    <div class="container-fluid page-body-wrapper full-page-wrapper auth-page">
+      <div class="align-items-center">
+
+    
+        <div class="col-lg-6 mx-auto">
+        <!-- <form class="form-horizontal " method="POST" action="">
+          {{ csrf_field() }} -->
+
+          <form action="{{ route('anggota.update', $data->id) }}" method="post" enctype="multipart/form-data">
         {{ csrf_field() }}
         {{ method_field('put') }}
-<div class="row">
-            <div class="col-md-12 d-flex align-items-stretch grid-margin">
-              <div class="row flex-grow">
-                <div class="col-12">
-                  <div class="card">
-                    <div class="card-body">
-                    
-                      
-                        <div class="form-group{{ $errors->has('nama') ? ' has-error' : '' }}">
-                            <label for="nama" class="col-md-6 control-label">Nama Anggota</label>
-                            <div class="col-md-6">
+
+          <!-- AREA FORM -->
+
+          <div class="form-group{{ $errors->has('nama') ? ' has-error' : '' }}">
+                            <label for="nama" class="col-md-12 control-label">Nama Anggota</label>
+                            <div class="col-md-12">
                                 <input id="nama" type="text" class="form-control" name="nama" value="{{ $data->nama }}" required>
                                 @if ($errors->has('nama'))
                                     <span class="help-block">
@@ -47,10 +62,10 @@ $(document).ready(function() {
                                 @endif
                             </div>
                         </div>
-                        </br>
+                      
                         <div class="form-group{{ $errors->has('alamat') ? ' has-error' : '' }}">
                             <label for="alamat" class="col-md-4 control-label">Alamat</label>
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <input id="alamat" type="text" class="form-control" name="alamat" value="{{ $data->alamat }}" required>
                                 @if ($errors->has('alamat'))
                                     <span class="help-block">
@@ -59,11 +74,10 @@ $(document).ready(function() {
                                 @endif
                             </div>
                         </div>
-                        </br>
-  
+                  
                         <div class="form-group{{ $errors->has('gerwil') ? ' has-error' : '' }}">
-                        <label for="gerwil" class="col-md-6 control-label">Gereja Wilayah</label>
-                            <div class="col-md-6">
+                        <label for="gerwil" class="col-md-12 control-label">Gereja Wilayah</label>
+                            <div class="col-md-12">
                             
                             <select class="form-control" name="gerwil" required="">
                                
@@ -77,8 +91,7 @@ $(document).ready(function() {
                             </select>
                             </div>
                         </div>
-                        </br>
-                        
+                       
                         <div class="form-group{{ $errors->has('sts_dlm_klrg') ? ' has-error' : '' }}">
                             <label for="sts_dlm_klrg" class="col-md-12 control-label">Status Dalam Keluarga   <b style="color:Tomato;">*</b>  </label>
                             <div class="col-md-12">
@@ -95,7 +108,7 @@ $(document).ready(function() {
                             </div>
                         </div>
 
-                        </br>
+                    
                         <div class="form-group{{ $errors->has('sts_anggota') ? ' has-error' : '' }}">
                               <label for="goldar" class="col-md-12 control-label" >Status Anggota    </label>
                               
@@ -109,18 +122,18 @@ $(document).ready(function() {
                                 </label>   &nbsp; &nbsp; 
                                 
                         </div>
-                        </br>
+                     
 
                         <div class="form-group">
                             <label for="email" class="col-md-4 control-label">Gambar</label>
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <img class="product" width="200" height="200" @if($data->gambar) src="{{ asset('images/anggota/'.$data->gambar) }}" @endif />
                                 <input type="file" class="uploads form-control" style="margin-top: 20px;" name="gambar">
                             </div>
                         </div>
-                        </br>
-                        
-                        <div class="col-md-12">
+         
+         
+          <div class="col-md-12">
                        <button type="submit" class="btn btn-primary col-md-3" id="submit">
                                     Kirim
                         </button>
@@ -128,15 +141,26 @@ $(document).ready(function() {
                                     Reset
                         </button>
                         <a href="{{route('anggota.index')}}" class="btn btn-light pull-right">Kembali</a>
-                        </div>    
-                    
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
+                        </div> 
+          <!-- TUTUP AREA FORM -->
+
+        </form>
+        </div>
 
 </div>
-</form>
+
+
+
+</div>
+
+      </div>
+
+    </div>
+    
+
+
+  </div>
+  <!-- #/ container -->
+</div>
+
 @endsection

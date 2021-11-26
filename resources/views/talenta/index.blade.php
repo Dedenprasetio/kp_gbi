@@ -30,7 +30,7 @@
                         </br></br>
              
                   <div class="table-responsive">
-                    <table class="table table-striped" id="table">
+                    <table class="table table-striped" id="example1">
                       <thead>
                         <tr>
                         <th>

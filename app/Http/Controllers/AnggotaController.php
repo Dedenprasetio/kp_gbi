@@ -42,7 +42,7 @@ class AnggotaController extends Controller
             return redirect()->to('/');
         } 
         $talentas  = Talenta::get();
-        $anggotas   = Anggota::get();
+        $anggotas   = Anggota::orderBy('updated_at', 'desc')->get();
         return view('anggota.index',array('anggota' => $anggotas,   'talenta' => $talentas));
   
     }
