@@ -19,7 +19,7 @@ class CreateKartuKeluargasTable extends Migration
             $table->foreign('anggota_id')->references('id')->on('anggota')->onDelete('cascade')->onUpdate('cascade');
             // $table->integer('istri_id')->unsigned();
             // $table->foreign('istri_id')->references('id')->on('anggota')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('istri')->nullable();
+            // $table->string('istri')->nullable();
             $table->string('nomor_kk')->nullable();
             $table->string('tempat')->nullable();
             $table->string('alamat')->nullable();
@@ -27,6 +27,7 @@ class CreateKartuKeluargasTable extends Migration
             $table->string('jam_nikah')->nullable();
             $table->string('jam_sipil')->nullable();
             $table->date('tgl_nikah')->nullable();
+            $table->integer('sts_istri')->default(0);
             $table->timestamps();
         });
     }

@@ -39,13 +39,16 @@
                             NO
                           </th>
                           <th>
+                            STATUS
+                          </th>
+                          <th>
                             NOMOR KARTU KELUARGA
                           </th>
                            <th>
                             NAMA KEPALA KELUARGA
                           </th>
                           <th>
-                            NAMA ISTRI
+                            STATUS ISTRI
                           </th>
                           <th>
                             AKSI
@@ -55,11 +58,18 @@
                       </thead>
                       <tbody>
                       <?php $no = 0;?>
-                      @foreach($kk as $data)
+                      @foreach($datas1 as $data)
                       <?php $no++ ;?>
           
                         <tr>
                         <td>{{ $no }}</td>
+                        <td>
+                        @if($data->sts_istri == 1)
+                              <a href="/detailkk/status/istri/{{ $data->id }}" class="btn btn-success  btn-sm">  Sudah Ada Istri </a>
+                              @elseif($data->sts_istri == 0)
+                              <a href="/detailkk/status/istri/{{ $data->id }}" class="btn btn-danger  btn-sm">  Belum Ada Istri </a>
+                              @endif
+                        </td>
                         <td> 
                             {{$data->nomor_kk}}
                           </td>
@@ -67,35 +77,33 @@
                           <td> 
                               {{$data->anggota->nama}}
                           </td>
-                          
-                          
-                          <td> 
-                              {{ $data->istri }}
+
+                          <td class="col-md-2"> 
+                              @if($data->sts_istri == 0)
+                              <a href="/detailkk/create/istri/{{ $data->id }}" class="btn btn-success  btn-sm"> <i class="fa fa-plus"></i> Tambah Istri </a>
+                              @elseif($data->sts_istri == 1)
+                              <a href="#" class="btn btn-danger  btn-sm"> Terisi </a>
+                              @endif
                           </td>
+      
                           
+                     
                          
                           <td>
                           <div class="">
                           <a type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <b><i class="fa fa-download"></i> Download</b>
+                            <i class="fa fa-download"></i> Download
                           </a>
                           <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 30px, 0px);">
-                            <a class="dropdown-item" href="{{url('laporan/agt/pdf')}}"> Buku Pernikahan  </a>
+                            <a class="dropdown-item" href="{{route('laporan.pernikahan_pdf', $data->id) }}"> Buku Pernikahan  </a>
                             
                             <a class="dropdown-item" href="{{route('laporan.kk_pdf', $data->id) }}"> Kartu Keluarga </a>
              
                           </div>
                         </div>
                         <div>
-                        <!-- <a href="#" class="btn btn-success btn-sm" tooltip ><i class="fa fa-download"></i> Download</a> 
-                        <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 30px, 0px);">
-                            <a class="dropdown-item" href="{{url('laporan/agt/pdf')}}"> Buku Pernikahan  </a>
-                            
-                            <a class="dropdown-item" href="{{route('laporan.kk_pdf', $data->id) }}"> Kartu Keluarga </a>
-             
-                        </div> -->
                           
-                          <a href="{{route('kk.show', $data->id)}}" class="btn btn-warning  btn-sm" > <i class="fa fa-list-alt" aria-hidden="true"></i> Detail </a>
+                          <a href="/detailkk/index/{{ $data->id }}" class="btn btn-warning  btn-sm" > <i class="fa fa-list-alt" aria-hidden="true"></i> Detail </a>
                           
                           
                           

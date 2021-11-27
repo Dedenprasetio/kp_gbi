@@ -16,6 +16,7 @@ use Session;
 use Illuminate\Support\Facades\Redirect;
 use Auth;
 use DB;
+use App\Istri;
 use RealRashid\SweetAlert\Facades\Alert;
 
 use App\Exports\LaporanExport;
@@ -55,13 +56,31 @@ class detKkController extends Controller
   
     }
 
+    public function tampil_detkk($id)
+    {
+        $data = KartuKeluarga::findOrFail($id);
+        $kk = DetailKartuKeluarga::get();
+        
+        $det = DetailKartuKeluarga::join('kartu_keluargas', 'kartu_keluargas.id', '=' , 'detail_kartu_keluarga.kartukeluarga_id')
+        ->join('anggota', 'anggota.id', '=' , 'detail_kartu_keluarga.anggota_id')
+        ->where('kartukeluarga_id', $id)
+        ->get(['anggota.nama','anggota.sts_dlm_klrg','anggota.id']);
+
+        $istri = Istri::join('kartu_keluargas', 'kartu_keluargas.id', '=' , 'istri.kartukeluarga_id')
+        ->join('anggota', 'anggota.id', '=' , 'istri.istri_id')
+        ->where('kartukeluarga_id', $id)
+        ->get(['anggota.nama','anggota.sts_dlm_klrg']);
+
+        return view('detailkk.index', compact('det','data','kk','istri'));
+    }
+
 
     public function tambah_kk($id)
     {
         $det = DetailKartuKeluarga::join('kartu_keluargas', 'kartu_keluargas.id', '=' , 'detail_kartu_keluarga.kartukeluarga_id')
         ->join('anggota', 'anggota.id', '=' , 'detail_kartu_keluarga.anggota_id')
         ->where('kartukeluarga_id', $id)
-        ->get(['anggota.nama','anggota.sts_dlm_klrg']);
+        ->get(['anggota.nama','anggota.sts_dlm_klrg','anggota.id']);
 
         $dt = DetailKartuKeluarga::where([
             ['kartukeluarga_id', '=', 'kartu_keluargas.id']
@@ -93,32 +112,7 @@ class detKkController extends Controller
          return view('detailkk.istri' , compact('anggotas','kk','det','dt','data'));
     }
 
-    // public function create()
-    // {
-
-    //     $det = DetailKartuKeluarga::join('kartu_keluargas', 'kartu_keluargas.id', '=' , 'detail_kartu_keluarga.kartukeluarga_id')
-    //     ->join('anggota', 'anggota.id', '=' , 'detail_kartu_keluarga.anggota_id')
-    //     ->where('kartukeluarga_id', $id)
-    //     ->get(['anggota.nama','anggota.sts_dlm_klrg']);
-
-    //     if(Auth::user()->level == 'user') {
-    //         Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
-    //         return redirect()->to('/');
-    //     }     
-    //     $kk = KartuKeluarga::get();
-
-    //     $anggotas = Anggota::get();
-    //     $anggotas = Anggota::WhereNotExists(function($query) {
-    //         $query->select(DB::raw(1))
-    //         ->from('detail_kartu_keluarga')
-    //         ->whereRaw('detail_kartu_keluarga.anggota_id = anggota.id');
-    //      })->get();
-        
-         
-    //     return view('detailkk.create' , compact('anggotas','kk','dt','td'));
-
-    // }
-    
+   
 
 
     /**
@@ -244,9 +238,15 @@ class detKkController extends Controller
         return redirect()->route('kk.index');
     }
 
-    public function hapus($id)
+    public function hapus($detkk_id)
     {
-        DetailKartuKeluarga::find($id)->delete();
+        try {
+            $detkk = DetailKartuKeluarga::where('id',$detkk_id)->first();
+          } catch (ModelNotFoundException $e) {
+            return redirect()->route('kk.index')->with(['Gaga;'=> 'Failed']);
+          }
+        // $detkk =DetailKartuKeluarga::where('id',$detkk_id)->find();
+        $detkk->delete();
         alert()->success('Berhasil.','Data telah dihapus!');
         return redirect()->route('kk.index');
     }

@@ -44,12 +44,16 @@ Route::resource('jabatan', 'JabatanController');
 //kepala keluarga
 Route::resource('kk', 'kkController');
 
-
+//Istri
+Route::resource('istri', 'IstriController');
+Route::get('/detailkk/create/istri/{id}', 'IstriController@tambah_istri');
+Route::get('/detailkk/create/istri/simpan', 'IstriController@simpan_istri');
+Route::get('/detailkk/status/istri/{id}', 'kkController@sts_istri');
 
 //detail kk
 Route::resource('detailkk', 'detKkController');
+Route::get('/detailkk/index/{id}', 'detKkController@tampil_detkk');
 Route::get('/detailkk/create/{id}', 'detKKController@tambah_kk');
-Route::get('/detailkk/create/istri', 'detKKController@tambah_istri');
 Route::get('/detailkk/destroy/{id}', 'detKKController@hapus');
 
 Route::resource('export', 'ExportController');
@@ -93,6 +97,7 @@ Route::get('/laporan/kk', 'LaporanController@kk');
 
 Route::get('kk/pdf/{id}', ['as' => 'laporan.kk_pdf', 'uses' => 'kkController@cetak_pdf']);
 Route::get('laporan/kk/{id}', ['as' => 'laporan.kk_pdf', 'uses' => 'LaporanController@kkPdf']);
+Route::get('kk/bukupernikahan/{id}', ['as' => 'laporan.pernikahan_pdf', 'uses' => 'LaporanController@pernikahanPdf']);
 
 //Download per anggota
 

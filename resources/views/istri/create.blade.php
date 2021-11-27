@@ -50,7 +50,7 @@ $(document).ready(function() {
 
 @section('content')
 
-<form method="POST" action="{{ route('detailkk.store') }}" enctype="multipart/form-data">
+<form method="POST" action="{{ route('istri.store') }}" enctype="multipart/form-data">
     {{ csrf_field() }}
 
     <div class="row">
@@ -59,7 +59,7 @@ $(document).ready(function() {
                 <div class="col-12">
                   <div class="card">
                     <div class="card-body">
-                      <h4 class="card-title">Tambah Detail Keluarga <b>{{ $data->anggota->nama }}</b></h4>
+                      <h4 class="card-title">Tambah Istri <b>{{ $data->anggota->nama }}</b></h4>
 
                       <br><br>
                       <div class="container  col-md-12">                               
@@ -79,11 +79,11 @@ $(document).ready(function() {
                                               </div> -->
 
                                               <div class="container  col-md-12">                               
-                                                <label>Anggota Keluarga <b style="color:Tomato;">*</b></label>
-                                                <select required="required" name="anggota_id" class="custom-select mb-3" >
-                                                  <option value="">Pilih Anggota Keluarga</option>
-                                                  @foreach($anggotas as $a)
-                                                  @if ($a->sts_dlm_klrg != 'Suami' AND $a->sts_dlm_klrg != 'Istri')
+                                                <label>Istri <b style="color:Tomato;">*</b></label>
+                                                <select required="required" name="istri_id" class="custom-select mb-3" >
+                                                  <option value="">Pilih Istri</option>
+                                                  @foreach($istris as $a)
+                                                  @if ($a->sts_dlm_klrg == 'Istri')
                                                   <option value="{{ $a->id }}">{{ $a->kode_anggota }}-{{ $a->nama }}({{ $a->sts_dlm_klrg }})</option>
                                                   @endif
                                                   @endforeach
@@ -165,7 +165,7 @@ $(document).ready(function() {
                        <button type="submit" class="btn btn-primary col-md-5" id="submit">
                                     Simpan
                         </button>
-                        <a href="{{route('kk.index')}}" class="btn btn-light pull-right">Kembali</a>
+                        <a href="/detailkk/index/{{ $data->id }}" class="btn btn-light pull-right">Kembali</a>
                         </div>
                     </div>
                   </div>
@@ -250,8 +250,8 @@ $(document).ready(function() {
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($anggotas as $data)
-                                @if ($data->sts_dlm_klrg != 'Suami')
+                                @foreach($istris as $data)
+                                @if ($data->sts_dlm_klrg == 'Istri')
                         <tr class="pilih_anggota" data-anggota_id="<?php echo $data->id; ?>" data-anggota_judul="<?php echo $data->nama; ?>" >
                                     <td>{{$data->nama}}</td>
                                     <td>{{$data->sts_dlm_klrg}}</td>

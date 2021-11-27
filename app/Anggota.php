@@ -51,6 +51,11 @@ class Anggota extends Model
     	return $this->hasMany(KartuKeluarga::class);
     }
 
+    public function istri()
+    {
+    	return $this->hasMany(Istri::class);
+    }
+
     public function detailkartukeluarga()
     {
     	return $this->hasMany(DetailKartuKeluarga::class);

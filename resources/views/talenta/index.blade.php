@@ -128,7 +128,7 @@
                           {{ csrf_field() }}
                             {{ method_field('delete') }}
 
-                            <p>Apakah anda yakin ingin menghapus data <b>{{$data->anggota->nama}}</b> ?</p>
+                            <p>Apakah anda yakin ingin menghapus data pelayanan <b>{{$data->anggota->nama}} - {{ $data->nama_talenta }}</b> ?</p>
 
                           </div>
 

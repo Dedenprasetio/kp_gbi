@@ -18,6 +18,7 @@ use Auth;
 use DB;
 use Excel;
 use PDF;
+use App\Istri;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class LaporanController extends Controller
@@ -106,8 +107,31 @@ class LaporanController extends Controller
         ->where('kartukeluarga_id', $id)
         ->get(['anggota.kode_anggota','anggota.jk','anggota.gerwil','anggota.tgl_lahir','anggota.sts_anggota','anggota.nama','anggota.sts_dlm_klrg']);
         
-        $pdf = PDF::loadView('laporan.kk_pdf', compact('det','data'));
+        $istri = Istri::join('kartu_keluargas', 'kartu_keluargas.id', '=' , 'istri.kartukeluarga_id')
+        ->join('anggota', 'anggota.id', '=' , 'istri.istri_id')
+        ->where('kartukeluarga_id', $id)
+        ->get(['anggota.kode_anggota','anggota.tempat_lahir','anggota.tgl_lahir','anggota.alamat','anggota.pekerjaan','anggota.sts_pernikahan','anggota.jk','anggota.gerwil','anggota.tgl_lahir','anggota.sts_anggota','anggota.nama','anggota.sts_dlm_klrg']);
+
+        $pdf = PDF::loadView('laporan.kk_pdf', compact('det','data','istri'));
         return $pdf->download('laporan_kk_'.$data->anggota->nama.'.pdf');
+    }
+
+    public function pernikahanPdf($id)
+    {
+        $data = KartuKeluarga::findOrFail($id);
+
+        $det = DetailKartuKeluarga::join('kartu_keluargas', 'kartu_keluargas.id', '=' , 'detail_kartu_keluarga.kartukeluarga_id')
+        ->join('anggota', 'anggota.id', '=' , 'detail_kartu_keluarga.anggota_id')
+        ->where('kartukeluarga_id', $id)
+        ->get(['anggota.kode_anggota','anggota.tempat_lahir','anggota.tgl_lahir','anggota.alamat','anggota.pekerjaan','anggota.sts_pernikahan','anggota.jk','anggota.gerwil','anggota.tgl_lahir','anggota.sts_anggota','anggota.nama','anggota.sts_dlm_klrg']);
+        
+        $istri = Istri::join('kartu_keluargas', 'kartu_keluargas.id', '=' , 'istri.kartukeluarga_id')
+        ->join('anggota', 'anggota.id', '=' , 'istri.istri_id')
+        ->where('kartukeluarga_id', $id)
+        ->get(['anggota.kode_anggota','anggota.tempat_lahir','anggota.tgl_lahir','anggota.alamat','anggota.pekerjaan','anggota.sts_pernikahan','anggota.jk','anggota.gerwil','anggota.tgl_lahir','anggota.sts_anggota','anggota.nama','anggota.sts_dlm_klrg']);
+
+        $pdf = PDF::loadView('laporan.pernikahan_pdf', compact('det','istri','data'));
+        return $pdf->download('buku_pernikahan_'.$data->anggota->nama.'.pdf');
     }
 
 

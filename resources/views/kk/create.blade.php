@@ -69,7 +69,7 @@ $(document).ready(function() {
                     </div>
                     
 
-
+                 
                     <div class="container  col-md-12">                               
                                                 <label>Kepala Keluarga <b style="color:Tomato;">*</b></label>
                                                 <select required="required" name="anggota_id" class="custom-select mb-3" >
@@ -82,17 +82,7 @@ $(document).ready(function() {
                                                 </select>
                                               </div>
 
-                                              <div class="container  col-md-12">                               
-                                                <label>Istri <b style="color:Tomato;">*</b></label>
-                                                <select required="required" name="istri" class="custom-select mb-3" >
-                                                  <option value="">Pilih Istri</option>
-                                                  @foreach($istris as $a)
-                                                  @if  ( $a->sts_dlm_klrg == 'Istri')
-                                                  <option value="{{ $a->nama }}">{{ $a->kode_anggota }}-{{ $a->nama }}({{ $a->sts_dlm_klrg }})</option>
-                                                  @endif
-                                                  @endforeach
-                                                </select>
-                                              </div>
+                                              
 
                                               <div class="form-group{{ $errors->has('tempat') ? ' has-error' : '' }}">
                                                 <label for="tempat" class="col-md-4 control-label">Tempat Nikah <b style="color:Tomato;">*</b> </label>

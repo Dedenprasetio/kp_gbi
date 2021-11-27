@@ -8,6 +8,7 @@ use App\Anggota;
 use App\Talenta;
 use App\KartuKeluarga;
 use App\DetailKartuKeluarga;
+use App\Istri;
 // use App\Jabatan;
 // use App\Gerwil;
 // use App\TransNikah;
@@ -48,14 +49,37 @@ class kkController extends Controller
 
         $kk = KartuKeluarga::get();
         $anggota   = Anggota::get();
-        $istri = Anggota::where('sts_dlm_klrg', 'Istri')->get(['anggota.nama']);
+
+        $istri = Istri::join('kartu_keluargas', 'kartu_keluargas.id', '=' , 'istri.kartukeluarga_id')
+        ->join('anggota', 'anggota.id', '=' , 'istri.istri_id')
+        ->where('kartukeluarga_id')
+        ->get(['anggota.nama','anggota.sts_dlm_klrg']);
         
         return view('kk.index', compact('kk', 'anggota', 'datas1','istri'));
   
     }
 
+    public function sts_istri($id)
+    {
+        $data = KartuKeluarga::where('id',$id)->first();
 
+        $status_sekarang = $data->sts_istri;
 
+        if($status_sekarang == 1)
+        {
+            KartuKeluarga::where('id',$id)->update(
+                ['sts_istri'=>0]
+            );
+        }
+        else
+        {
+            KartuKeluarga::where('id',$id)->update(
+                ['sts_istri'=>1]
+            );
+        }
+
+        return redirect()->route('kk.index');
+    }
     public function create()
     {
        
@@ -84,7 +108,7 @@ class kkController extends Controller
         // }
 
 
-
+        
         
                     $anggotas = Anggota::WhereNotExists(function($query) {
                         $query->select(DB::raw(1))
@@ -94,8 +118,8 @@ class kkController extends Controller
 
                      $istris = Anggota::WhereNotExists(function($query) {
                         $query->select(DB::raw(1))
-                        ->from('kartu_keluargas')
-                        ->whereRaw('kartu_keluargas.istri = anggota.nama', );
+                        ->from('istri')
+                        ->whereRaw('istri.istri_id = anggota.id', );
                      })->get();
 
         //$anggotas = anggota::get();
@@ -120,7 +144,6 @@ class kkController extends Controller
         $this->validate($request, [
            
             'anggota_id' => 'required',
-            'istri' => 'required',
             'nomor_kk' => 'required',
             'tempat' => 'required',
             'alamat' => 'required',
@@ -130,8 +153,7 @@ class kkController extends Controller
             'tgl_nikah' => 'required',
         ]); 
         KartuKeluarga::create($request->all());
-
-
+        
         alert()->success('Berhasil.','Data telah ditambahkan!');
         return redirect()->route('kk.index');
 
@@ -191,6 +213,28 @@ class kkController extends Controller
         
     }
 
+    public function cetak_pernikahan($id)
+    {   
+        
+        $data = KartuKeluarga::findOrFail($id);
+
+    
+        if((Auth::user()->level == 'user') && (Auth::user()->id != $id)) {
+                Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+                return redirect()->to('/');
+        }
+        // $kk = KartuKeluarga::get();
+        // $anggotas = Anggota::get();
+        $det = DetailKartuKeluarga::join('kartu_keluargas', 'kartu_keluargas.id', '=' , 'detail_kartu_keluarga.kartukeluarga_id')
+        ->join('anggota', 'anggota.id', '=' , 'detail_kartu_keluarga.anggota_id')
+        ->where('kartukeluarga_id', $id)
+        ->get(['anggota.nama','anggota.sts_dlm_klrg']);
+        
+        $pdf = PDF::loadView('laporan.pernikahan', compact('det','data'));
+        return $pdf->download('buku_pernikahan'.date('Y-m-d_H-i-s').'.pdf');
+        
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -206,23 +250,6 @@ class kkController extends Controller
         }
 
         return view('kk.edit', compact('data'));
-
-        // $data = KartuKeluarga::findOrFail($id);
-
-    
-        // if((Auth::user()->level == 'user') && (Auth::user()->id != $id)) {
-        //         Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
-        //         return redirect()->to('/');
-        // }
-        // // $kk = KartuKeluarga::get();
-        // // $anggotas = Anggota::get();
-        // $det = DetailKartuKeluarga::join('kartu_keluargas', 'kartu_keluargas.id', '=' , 'detail_kartu_keluarga.kartukeluarga_id')
-        // ->join('anggota', 'anggota.id', '=' , 'detail_kartu_keluarga.anggota_id')
-        // ->where('kartukeluarga_id', $id)
-        // ->get(['anggota.nama','anggota.sts_dlm_klrg']);
-        
-        // $pdf = PDF::loadView('laporan.kk_pdf', compact('det','datas'));
-        // return $pdf->download('laporan_kk_'.date('Y-m-d_H-i-s').'.pdf');
     }
 
     /**

@@ -25,158 +25,79 @@
 
 <div class="row" style="margin-top: 20px;">
 <div class="col-lg-12 grid-margin stretch-card">
-<!-- <a href="{{ route('detailkk.create') }}" class="btn btn-primary  btn-fw col-lg-2"></i> (+) Detail Keluarga </a>
-  @foreach($det as $data)
-    <div class="card">
-      <div class="card-header">
-        {{ $data->kartukeluarga->anggota->nama }} - {{ $data->kartukeluarga->nomor_kk }}
-      </div>
-      <div class="table-responsive">
-        <table class="card-table table">
-          <thead>
-            <tr>
-              <th scope="col">No</th>
-              <th scope="col">Nama</th>
-              <th scope="col">Peran Keluarga</th>
-              
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>{{ $loop->iteration }}</td>
-              <td>{{ $data->anggota->nama }}</td>
-              <td>{{ $data->anggota->sts_dlm_klrg }}</td>
-              
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    @endforeach -->
-    <div class="card">
+              <div class="card">
 
                 <div class="card-body">
+                <a href="/detailkk/create/{{ $data->id }}" class="btn btn-primary  btn-fw col-lg-2"> <i class="fa fa-plus"></i> Anggota Keluarga </a>
 
-             
-
-
-                <!-- @foreach($kk as $index => $item)
-                            <div class="row">
+                <br><br>
+                <div class="row">
                                 <div class="col-sm-12">
                                     <div class="form-group mb-0">
-                                        <label class="control-label">Nama Kepala Keluarga : <b>{{$item->anggota->nama}}</b></label>
+                                        <label class="control-label">Nama Kepala Keluarga : <b>{{$data->anggota->nama}}</b></label>
                                         
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                            
+                         
+                            <div class="col-sm-12">
+                                    <div class="form-group mb-0">
+                                      @foreach($istri as $is)
+                                        <label class="control-label">Nama Istri : <b>{{ $is->nama }}</b></label>
+                                      @endforeach
                                     </div>
                                 </div>
                             </div>
                             
+                            
+                            
+                            
+
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="form-group mb-0">
-                                        <label class="control-label">Nomor Kartu Keluarga : <b></b></label>
-                                        
-                                        
+                                        <label class="control-label">Nomor Kartu Keluarga : <b>{{$data->nomor_kk}}</b></label>
                                     </div>
                                 </div>
-                                
+                      
                             </div>
-                            @endforeach         -->
-                           
-                        
-
-                
-                        <!-- <a href="{{ route('detailkk.create') }}" class="btn btn-primary  btn-fw col-lg-2"><i class="fa fa-plus"></i> Anggota Keluarga </a> -->
-                       
-                        
-      <!-- @foreach($det as $data)
-    <div class="card">
-      <div class="card-header">
-        {{ $data->kartukeluarga->anggota->nama }} - {{ $data->kartukeluarga->nomor_kk }}
-      </div>
-      <div class="table-responsive">
-        <table class="card-table table">
-          <thead>
-            <tr>
-              <th scope="col">No</th>
-              <th scope="col">Nama</th>
-              <th scope="col">Peran Keluarga</th>
-              
-            </tr>
-            
-          </thead>
-          
-          <tbody>
-          
-            <tr>
-              <td>{{ $loop->iteration }}</td>
-              <td>{{ $data->anggota->nama }}</td>
-              <td>{{ $data->anggota->sts_dlm_klrg }}</td>
-              
-            </tr>
-          
-          </tbody>
-        </table>
-      </div>
-    </div>
-    @endforeach -->
-    <div class="table-responsive">
-                  <table class="table table-striped" id="example1">
+                            <br>
+                            
+                  <div class="table-responsive">
+                  <table class="table table-striped" id="table">
                       <thead>
                         <tr>
                         <th>
                             NO
                           </th>
-                           <th>
+                          <th>
                             NAMA
                           </th>
-                          <th>
+                           <th>
                             PERAN KELUARGA
                           </th>
-                          <th>
-                            KEPALA KELUARGA KELUARGA
-                          </th>
-                          <th>
-                            NOMOR KK
-                          </th>
-                          <th>
-                            AKSI
-                          </th>
+                          
                         </tr>
                       </thead>
                       <tbody>
                       <?php $no = 0;?>
-                     @foreach($det as $data) 
+                      @foreach($det as $data)
+                     
+                          
+       
                       <?php $no++ ;?>
-          
+                      
                         <tr>
                         <td>{{ $no }}</td>
-                          <td> 
-                          {{ $data->anggota->nama }}
-                          </td>
-                          <td> 
-                            {{ $data->anggota->sts_dlm_klrg }}
-                          </td>
-                          
-                          <td> 
-                            
-                            {{ $data->kartukeluarga->anggota->nama }}
-                          </td>
-                          <td> 
-                            
-                            {{ $data->kartukeluarga->nomor_kk }}
-                          </td>
-                            
-                      
-                         
-                          <td>
-                              
-
-                              
-                              <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalDelete_{{ $data->id }}"><i class="fa fa-trash"></i> Hapus</button>
+                        <td>{{ $data->nama }}</td>    
+                        <td>{{ $data->sts_dlm_klrg }}</td>   
+                         <!-- <td>
+                          <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalDelete_{{ $data->id }}"><i class="fa fa-trash"></i> Hapus</button>
 
 
 
-                              <!-- Modal -->
                               <form method="POST" action="{{ route('detailkk.destroy',['id' => $data->id]) }}">
                                 <div class="modal fade" id="modalDelete_{{ $data->id }}" tabindex="-1" role="dialog" aria-labelledby="modalDeleteLabel" aria-hidden="true">
                                   <div class="modal-dialog" role="document">
@@ -193,7 +114,7 @@
                                       {{ csrf_field() }}
                                         {{ method_field('delete') }}
 
-                                        <p>Apakah anda yakin ingin menghapus data <b>{{$data->anggota->nama}}</b> ?</p>
+                                        <p>Apakah anda yakin ingin menghapus data <b>{{$data->nama}} - {{$data->id}}</b> ?</p>
 
                                       </div>
 
@@ -209,24 +130,26 @@
                                 </div>
                                 
                               </form>
+                        </td>     -->
+                         
+                        @endforeach
+                              
+                                    </div>
+                                  </div>
+                                </div>
+                              
 
                               </td>
                         </tr>
-                      @endforeach
+                     
                       </tbody>
                     </table>
-                    
+                    </br>
+                    <a href="{{route('kk.index')}}" class="btn btn-light pull-right">Kembali</a>
                   </div>
-                 
-                  
                {{--  {!! $datas->links() !!} --}}
                 </div>
-                
               </div>
-              
             </div>
-            
           </div>
-         
-          
 @endsection

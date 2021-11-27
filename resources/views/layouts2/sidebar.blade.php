@@ -55,12 +55,12 @@
                   </a>
                 </li>
 
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                   <a class="nav-link {{ setActive(['detkk*']) }}" href="{{route('detailkk.index')}}">
                   <i class="nav-icon fas fa-users"></i>
                   <p>Data Anggota Keluarga</p>
                   </a>
-                </li>
+                </li> -->
 
                 <li class="nav-item">
                 <a class="nav-link {{ setActive(['user*']) }}" href="{{route('user.index')}}">
