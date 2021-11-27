@@ -78,6 +78,8 @@ $(document).ready(function() {
                                                 </select>
                                               </div> -->
 
+
+
                                               <div class="container  col-md-12">                               
                                                 <label>Istri <b style="color:Tomato;">*</b></label>
                                                 <select required="required" name="istri_id" class="custom-select mb-3" >
@@ -89,6 +91,7 @@ $(document).ready(function() {
                                                   @endforeach
                                                 </select>
                                               </div>
+                                              
                       
                       <!-- <div class="form-group{{ $errors->has('kartukeluarga_id') ? ' has-error' : '' }}">
                         
@@ -165,7 +168,7 @@ $(document).ready(function() {
                        <button type="submit" class="btn btn-primary col-md-5" id="submit">
                                     Simpan
                         </button>
-                        <a href="/detailkk/index/{{ $data->id }}" class="btn btn-light pull-right">Kembali</a>
+                        <a href="{{route('kk.index')}}" class="btn btn-light pull-right">Kembali</a>
                         </div>
                     </div>
                   </div>

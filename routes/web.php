@@ -47,7 +47,7 @@ Route::resource('kk', 'kkController');
 //Istri
 Route::resource('istri', 'IstriController');
 Route::get('/detailkk/create/istri/{id}', 'IstriController@tambah_istri');
-Route::get('/detailkk/create/istri/simpan', 'IstriController@simpan_istri');
+Route::post('/detailkk/create/istri/simpan', 'IstriController@simpan_istri');
 Route::get('/detailkk/status/istri/{id}', 'kkController@sts_istri');
 
 //detail kk

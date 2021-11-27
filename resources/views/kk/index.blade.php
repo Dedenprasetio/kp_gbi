@@ -47,9 +47,9 @@
                            <th>
                             NAMA KEPALA KELUARGA
                           </th>
-                          <th>
+                          <!-- <th>
                             STATUS ISTRI
-                          </th>
+                          </th> -->
                           <th>
                             AKSI
                           </th>
@@ -78,14 +78,14 @@
                               {{$data->anggota->nama}}
                           </td>
 
-                          <td class="col-md-2"> 
+                          <!-- <td class="col-md-2"> 
                               @if($data->sts_istri == 0)
                               <a href="/detailkk/create/istri/{{ $data->id }}" class="btn btn-success  btn-sm"> <i class="fa fa-plus"></i> Tambah Istri </a>
                               @elseif($data->sts_istri == 1)
                               <a href="#" class="btn btn-danger  btn-sm"> Terisi </a>
                               @endif
                           </td>
-      
+       -->
                           
                      
                          

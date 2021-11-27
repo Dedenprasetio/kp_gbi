@@ -80,6 +80,7 @@ class kkController extends Controller
 
         return redirect()->route('kk.index');
     }
+    
     public function create()
     {
        

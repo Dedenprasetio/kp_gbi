@@ -71,6 +71,20 @@ class IstriController extends Controller
         return redirect()->route('kk.index');
     }
 
+    public function simpan_istri(Request $request)
+    {
+        $this->validate($request, [     
+            'istri_id' => 'required',
+            'kartukeluarga_id' => 'required'
+            
+        ]); 
+        Istri::create($request->all());
+
+
+        alert()->success('Berhasil.','Data telah ditambahkan!');
+        return redirect()->route('kk.index');
+    }
+
     
 
     /**

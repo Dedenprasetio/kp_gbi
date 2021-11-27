@@ -58,7 +58,7 @@ class detKkController extends Controller
 
     public function tampil_detkk($id)
     {
-        $data = KartuKeluarga::findOrFail($id);
+        // $data = KartuKeluarga::findOrFail($id);
         $kk = DetailKartuKeluarga::get();
         
         $det = DetailKartuKeluarga::join('kartu_keluargas', 'kartu_keluargas.id', '=' , 'detail_kartu_keluarga.kartukeluarga_id')
@@ -71,7 +71,24 @@ class detKkController extends Controller
         ->where('kartukeluarga_id', $id)
         ->get(['anggota.nama','anggota.sts_dlm_klrg']);
 
-        return view('detailkk.index', compact('det','data','kk','istri'));
+        $istris = Anggota::WhereNotExists(function($query) {
+            $query->select(DB::raw(1))
+            ->from('istri')
+            ->whereRaw('istri.istri_id = anggota.id', );
+         })->get();
+
+        $data = KartuKeluarga::where('id',$id)->first();
+
+        $status_sekarang = $data->sts_istri;
+
+        if($status_sekarang == 1)
+        {
+            return view('detailkk.index', compact('det','data','kk','istri'));
+        }
+        else
+        {
+            return view('istri.create' , compact('istris','kk','data'));
+        }
     }
 
 
@@ -86,15 +103,15 @@ class detKkController extends Controller
             ['kartukeluarga_id', '=', 'kartu_keluargas.id']
         ])->get();
 
-        $data = KartuKeluarga::findOrFail($id);
-
-        $kk = KartuKeluarga::get();
-        
         $anggotas = Anggota::WhereNotExists(function($query) {
             $query->select(DB::raw(1))
             ->from('detail_kartu_keluarga')
             ->whereRaw('detail_kartu_keluarga.anggota_id = anggota.id');
          })->get();
+
+        $data = KartuKeluarga::findOrFail($id);
+
+        $kk = KartuKeluarga::get();
 
          return view('detailkk.create' , compact('anggotas','kk','det','dt','data'));
     }
@@ -123,7 +140,7 @@ class detKkController extends Controller
      */
     public function store(Request $request)
     {   
-
+      
         $this->validate($request, [     
             'anggota_id' => 'required',
             'kartukeluarga_id' => 'required'
