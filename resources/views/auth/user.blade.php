@@ -28,43 +28,46 @@
               <div class="card">
 
                 <div class="card-body">
+
+                <ol class="breadcrumb float-sm-right bg-white">
+                        <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+                  
+                        <li class="breadcrumb-item active">Pengguna</li>
+                        </ol> 
+                        </br></br>
+
                 <a href="{{ route('user.create') }}" class="btn btn-primary  btn-fw col-lg-2"><i class="fa fa-plus"></i> Tambah Pengguna</a>
                 </br></br>
-                  <h4 class="card-title">Data User</h4>
+                  
                   
                   <div class="table-responsive">
-                    <table id="table" class="table table-striped">
-                      <thead>
+                  <table id="example1" class="table table-bordered table-striped">
+                  <thead>
                         <tr>
-                        <th>
-                            No
-                          </th>
-                          <th>
-                            NAME
-                          </th>
-                          <th>
-                            STATUS
-                          </th>
-                          <th>
-                            USERNAME
-                          </th>
-                          <th>
-                            EMAIL
-                          </th>
-                          <th>
-                            DATA UPDATE
-                          </th>
-                          <th>
-                            AKSI
-                          </th>
+                        <th width="1%">NO</th>
+                        <th class="text-center">NAMA</th>
+                       
+                        <th class="text-center">STATUS</th>
+                        <th class="text-center">USERNAME</th>
+                        <th class="text-center">EMAIL</th>
+                        <th class="text-center">UPDATE</th>
+                        @if(Auth::user()->level == 'admin')
+                        <th class="text-center col-md-2" width="10%">OPSI</th>
+                        @endif
+                        
+
+                        
+                        <!-- <th class="text-center">JENIS</th> -->
+
                         </tr>
-                      </thead>
+                        </thead>
                       <tbody>
-                      <?php $no = 0;?>
+                      @php
+                      $no = 1;
+                      @endphp
                       @foreach($datas as $data)
-                      <?php $no++ ;?>
                         <tr>
-                        <td>{{ $no }}</td>
+                        <td class="text-left">{{ $no++ }}</td>
                           <td class="py-1">
                           @if($data->gambar)
                             <img width="50" height="50" src="{{url('images/user', $data->gambar)}}" alt="image" style="margin-right: 10px;" />
@@ -93,10 +96,10 @@
                           
                          
 
-                          <td>
+                          <td class="text-center">
                 
-                  <a href="{{route('user.edit', $data->id)}}" class="btn btn-secondary  btn-sm"><i class="fa fa-cog"></i> Ubah </a>
-                  <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalDelete_{{ $data->id }}"><i class="fa fa-trash"></i> Hapus</button>
+                  <a href="{{route('user.edit', $data->id)}}" class="btn btn-secondary  btn-sm"><i class="fa fa-cog"></i></a>
+                  <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalDelete_{{ $data->id }}"><i class="fa fa-trash"></i> </button>
                   
 
                   

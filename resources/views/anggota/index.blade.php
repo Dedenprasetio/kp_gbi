@@ -33,8 +33,8 @@
                 
                         <a href="{{ route('anggota.create') }}" class="btn btn-primary  btn-fw col-lg-2"><i class="fa fa-plus"></i> Tambah Anggota</a>
                         <ol class="breadcrumb float-sm-right bg-white">
-                        <li class="breadcrumb-item"><a href="/">Home</a></li>
-                        <li class="breadcrumb-item active">Transaksi</li>
+                        <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+                        <li class="breadcrumb-item active">Data Anggota</li>
                         </ol> 
                       
                   <div class="table-responsive">

@@ -27,56 +27,47 @@
               
                 <div class="card-body">
                 <a href="{{ route('talenta.create') }}" class="btn btn-primary  btn-fw col-lg-2"><i class="fa fa-plus"></i> Tambah Pelayanan</a>
+                <ol class="breadcrumb float-sm-right bg-white">
+                        <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+                        <li class="breadcrumb-item active">Data Pelayanan</li>
+                        </ol> 
                         </br></br>
              
                   <div class="table-responsive">
-                    <table class="table table-striped" id="example1">
-                      <thead>
+                  <table id="example1" class="table table-bordered table-striped">
+                    <thead>
                         <tr>
-                        <th>
-                            NO
-                          </th>
-                           <th>
-                            NAMA
-                          </th>
-                          <th>
-                            PELAYANAN
-                          </th>
-                          
-                           <th>
-                            JK
-                          </th>
-                          
-                          <th>
-                            NO HP
-                          </th>
-                           <th>
-                            KETERANGAN
-                          </th>
-                         <th>
-                            STATUS
-                          </th> 
-                          <th>
-                            DATA UPDATE
-                          </th> 
-                          <th>
-                            AKSI
-                          </th>
+                        <th width="1%">NO</th>
+                        <th class="text-center">NAMA</th>
+                       
+                        <th class="text-center">PELAYANAN</th>
+                        <th class="text-center">JK</th>
+                        <th class="text-center">NO HP</th>
+                        <th class="text-center">KETERANGAN</th>
+                        <th class="text-center">STATUS</th>
+                        <th class="text-center">UPDATE</th>
+                        <!-- <th class="text-center">JENIS</th> -->
+
+                        
+                        
+                        @if(Auth::user()->level == 'admin')
+                        <th class="text-center col-md-2" width="10%">OPSI</th>
+                        @endif
                         </tr>
-                      </thead>
+                        </thead>
                       <tbody>
-                      <?php $no = 0;?>
+                      @php
+                      $no = 1;
+                      @endphp
                       @foreach($talenta as $data)
-                      <?php $no++ ;?>
-          
                         <tr>
-                        <td>{{ $no }}</td>
-                          <td> 
+                        <td class="text-left">{{ $no++ }}</td>
+                    
+                          <td class="py-1"> 
                             {{$data->anggota->nama}}
                             
                           </td>
-                          
- 
+                    
                           <td>
                             {{$data->nama_talenta}}
                           </td>
@@ -84,7 +75,6 @@
                           <td>
                             {{$data->anggota->jk}}
                           </td>
-                          
                           
                           <td>
                             {{$data->anggota->hp}}
@@ -100,14 +90,16 @@
                          <label class="text-warning">{{$data->anggota->sts_anggota}}</label>
                          @endif 
                          </td>
-                         <td class="text-left">{{ $data->updated_at->diffForHumans() }}</td>
-                          <td>
+
+                          <td class="text-left">{{ $data->updated_at->diffForHumans() }}</td>
 
 
                   <!-- <a href="#" class="btn btn-secondary  btn-sm"><i class="fa fa-download"></i> </a> -->
-                  <a href="{{route('talenta.laporan', $data->id) }}" class="btn btn-success  btn-sm" tooltip ><i class="fa fa-download"></i> Download</a> 
-                  <a href="{{route('talenta.edit', $data->id)}}" class="btn btn-secondary  btn-sm"><i class="fa fa-cog"></i> Ubah </a>
-                  <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalDelete_{{ $data->id }}"><i class="fa fa-trash"></i> Hapus</button>
+                  @if(Auth::user()->level == 'admin')
+                  <td class="text-center">
+                  <a href="{{route('talenta.laporan', $data->id) }}" class="btn btn-success  btn-sm" tooltip ><i class="fa fa-download"></i></a> 
+                  <a href="{{route('talenta.edit', $data->id)}}" class="btn btn-secondary  btn-sm"><i class="fa fa-cog"></i> </a>
+                  <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalDelete_{{ $data->id }}"><i class="fa fa-trash"></i></button>
                   
 
                   
@@ -142,6 +134,9 @@
                       </div>
                     </div>
                   </form>
+</td>
+                
+                  @endif 
 
                 </td>
 

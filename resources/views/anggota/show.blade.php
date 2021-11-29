@@ -133,14 +133,18 @@
                             <label class="col-md-12"><b>PROVINSI : </b> {{$data->provinsi_domisili}}</label>
                             </br>
                             </br>
-                            
+                           
                     </div>
+                    
                   </div>
+                 
                 </div>
+                
               </div>
+              
             </div>
-
-
+          
+            <a href="{{route('anggota.index')}}" class="btn btn-default pull-right">Kembali</a>
 
 </div>
 @endsection

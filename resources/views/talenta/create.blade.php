@@ -20,10 +20,15 @@
 
   <div class="col-lg-12 grid-margin stretch-card ">
 
-    <div class="card  ">
+    <div class="card ">
       <div class="card-body">
       
-
+      <ol class="breadcrumb float-sm-right bg-white">
+                        <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="/talenta">Data Pelayanan</a></li>
+                        <li class="breadcrumb-item active">Tambah Pelayanan</li>
+                        </ol> 
+                        </br></br>
       
 
         @if (session('error'))
@@ -50,7 +55,7 @@
 
           <!-- AREA FORM -->
 
-          <h4 class="card-title">Tambah Talenta</h4>
+          <h4 class="card-title">Tambah Pelayanan</h4>
           <br>
 
                         <div class="container  col-md-12">                               

@@ -23,7 +23,12 @@
     <div class="card  ">
       <div class="card-body">
       
-
+      <ol class="breadcrumb float-sm-right bg-white">
+                        <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="/talenta">Pelayanan</a></li>
+                        <li class="breadcrumb-item active">Edit Pelayanan</li>
+                        </ol>
+                        <br><br>
       
 
         @if (session('error'))

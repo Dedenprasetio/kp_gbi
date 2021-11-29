@@ -93,7 +93,7 @@ Akte Notaris No.37Th.1973. Terdaftar pada: Dep.Agama RI No.E/Ket/392/1385/75 Tel
 <hr width="100%" align="center"> </h6>
 
 <h3 class="center">LAPORAN DATA ANGGOTA</h3>
-<h3 class="center">GBI NGADINEGARAN YOGYAKARTA</h3>
+
 
  <table id="pseudo-demo">
                       <thead>

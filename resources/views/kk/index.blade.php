@@ -28,43 +28,45 @@
               <div class="card">
 
                 <div class="card-body">
+
+                <ol class="breadcrumb float-sm-right bg-white">
+                        <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+                        <li class="breadcrumb-item active">Data Kartu Keluarga</li>
+                        </ol> 
+                        </br></br>
                 
                         <a href="{{ route('kk.create') }}" class="btn btn-primary  btn-fw col-lg-2"> <i class="fa fa-plus"></i> Kartu Keluarga </a>
                         </br></br>
                   <div class="table-responsive">
-                  <table class="table table-striped" id="example1">
-                      <thead>
+                  <table id="example1" class="table table-bordered table-striped">
+                  <thead>
                         <tr>
-                        <th>
-                            NO
-                          </th>
-                          <th>
-                            STATUS
-                          </th>
-                          <th>
-                            NOMOR KARTU KELUARGA
-                          </th>
-                           <th>
-                            NAMA KEPALA KELUARGA
-                          </th>
-                          <!-- <th>
-                            STATUS ISTRI
-                          </th> -->
-                          <th>
-                            AKSI
-                          </th>
-                
+                        <th width="1%">NO</th>
+                        <th class="text-center">STATUS</th>
+                       
+                        <th class="text-center">NOMOR KARTU KELUARGA</th>
+                        <th class="text-center">NAMA KEPALA KELUARGA</th>
+
+                        
+                        <!-- <th class="text-center">JENIS</th> -->
+
+                        
+                        
+                        @if(Auth::user()->level == 'admin')
+                        <th class="text-center col-md-2" width="10%">OPSI</th>
+                        @endif
                         </tr>
-                      </thead>
+                        </thead>
                       <tbody>
-                      <?php $no = 0;?>
+                      @php
+                      $no = 1;
+                      @endphp
                       @foreach($datas1 as $data)
-                      <?php $no++ ;?>
           
                         <tr>
-                        <td>{{ $no }}</td>
-                        <td>
-                        @if($data->sts_istri == 1)
+                        <td class="text-left">{{ $no++ }}</td>
+                        <td class="text-center">
+                        @if($data->sts_istri == 1) 
                               <a href="/detailkk/status/istri/{{ $data->id }}" class="btn btn-success  btn-sm">  Sudah Ada Istri </a>
                               @elseif($data->sts_istri == 0)
                               <a href="/detailkk/status/istri/{{ $data->id }}" class="btn btn-danger  btn-sm">  Belum Ada Istri </a>
@@ -89,10 +91,10 @@
                           
                      
                          
-                          <td>
-                          <div class="">
+                          <td class="text-center">
+                          <div class="py-1">
                           <a type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-download"></i> Download
+                            <i class="fa fa-download"></i> 
                           </a>
                           <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 30px, 0px);">
                             <a class="dropdown-item" href="{{route('laporan.pernikahan_pdf', $data->id) }}"> Buku Pernikahan  </a>
@@ -103,14 +105,10 @@
                         </div>
                         <div>
                           
-                          <a href="/detailkk/index/{{ $data->id }}" class="btn btn-warning  btn-sm" > <i class="fa fa-list-alt" aria-hidden="true"></i> Detail </a>
-                          
-                          
-                          
-                      
+                          <a href="/detailkk/index/{{ $data->id }}" class="btn btn-warning  btn-sm" > <i class="fa fa-list-alt" aria-hidden="true"></i></a>
                          <!-- <a href="{{ route('kk.edit', $data->id) }}" class="btn btn-secondary  btn-sm" tooltip ><i class="fa fa-download"></i> </a> -->
                               {{-- <a href="{{route('kk.edit', $data->id)}}" class="btn btn-secondary  btn-sm"><i class="fa fa-cog"></i> </a> --}}
-                              <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalDelete_{{ $data->id }}"><i class="fa fa-trash"></i> Hapus</button>
+                              <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalDelete_{{ $data->id }}"><i class="fa fa-trash"></i> </button>
 
 
 

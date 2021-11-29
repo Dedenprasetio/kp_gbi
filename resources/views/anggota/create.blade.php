@@ -47,11 +47,19 @@
 
 
 <div class="col-md-6 d-flex align-items-stretch grid-margin">
+    
 <div class="row flex-grow">
+
+                        </br></br>
+    
                 <div class="card-body">
+
+                
             
                   <div class="card">
                     <div class="card-body">
+
+                    
                       
                         
                         <div class="form-group{{ $errors->has('kode_anggota') ? ' has-error' : '' }}">
@@ -352,13 +360,9 @@
             </div>
 
 
-
-
-
             <div class="col-md-6 d-flex align-items-stretch grid-margin">
                 <div class="row flex-grow">
-                <div class="card-body">
-            
+                <div class="card-body">                       
                   <div class="card">
                     <div class="card-body">
                   

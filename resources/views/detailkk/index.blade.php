@@ -28,6 +28,14 @@
               <div class="card">
 
                 <div class="card-body">
+
+                <ol class="breadcrumb float-sm-right bg-white">
+                        <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="/kk">Data Kartu Keluarga</a></li>
+                        <li class="breadcrumb-item active">Detail Kartu Keluarga</li>
+                        </ol> 
+                        </br></br>
+
                 <a href="/detailkk/create/{{ $data->id }}" class="btn btn-primary  btn-fw col-lg-2"> <i class="fa fa-plus"></i> Anggota Keluarga </a>
 
                 <br><br>
@@ -66,31 +74,31 @@
                             <br>
                             
                   <div class="table-responsive">
-                  <table class="table table-striped" id="table">
-                      <thead>
+                  <table id="example1" class="table table-bordered table-striped">
+
+                  <thead>
                         <tr>
-                        <th>
-                            NO
-                          </th>
-                          <th>
-                            NAMA
-                          </th>
-                           <th>
-                            PERAN KELUARGA
-                          </th>
-                          
+                        <th width="1%">NO</th>
+                        <th class="text-center">NAMA</th>
+                       
+                        <th class="text-center">PERAN KELUARGA</th>
+                        
+
+                        
+                        <!-- <th class="text-center">JENIS</th> -->
+
                         </tr>
-                      </thead>
+                        </thead>
+
+                    
                       <tbody>
-                      <?php $no = 0;?>
+                      @php
+                      $no = 1;
+                      @endphp
                       @foreach($det as $data)
-                     
-                          
-       
-                      <?php $no++ ;?>
                       
                         <tr>
-                        <td>{{ $no }}</td>
+                        <td class="text-left">{{ $no++ }}</td>
                         <td>{{ $data->nama }}</td>    
                         <td>{{ $data->sts_dlm_klrg }}</td>   
                          <!-- <td>

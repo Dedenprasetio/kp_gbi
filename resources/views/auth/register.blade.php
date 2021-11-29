@@ -40,15 +40,37 @@ var check = function() {
 
 @section('content')
 
-<form method="POST" action="{{ route('user.store') }}" enctype="multipart/form-data">
+<div class="row" style="margin-center: 20px;">
+
+
+          
+
+  <div class="col-lg-12 grid-margin stretch-card ">
+
+    <div class="card ">
+      <div class="card-body">
+
+      <ol class="breadcrumb float-sm-right bg-white">
+                        <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="/user">Pengguna</a></li>
+                        <li class="breadcrumb-item active">Tambah Pengguna</li>
+                        </ol> 
+                        </br></br>
+
+<div class="container-fluid page-body-wrapper full-page-wrapper auth-page">
+      <div class="align-items-center">
+
+    
+        <div class="col-lg-6 mx-auto">
+
+<form method="POST" action="{{ route('talenta.store') }}" enctype="multipart/form-data">
     {{ csrf_field() }}
-<div class="row">
-            <div class="col-md-12 d-flex align-items-stretch grid-margin">
-              <div class="row flex-grow">
-                <div class="col-12">
-                  <div class="card">
-                    <div class="card-body">
-                      <h4 class="card-title">Tambah User Baru</h4>
+
+          <!-- AREA FORM -->
+
+          
+
+                      <h4 class="card-title">Tambah Pengguna</h4>
                       
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label for="name" class="col-md-12 control-label">Nama</label>
@@ -124,19 +146,23 @@ var check = function() {
                                 <span id='message'></span>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary" id="submit">
+
+          <button type="submit" class="btn btn-primary" id="submit">
                                     Tambah
                         </button>
                         <button type="reset" class="btn btn-danger">
                                     Reset
                         </button>
                         <a href="{{route('user.index')}}" class="btn btn-light pull-right">Kembali</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
 
+          <!-- TUTUP AREA FORM -->
+
+        </form>
 </div>
-</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 @endsection
