@@ -85,7 +85,7 @@
                         
 
                         
-                        <!-- <th class="text-center">JENIS</th> -->
+                        <th class="text-center">AKSI</th>
 
                         </tr>
                         </thead>
@@ -101,8 +101,8 @@
                         <td class="text-left">{{ $no++ }}</td>
                         <td>{{ $data->nama }}</td>    
                         <td>{{ $data->sts_dlm_klrg }}</td>   
-                         <!-- <td>
-                          <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalDelete_{{ $data->id }}"><i class="fa fa-trash"></i> Hapus</button>
+                         <td class="text-center">
+                          <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalDelete_{{ $data->id }}"><i class="fa fa-trash"></i></button>
 
 
 
@@ -122,7 +122,7 @@
                                       {{ csrf_field() }}
                                         {{ method_field('delete') }}
 
-                                        <p>Apakah anda yakin ingin menghapus data <b>{{$data->nama}} - {{$data->id}}</b> ?</p>
+                                        <p>Apakah anda yakin ingin menghapus data <b>{{$data->nama}}</b> ?</p>
 
                                       </div>
 
@@ -138,7 +138,7 @@
                                 </div>
                                 
                               </form>
-                        </td>     -->
+                        </td>    
                          
                         @endforeach
                               

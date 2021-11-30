@@ -125,6 +125,7 @@
 <!-- AdminLTE for demo purposes -->
 <script src="/adminlte/js/demo.js"></script>
 
+
 <!-- TEMPLATE SEBELUMNYA -->
 <!-- <script src="{{asset('vendors/js/vendor.bundle.base.js')}}"></script>
   <script src="{{asset('vendors/js/vendor.bundle.addons.js')}}"></script>

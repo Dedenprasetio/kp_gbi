@@ -107,7 +107,7 @@
                           
                           <a href="/detailkk/index/{{ $data->id }}" class="btn btn-warning  btn-sm" > <i class="fa fa-list-alt" aria-hidden="true"></i></a>
                          <!-- <a href="{{ route('kk.edit', $data->id) }}" class="btn btn-secondary  btn-sm" tooltip ><i class="fa fa-download"></i> </a> -->
-                              {{-- <a href="{{route('kk.edit', $data->id)}}" class="btn btn-secondary  btn-sm"><i class="fa fa-cog"></i> </a> --}}
+                          
                               <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalDelete_{{ $data->id }}"><i class="fa fa-trash"></i> </button>
 
 

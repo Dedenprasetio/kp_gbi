@@ -93,7 +93,7 @@ Akte Notaris No.37Th.1973. Terdaftar pada: Dep.Agama RI No.E/Ket/392/1385/75 Tel
 
 
 
-<h3 class="center">LAPORAN KARTU KELUARGAA</h3>
+<h3 class="center">LAPORAN KARTU KELUARGA</h3>
 
 
 

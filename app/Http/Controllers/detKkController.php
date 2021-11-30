@@ -59,12 +59,12 @@ class detKkController extends Controller
     public function tampil_detkk($id)
     {
         // $data = KartuKeluarga::findOrFail($id);
-        $kk = DetailKartuKeluarga::get();
+        $kk = KartuKeluarga::get();
         
         $det = DetailKartuKeluarga::join('kartu_keluargas', 'kartu_keluargas.id', '=' , 'detail_kartu_keluarga.kartukeluarga_id')
         ->join('anggota', 'anggota.id', '=' , 'detail_kartu_keluarga.anggota_id')
         ->where('kartukeluarga_id', $id)
-        ->get(['anggota.nama','anggota.sts_dlm_klrg','anggota.id']);
+        ->get(['anggota.nama','anggota.sts_dlm_klrg','detail_kartu_keluarga.id']);
 
         $istri = Istri::join('kartu_keluargas', 'kartu_keluargas.id', '=' , 'istri.kartukeluarga_id')
         ->join('anggota', 'anggota.id', '=' , 'istri.istri_id')
@@ -74,7 +74,7 @@ class detKkController extends Controller
         $istris = Anggota::WhereNotExists(function($query) {
             $query->select(DB::raw(1))
             ->from('istri')
-            ->whereRaw('istri.istri_id = anggota.id' );
+            ->whereRaw('istri.istri_id = anggota.id', );
          })->get();
 
         $data = KartuKeluarga::where('id',$id)->first();
@@ -250,7 +250,8 @@ class detKkController extends Controller
             Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
             return redirect()->to('/');
         }
-        DetailKartuKeluarga::find($id)->delete();
+        $detkk = DetailKartuKeluarga::find($id);
+        $detkk->delete();
         alert()->success('Berhasil.','Data telah dihapus!');
         return redirect()->route('kk.index');
     }

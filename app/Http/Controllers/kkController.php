@@ -37,7 +37,7 @@ class kkController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    public function index(Request $request)
     {
         //Selain admin dilarang akses 
         if(Auth::user()->level == 'user') {
@@ -46,6 +46,8 @@ class kkController extends Controller
         }
         $q = KartuKeluarga::query();
         $datas1 = $q->get();
+        
+        
 
         $kk = KartuKeluarga::get();
         $anggota   = Anggota::get();

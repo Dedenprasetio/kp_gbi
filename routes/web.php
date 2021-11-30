@@ -49,7 +49,7 @@ Route::resource('istri', 'IstriController');
 Route::get('/detailkk/create/istri/{id}', 'IstriController@tambah_istri');
 Route::post('/detailkk/create/istri/simpan', 'IstriController@simpan_istri');
 Route::get('/detailkk/status/istri/{id}', 'kkController@sts_istri');
-
+Route::get('/status/update', 'IstriController@updateStatus')->name('istri.update.sts_istri');
 //detail kk
 Route::resource('detailkk', 'detKkController');
 Route::get('/detailkk/index/{id}', 'detKkController@tampil_detkk');

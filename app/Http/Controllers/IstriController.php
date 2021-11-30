@@ -30,7 +30,7 @@ class IstriController extends Controller
     {
         $data = KartuKeluarga::findOrFail($id);
 
-        $kk = KartuKeluarga::get();
+        $kk = KartuKeluarga::get();   
         
         $istris = Anggota::WhereNotExists(function($query) {
             $query->select(DB::raw(1))
@@ -39,6 +39,15 @@ class IstriController extends Controller
          })->get();
 
          return view('istri.create' , compact('istris','kk','data'));
+    }
+
+    public function updateStatus(Request $request)
+    {
+        $kk = KartuKeluarga::findOrFail($request->id);
+        $kk->sts_istri = $request->sts_istri;
+        $kk->save();
+
+        return response()->json(['message' => 'Status istri sudah disetujui. Klik SIMPAN']);
     }
 
     /**
@@ -61,11 +70,9 @@ class IstriController extends Controller
     {
         $this->validate($request, [     
             'istri_id' => 'required',
-            'kartukeluarga_id' => 'required'
-            
+            'kartukeluarga_id' => 'required',
         ]); 
         Istri::create($request->all());
-
 
         alert()->success('Berhasil.','Data telah ditambahkan!');
         return redirect()->route('kk.index');
@@ -79,7 +86,6 @@ class IstriController extends Controller
             
         ]); 
         Istri::create($request->all());
-
 
         alert()->success('Berhasil.','Data telah ditambahkan!');
         return redirect()->route('kk.index');
