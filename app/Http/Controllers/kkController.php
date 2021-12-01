@@ -156,6 +156,9 @@ class kkController extends Controller
             'tgl_nikah' => 'required',
         ]); 
         KartuKeluarga::create($request->all());
+
+        Session::flash('message', 'Data kepala keluarga berhasil ditambahkan!');
+        Session::flash('message_type', 'success');
         
         alert()->success('Berhasil.','Data telah ditambahkan!');
         return redirect()->route('kk.index');
@@ -287,6 +290,10 @@ class kkController extends Controller
             return redirect()->to('/');
         }
         KartuKeluarga::find($id)->delete();
+
+        Session::flash('message', 'Data kepala keluarga berhasil dihapus!');
+        Session::flash('message_type', 'success');
+
         alert()->success('Berhasil.','Data telah dihapus!');
         return redirect()->route('kk.index');
     }

@@ -74,24 +74,13 @@ class IstriController extends Controller
         ]); 
         Istri::create($request->all());
 
-        alert()->success('Berhasil.','Data telah ditambahkan!');
-        return redirect()->route('kk.index');
-    }
-
-    public function simpan_istri(Request $request)
-    {
-        $this->validate($request, [     
-            'istri_id' => 'required',
-            'kartukeluarga_id' => 'required'
-            
-        ]); 
-        Istri::create($request->all());
+        Session::flash('message', 'Data istri berhasil ditambahkan!');
+        Session::flash('message_type', 'success');
+        
 
         alert()->success('Berhasil.','Data telah ditambahkan!');
         return redirect()->route('kk.index');
-    }
-
-    
+    }    
 
     /**
      * Display the specified resource.

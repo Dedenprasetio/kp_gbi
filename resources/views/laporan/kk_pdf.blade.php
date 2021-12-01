@@ -138,7 +138,7 @@ Akte Notaris No.37Th.1973. Terdaftar pada: Dep.Agama RI No.E/Ket/392/1385/75 Tel
                           <th>
                             JK
                           </th>
-                         
+          
                          
                           <th>
                             GER-WIL
@@ -171,8 +171,7 @@ Akte Notaris No.37Th.1973. Terdaftar pada: Dep.Agama RI No.E/Ket/392/1385/75 Tel
                           <td>
                             {{$data->jk}}
                           </td>
-                         
-                         
+  
             
                 
                           <td>

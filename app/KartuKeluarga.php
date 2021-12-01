@@ -8,7 +8,7 @@ class KartuKeluarga extends Model
 {
     protected $table = 'kartu_keluargas';
     protected $fillable = ['anggota_id','istri', 'nomor_kk','tempat','alamat','oleh','jam_nikah','jam_sipil','tgl_nikah','sts_istri'];
-    
+    protected $dates = ['tgl_lahir','tgl_nikah'];
 
 
     public function anggota()

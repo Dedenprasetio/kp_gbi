@@ -47,6 +47,11 @@ $(document).ready(function() {
 @extends('layouts2.app')
 
 @section('content')
+<div class="row">
+
+                        
+            
+</div>
 <div class="row" style="margin-center: 20px;">
 
 
@@ -64,6 +69,15 @@ $(document).ready(function() {
                         <li class="breadcrumb-item active">Tambah Anggota Keluarga</li>
                         </ol> 
                         </br></br>
+                        
+                                          <!-- SESSION -->
+@if (Session::has('message'))
+                        <div class="alert alert-success alert-block alert-{{ Session::get('message_type') }}">
+                          <button type="button btn-light" class="close" data-dismiss="alert">×</button>    
+                            <strong>{{ Session::get('message') }}</strong>
+                        </div>
+                      @endif
+                        <!-- END SESSION -->
 
 <div class="container-fluid page-body-wrapper full-page-wrapper auth-page">
       <div class="align-items-center">

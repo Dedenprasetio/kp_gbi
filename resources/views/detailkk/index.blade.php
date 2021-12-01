@@ -14,15 +14,8 @@
 <div class="row">
 
                         
-                  <div class="col-lg-12">
-                  @if (Session::has('message'))
-                  <div class="alert alert-{{ Session::get('message_type') }}" id="waktu2" style="margin-top:10px;">{{ Session::get('message') }}</div>
-                  @endif
-                  </div>
+            
 </div>
-
-
-
 <div class="row" style="margin-top: 20px;">
 <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
@@ -37,9 +30,18 @@
                         </br></br>
 
                 <a href="/detailkk/create/{{ $data->id }}" class="btn btn-primary  btn-fw col-lg-2"> <i class="fa fa-plus"></i> Anggota Keluarga </a>
-
-                <br><br>
+                <br>
+               
+                <br>
                 <div class="row">
+                  <!-- SESSION -->
+@if (Session::has('message'))
+                        <div class="alert alert-success alert-block alert-{{ Session::get('message_type') }}">
+                          <button type="button btn-light" class="close" data-dismiss="alert">×</button>    
+                            <strong>{{ Session::get('message') }}</strong>
+                        </div>
+                      @endif
+                        <!-- END SESSION -->
                                 <div class="col-sm-12">
                                     <div class="form-group mb-0">
                                         <label class="control-label">Nama Kepala Keluarga : <b>{{$data->anggota->nama}}</b></label>

@@ -8,6 +8,7 @@ class Istri extends Model
 {
     protected $table = 'istri';
     protected $fillable = ['istri_id','kartukeluarga_id'];
+    protected $dates = ['tgl_lahir'];
 
     public function anggota()
     {

@@ -47,6 +47,11 @@ $(document).ready(function() {
 @extends('layouts2.app')
 
 @section('content')
+<div class="row">
+
+                        
+            
+</div>
 <div class="row" style="margin-center: 20px;">
 
 

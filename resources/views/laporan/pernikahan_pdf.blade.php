@@ -105,7 +105,7 @@ Akte Notaris No.37Th.1973. Terdaftar pada: Dep.Agama RI No.E/Ket/392/1385/75 Tel
                             </div>
 
                             <div class="form-group mb-0">
-                                        <label class="control-label"><b>Tempat/Tgl Lahir </b>: {{$data->anggota->tempat_lahir}}, {{$data->anggota->tgl_lahir}}</label>
+                                        <label class="control-label"><b>Tempat/Tgl Lahir </b>: {{$data->anggota->tempat_lahir}}, {{$data->anggota->tgl_lahir->format('d-m-Y')}}</label>
                                         
                                     </div>
                                 </div>
@@ -150,7 +150,7 @@ Akte Notaris No.37Th.1973. Terdaftar pada: Dep.Agama RI No.E/Ket/392/1385/75 Tel
                             </div>
 
                             <div class="form-group mb-0">
-                                        <label class="control-label"><b>Tempat/Tgl Lahir </b>: {{$is->tempat_lahir}}, {{$is->tgl_lahir}}</label>
+                                        <label class="control-label"><b>Tempat/Tgl Lahir </b>: {{$is->tempat_lahir}}, {{$is->tgl_lahir->format('d-m-Y')}}</label>
                                         
                                     </div>
                                 </div>
@@ -189,7 +189,7 @@ Akte Notaris No.37Th.1973. Terdaftar pada: Dep.Agama RI No.E/Ket/392/1385/75 Tel
                             <p>Pelaksanaan Pemberkatan Nikah di gereja pada:</p>
                            
                             <div class="form-group mb-0">
-                                        <label class="control-label"><b>Hari/Tanggal </b>: {{$data->tgl_nikah}}</label>
+                                        <label class="control-label"><b>Hari/Tanggal </b>: {{$data->tgl_nikah->format('d-m-Y')}}</label>
                                         
                                     </div>
                                 </div>

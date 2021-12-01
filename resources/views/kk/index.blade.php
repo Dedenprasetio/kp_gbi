@@ -14,11 +14,7 @@
 <div class="row">
 
                         
-                  <div class="col-lg-12">
-                  @if (Session::has('message'))
-                  <div class="alert alert-{{ Session::get('message_type') }}" id="waktu2" style="margin-top:10px;">{{ Session::get('message') }}</div>
-                  @endif
-                  </div>
+            
 </div>
 
 
@@ -37,6 +33,14 @@
                 
                         <a href="{{ route('kk.create') }}" class="btn btn-primary  btn-fw col-lg-2"> <i class="fa fa-plus"></i> Kartu Keluarga </a>
                         </br></br>
+                                          <!-- SESSION -->
+@if (Session::has('message'))
+                        <div class="alert alert-success alert-block alert-{{ Session::get('message_type') }}">
+                          <button type="button btn-light" class="close" data-dismiss="alert">×</button>    
+                            <strong>{{ Session::get('message') }}</strong>
+                        </div>
+                      @endif
+                        <!-- END SESSION -->
                   <div class="table-responsive">
                   <table id="example1" class="table table-bordered table-striped">
                   <thead>
@@ -97,8 +101,9 @@
                             <i class="fa fa-download"></i> 
                           </a>
                           <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 30px, 0px);">
+                          @if($data->sts_istri == 1) 
                             <a class="dropdown-item" href="{{route('laporan.pernikahan_pdf', $data->id) }}"> Buku Pernikahan  </a>
-                            
+                          @endif
                             <a class="dropdown-item" href="{{route('laporan.kk_pdf', $data->id) }}"> Kartu Keluarga </a>
              
                           </div>

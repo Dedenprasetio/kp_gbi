@@ -142,7 +142,7 @@ $(document).ready(function() {
                                             <div class="form-group{{ $errors->has('jam_nikah') ? ' has-error' : '' }}">
                                                 <label for="jam_nikah" class="col-md-4 control-label">Jam Nikah <b style="color:Tomato;">*</b> </label>
                                                 <div class="col-md-12">
-                                                    <input id="jam_nikah" type="text" class="form-control" name="jam_nikah" value="{{ old('jam_nikah') }}" required>
+                                                    <input id="jam_nikah" type="time" class="form-control" name="jam_nikah" value="{{ old('jam_nikah') }}" required>
                                                     @if ($errors->has('jam_nikah'))
                                                         <span class="help-block">
                                                             <strong>{{ $errors->first('jam_nikah') }}</strong>
@@ -154,7 +154,7 @@ $(document).ready(function() {
                                             <div class="form-group{{ $errors->has('jam_sipil') ? ' has-error' : '' }}">
                                                 <label for="jam_sipil" class="col-md-4 control-label">Jam Sipil <b style="color:Tomato;">*</b> </label>
                                                 <div class="col-md-12">
-                                                    <input id="jam_sipil" type="text" class="form-control" name="jam_sipil" value="{{ old('jam_sipil') }}" required>
+                                                    <input id="jam_sipil" type="time" class="form-control" name="jam_sipil" value="{{ old('jam_sipil') }}" required>
                                                     @if ($errors->has('jam_sipil'))
                                                         <span class="help-block">
                                                             <strong>{{ $errors->first('jam_sipil') }}</strong>

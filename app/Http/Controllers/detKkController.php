@@ -116,21 +116,6 @@ class detKkController extends Controller
          return view('detailkk.create' , compact('anggotas','kk','det','dt','data'));
     }
 
-    public function tambah_istri()
-    {
-        $kk = KartuKeluarga::get();
-        
-        $anggotas = Anggota::WhereNotExists(function($query) {
-            $query->select(DB::raw(1))
-            ->from('detail_kartu_keluarga')
-            ->whereRaw('detail_kartu_keluarga.anggota_id = anggota.id');
-         })->get();
-
-         return view('detailkk.istri' , compact('anggotas','kk','det','dt','data'));
-    }
-
-   
-
 
     /**
      * Store a newly created resource in storage.
@@ -148,9 +133,10 @@ class detKkController extends Controller
         ]); 
         DetailKartuKeluarga::create($request->all());
 
+        Session::flash('message', 'Data anggota keluarga berhasil ditambahkan!');
+        Session::flash('message_type', 'success');
 
-        alert()->success('Berhasil.','Data telah ditambahkan!');
-        return redirect()->route('kk.index');
+        return redirect()->back();
 
     }
 
@@ -252,20 +238,11 @@ class detKkController extends Controller
         }
         $detkk = DetailKartuKeluarga::find($id);
         $detkk->delete();
-        alert()->success('Berhasil.','Data telah dihapus!');
-        return redirect()->route('kk.index');
-    }
 
-    public function hapus($detkk_id)
-    {
-        try {
-            $detkk = DetailKartuKeluarga::where('id',$detkk_id)->first();
-          } catch (ModelNotFoundException $e) {
-            return redirect()->route('kk.index')->with(['Gaga;'=> 'Failed']);
-          }
-        // $detkk =DetailKartuKeluarga::where('id',$detkk_id)->find();
-        $detkk->delete();
+        Session::flash('message', 'Data anggota keluarga berhasil dihapus!');
+        Session::flash('message_type', 'success');
+
         alert()->success('Berhasil.','Data telah dihapus!');
-        return redirect()->route('kk.index');
+        return redirect()->back();
     }
 }
