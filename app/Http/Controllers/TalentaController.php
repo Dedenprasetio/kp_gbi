@@ -95,6 +95,9 @@ class TalentaController extends Controller
         //     $checkbox = '';
         // }
         
+        Session::flash('message', 'Data Pelayanan berhasil ditambahkan!');
+        Session::flash('message_type', 'success');
+
         alert()->success('Berhasil.','Data telah ditambahkan!');
         return redirect()->route('talenta.index');
         // return redirect()->back();
@@ -150,6 +153,9 @@ class TalentaController extends Controller
         }
         Talenta::find($id)->update($request->all());
 
+        Session::flash('message', 'Data Pelayanan berhasil diubah!');
+        Session::flash('message_type', 'success');
+
         alert()->success('Berhasil.','Data telah diubah!');
         return redirect()->to('talenta');
     }
@@ -163,6 +169,10 @@ class TalentaController extends Controller
     public function destroy($id)
     {
         Talenta::find($id)->delete();
+
+        Session::flash('message', 'Data Pelayanan berhasil dihapus!');
+        Session::flash('message_type', 'success');
+
         alert()->success('Berhasil.','Data telah dihapus!');
         return redirect()->route('talenta.index');
     }

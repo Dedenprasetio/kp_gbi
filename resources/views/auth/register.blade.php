@@ -63,12 +63,10 @@ var check = function() {
     
         <div class="col-lg-6 mx-auto">
 
-<form method="POST" action="{{ route('talenta.store') }}" enctype="multipart/form-data">
+<form method="POST" action="{{ route('user.store') }}" enctype="multipart/form-data">
     {{ csrf_field() }}
 
           <!-- AREA FORM -->
-
-          
 
                       <h4 class="card-title">Tambah Pengguna</h4>
                       

@@ -92,8 +92,12 @@ class UserController extends Controller
             'gambar' => $gambar
         ]);
 
-        Session::flash('message', 'Berhasil ditambahkan!');
+
+        
+
+        Session::flash('message', 'Data Pengguna Berhasil ditambahkan!');
         Session::flash('message_type', 'success');
+
         return redirect()->route('user.index');
 
     }
@@ -169,8 +173,8 @@ class UserController extends Controller
 
         $user_data->update();
 
-        Session::flash('message', 'Berhasil diubah!');
-        Session::flash('message_type', 'success');
+        Session::flash('message', 'Data Pengguna Berhasil diubah!');
+            Session::flash('message_type', 'success');
         return redirect()->to('user');
     }
 
@@ -185,12 +189,12 @@ class UserController extends Controller
         if(Auth::user()->id != $id) {
             $user_data = User::findOrFail($id);
             $user_data->delete();
-            Session::flash('message', 'Berhasil dihapus!');
+            Session::flash('message', 'Data Pengguna Berhasil dihapus!');
             Session::flash('message_type', 'success');
         } else {
             //tidak dapat mengapus akun sendiri
-            Session::flash('message', 'Akun anda sendiri tidak bisa dihapus !');
-            Session::flash('message_type', 'danger');
+            Session::flash('message', 'Data Pengguna Berhasil dihapus!');
+            Session::flash('message_type', 'success');
         }
         return redirect()->to('user');
     }

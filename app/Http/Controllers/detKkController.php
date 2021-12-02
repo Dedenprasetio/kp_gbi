@@ -74,7 +74,7 @@ class detKkController extends Controller
         $istris = Anggota::WhereNotExists(function($query) {
             $query->select(DB::raw(1))
             ->from('istri')
-            ->whereRaw('istri.istri_id = anggota.id', );
+            ->whereRaw('istri.istri_id = anggota.id' );
          })->get();
 
         $data = KartuKeluarga::where('id',$id)->first();

@@ -15,12 +15,6 @@
 
 
 
-                        
-                  <div class="col-lg-12">
-                  @if (Session::has('message'))
-                  <div class="alert alert-{{ Session::get('message_type') }}" id="waktu2" style="margin-top:10px;">{{ Session::get('message') }}</div>
-                  @endif
-                  </div>
 </div>
 
 
@@ -35,7 +29,15 @@
                         <ol class="breadcrumb float-sm-right bg-white">
                         <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
                         <li class="breadcrumb-item active">Data Anggota</li>
-                        </ol> 
+                        </ol>
+                        </br></br>
+                        
+                        @if (Session::has('message'))
+                        <div class="alert alert-success alert-block alert-{{ Session::get('message_type') }}">
+                          <button type="button btn-light" class="close" data-dismiss="alert">×</button>    
+                            <strong>{{ Session::get('message') }}</strong>
+                        </div>
+                      @endif
                       
                   <div class="table-responsive">
                     <table id="example1" class="table table-bordered table-striped">

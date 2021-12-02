@@ -129,7 +129,9 @@ class AnggotaController extends Controller
         
         Anggota::create($request->all());
 
-        alert()->success('Berhasil.','Data telah ditambahkan!');
+        Session::flash('message', 'Data Anggota berhasil ditambahkan!');
+        Session::flash('message_type', 'success');
+
         return redirect()->route('anggota.index');
 
     }
@@ -194,7 +196,9 @@ class AnggotaController extends Controller
             $gambar = $fileName;
         }
 
-        alert()->success('Berhasil.','Data telah diubah!');
+        Session::flash('message', 'Data Anggota berhasil diubah!');
+        Session::flash('message_type', 'success');
+
         return redirect()->to('anggota');
     }
 
@@ -211,6 +215,10 @@ class AnggotaController extends Controller
             return redirect()->to('/');
         }
         Anggota::find($id)->delete();
+
+        Session::flash('message', 'Data Anggota berhasil dihapus!');
+        Session::flash('message_type', 'success');
+
         alert()->success('Berhasil.','Data telah dihapus!');
         return redirect()->route('anggota.index');
     }

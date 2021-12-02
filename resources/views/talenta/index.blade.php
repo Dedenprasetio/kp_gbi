@@ -13,11 +13,6 @@
 @section('content')
 <div class="row">
 
-    <div class="col-lg-12">
-                  @if (Session::has('message'))
-                  <div class="alert alert-{{ Session::get('message_type') }}" id="waktu2" style="margin-top:10px;">{{ Session::get('message') }}</div>
-                  @endif
-                  </div>
     </div>
 
 <div class="row" style="margin-top: 20px;">
@@ -27,11 +22,19 @@
               
                 <div class="card-body">
                 <a href="{{ route('talenta.create') }}" class="btn btn-primary  btn-fw col-lg-2"><i class="fa fa-plus"></i> Tambah Pelayanan</a>
+
                 <ol class="breadcrumb float-sm-right bg-white">
                         <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
                         <li class="breadcrumb-item active">Data Pelayanan</li>
                         </ol> 
                         </br></br>
+
+                        @if (Session::has('message'))
+                        <div class="alert alert-success alert-block alert-{{ Session::get('message_type') }}">
+                          <button type="button btn-light" class="close" data-dismiss="alert">×</button>    
+                            <strong>{{ Session::get('message') }}</strong>
+                        </div>
+                      @endif
              
                   <div class="table-responsive">
                   <table id="example1" class="table table-bordered table-striped">
