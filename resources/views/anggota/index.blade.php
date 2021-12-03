@@ -51,7 +51,7 @@
                         <th class="text-center">GER-WIL</th>
                         <!-- <th class="text-center">JENIS</th> -->
 
-                        <th class="text-center" >UPDATE</th>
+                        <th class="text-center" >DIUBAH</th>
                         
                         @if(Auth::user()->level == 'admin')
                         <th class="text-center col-md-2" width="10%">OPSI</th>
@@ -71,17 +71,17 @@
                           <td>
                           @if($data->sts_anggota == 'Jemaat')
                           @if($data->gambar)
-                            <img width="50" height="50"src="{{asset('images/anggota', $data->gambar)}}" alt="image" style="margin-right: 10px;" />
+                            <img width="50" height="50" src="{{url('images/anggota', $data->gambar)}}" alt="image" style="margin-right: 10px;" />
                           @else
-                            <img  width="50" height="50"src="{{url('images/anggota/default.png')}}" alt="image" style="margin-right: 10px;" />
+                            <img width="50" height="50" src="{{url('images/anggota/default.png')}}" alt="image" style="margin-right: 10px;" />
 
                           @endif
                           <label class="text-success">{{$data->kode_anggota}}</label>
                           @else($data->sts_anggota == 'Simpatisan')
                           @if($data->gambar)
-                            <img width="50" height="50"src="{{asset('images/anggota', $data->gambar)}}" alt="image" style="margin-right: 10px;" />
+                            <img width="50" height="50" src="{{url('images/anggota', $data->gambar)}}" alt="image" style="margin-right: 10px;" />
                           @else
-                            <img  width="50" height="50"src="{{url('images/anggota/default.png')}}" alt="image" style="margin-right: 10px;" />
+                            <img width="50" height="50" src="{{url('images/anggota/default.png')}}" alt="image" style="margin-right: 10px;" />
 
                           @endif
                           <label class="text-warning">{{$data->kode_anggota}}</label>

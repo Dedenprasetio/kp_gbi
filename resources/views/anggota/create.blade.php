@@ -148,16 +148,13 @@
                         </br>
                         <div class="form-group{{ $errors->has('sts_dlm_klrg') ? ' has-error' : '' }}">
                             <label for="sts_dlm_klrg" class="col-md-12 control-label">Status Dalam Keluarga   <b style="color:Tomato;">*</b>  </label>
-                            <div class="col-md-12">
-                            
+                            <div class="col-md-12">                      
                             <select class="form-control" name="sts_dlm_klrg" required="">
-                            <option value="" >Status Dalam Keluarga</option>
+                            <option hidden disabled selected value >Status Dalam Keluarga</option>            
                             <option value="Suami">Suami</option>
                                 <option value="Istri">Istri</option>
                                 <option value="Anak">Anak</option>
-                                <option value="Lain-lain">Lain-lain</option>
-                                
-                                
+                                <option value="Lain-lain">Lain-lain</option>                             
                             </select>
                             </div>
                         </div>
@@ -168,7 +165,7 @@
                             <div class="col-md-12">
                             
                             <select class="form-control" name="sts_pernikahan" required="">
-                            <option >Status Pernikahan</option>
+                            <option hidden disabled selected value >Status Pernikahan</option>
                             <option value="Belum">Belum Menikah</option>
                                 <option value="Menikah">Menikah</option>
                                 <option value="Janda">Janda</option>
@@ -553,7 +550,7 @@
                                 <input id="hp" type="number" maxlength="4" class="form-control" name="hp" value="{{ old('hp') }}" required>
                                 @if ($errors->has('hp'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('nij') }}</strong>
+                                        <strong>{{ $errors->first('hp') }}</strong>
                                     </span>
                                 @endif
                             </div>

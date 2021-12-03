@@ -30,7 +30,7 @@ class UserController extends Controller
             return redirect()->to('/');
         }
 
-        $datas = User::get();
+        $datas = User::orderBy('updated_at', 'desc')->get();
         return view('auth.user', compact('datas'));
     }
 

@@ -27,7 +27,7 @@
                         <ol class="breadcrumb float-sm-right bg-white">
                         <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
                         <li class="breadcrumb-item"><a href="/anggota">Anggota</a></li>
-                        <li class="breadcrumb-item active">Ubah Anggota</li>
+                        <li class="breadcrumb-item active">Edit Anggota</li>
                         </ol>
                         <br><br>
       
@@ -89,28 +89,50 @@
                             
                             <select class="form-control" name="gerwil" required="">
                                
-                            <option value="Tengah">Tengah</option>
-                                <option value="Timur">Timur</option>
-                                <option value="Barat">Barat</option>
-                                <option value="Selatan">Selatan</option>
-                                <option value="Utara">Utara</option>
-                                <option value="Belum">Belum Bergabung</option>
+                            <option value="Tengah" @php if(($data->gerwil)=='Tengah') echo 'selected' @endphp>Tengah</option>
+                                <option value="Timur" @php if(($data->gerwil)=='Timur') echo 'selected' @endphp>Timur</option>
+                                <option value="Barat" @php if(($data->gerwil)=='Barat') echo 'selected' @endphp>Barat</option>
+                                <option value="Selatan" @php if(($data->gerwil)=='Selatan') echo 'selected' @endphp>Selatan</option>
+                                <option value="Utara" @php if(($data->gerwil)=='Utara') echo 'selected' @endphp>Utara</option>
+                                <option value="Belum" @php if(($data->gerwil)=='Belum') echo 'selected' @endphp>Belum Bergabung</option>
                                 
                             </select>
                             </div>
                         </div>
                        
                         <div class="form-group{{ $errors->has('sts_dlm_klrg') ? ' has-error' : '' }}">
-                            <label for="sts_dlm_klrg" class="col-md-12 control-label">Status Dalam Keluarga   <b style="color:Tomato;">*</b>  </label>
+                            <label for="sts_dlm_klrg" class="col-md-12 control-label">Status Dalam Keluarga   </label>
                             <div class="col-md-12">
                             
                             <select class="form-control" name="sts_dlm_klrg" required="">
-                            <option >Status Dalam Keluarga</option>
-                            <option value="Suami">Suami</option>
-                                <option value="Istri">Istri</option>
-                                <option value="Anak">Anak</option>
-                                <option value="Lain-lain">Lain-lain</option>
-                                
+                            <option hidden disabled selected value>Status Dalam Keluarga</option>
+                            @if($data->jk == 'Pria')
+                            <option value="Suami" @php if(($data->sts_dlm_klrg)=='Suami') echo 'selected' @endphp>Suami</option>
+                                <option value="Anak" @php if(($data->sts_dlm_klrg)=='Anak') echo 'selected' @endphp>Anak</option>
+                                <option value="Lain-lain" @php if(($data->sts_dlm_klrg)=='Lain-lain') echo 'selected' @endphp>Lain-lain</option>
+                            @elseif($data->jk == 'Wanita')   
+                                <option value="Istri" @php if(($data->sts_dlm_klrg)=='Istri') echo 'selected' @endphp>Istri</option>
+                                <option value="Anak" @php if(($data->sts_dlm_klrg)=='Anak') echo 'selected' @endphp>Anak</option>
+                                <option value="Lain-lain" @php if(($data->sts_dlm_klrg)=='Lain-lain') echo 'selected' @endphp>Lain-lain</option>
+                            @endif
+                            </select>
+                            </div>
+                        </div>
+
+                        
+                        <div class="form-group{{ $errors->has('sts_pernikahan') ? ' has-error' : '' }}">
+                            <label for="sts_pernikahan" class="col-md-12 control-label">Status Pernikahan   </label>
+                            <div class="col-md-12">
+                            
+                            <select class="form-control" name="sts_pernikahan" required="">
+                            <option hidden disabled selected value >Status Pernikahan</option>
+                            <option value="Belum" @php if(($data->sts_pernikahan)=='Belum') echo 'selected' @endphp>Belum Menikah</option>
+                                <option value="Menikah" @php if(($data->sts_pernikahan)=='Menikah') echo 'selected' @endphp>Menikah</option>
+                                @if($data->jk == 'Wanita')
+                                <option value="Janda" @php if(($data->sts_pernikahan)=='Janda') echo 'selected' @endphp>Janda</option>
+                                @elseif($data->jk == 'Pria')
+                                <option value="Duda" @php if(($data->sts_pernikahan)=='Duda') echo 'selected' @endphp>Duda</option>
+                                @endif
                                 
                             </select>
                             </div>
@@ -121,14 +143,42 @@
                               <label for="goldar" class="col-md-12 control-label" >Status Anggota    </label>
                               
                                 <label>
-                                    <input type="radio" name="sts_anggota" value="Jemaat">
+                                    <input type="radio" name="sts_anggota" value="Jemaat" @php if(($data->sts_anggota)=='Jemaat') echo 'checked' @endphp>
                                     Jemaat
                                 </label>   &nbsp; &nbsp; 
                                 <label>
-                                <input type="radio" name="sts_anggota" value="Simpatisan">
+                                <input type="radio" name="sts_anggota" value="Simpatisan" @php if(($data->sts_anggota)=='Simpatisan') echo 'checked' @endphp>
                                     Simpatisan
                                 </label>   &nbsp; &nbsp; 
                                 
+                        </div>
+
+                        <div class="form-group{{ $errors->has('pekerjaan') ? ' has-error' : '' }}">
+                            <label for="pekerjaan" class="col-md-12 control-label">Pekerjaaan  </label>
+                            <div class="col-md-12">
+                            
+                            <select class="form-control" name="pekerjaan" required="">
+                               
+                            <option value="Wiraswasta" @php if(($data->pekerjaan)=='Wiraswasta') echo 'selected' @endphp>Wiraswasta</option>
+                                <option value="PNS" @php if(($data->pekerjaan)=='PNS') echo 'selected' @endphp>PNS</option>
+                                <option value="Guru/Dosen/Instruktur" @php if(($data->pekerjaan)=='Guru/Dosen/Instruktur') echo 'selected' @endphp>Guru/Dosen/Instruktur</option>
+                                <option value="Pelajar/Mahasiswa" @php if(($data->pekerjaan)=='Pelajar/Mahasiswa') echo 'selected' @endphp>Pelajar/Mahasiswa</option>
+                                <option value="Lainnya" @php if(($data->pekerjaan)=='Lainnya') echo 'selected' @endphp>Lainnya</option>
+                            </select>
+                            </div>
+                        </div>
+
+                        
+                        <div class="form-group{{ $errors->has('hp') ? ' has-error' : '' }}">
+                            <label for="hp" class="col-md-4 control-label">No HP  </label>
+                            <div class="col-md-12">
+                                <input id="hp" type="number" maxlength="4" class="form-control" name="hp" value="{{ $data->hp }}" required>
+                                @if ($errors->has('hp'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('hp') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
                         </div>
                      
 

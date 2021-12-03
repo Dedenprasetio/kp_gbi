@@ -92,7 +92,7 @@ $(document).ready(function() {
                     <div class="container  col-md-12">                               
                                                 <label>Kepala Keluarga <b style="color:Tomato;">*</b></label>
                                                 <select required="required" name="anggota_id" class="custom-select mb-3" >
-                                                  <option value="">Pilih Kepala Keluarga</option>
+                                                  <option hidden disabled selected value>Pilih Kepala Keluarga</option>
                                                   @foreach($anggotas as $a)
                                                   @if  ( $a->sts_dlm_klrg == 'Suami')
                                                   <option value="{{ $a->id }}">{{ $a->kode_anggota }}-{{ $a->nama }}({{ $a->sts_dlm_klrg }})</option>

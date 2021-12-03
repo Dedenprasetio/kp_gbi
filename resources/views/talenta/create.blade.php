@@ -61,7 +61,7 @@
                         <div class="container  col-md-12">                               
                                                 <label>Anggota <b style="color:Tomato;">*</b></label>
                                                 <select required="required" name="anggota_id" class="custom-select mb-3" >
-                                                  <option value="">Pilih Anggota</option>
+                                                  <option hidden disabled selected value>Pilih Anggota</option>
                                                   @foreach($anggotas as $a)
                                                   <option value="{{ $a->id }}">{{ $a->kode_anggota }}-{{ $a->nama }}({{ $a->jk }})</option>
                                                   @endforeach

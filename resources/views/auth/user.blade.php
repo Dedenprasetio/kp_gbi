@@ -51,7 +51,7 @@
                         <th class="text-center">STATUS</th>
                         <th class="text-center">USERNAME</th>
                         <th class="text-center">EMAIL</th>
-                        <th class="text-center">UPDATE</th>
+                        <th class="text-center">DIUBAH</th>
                         @if(Auth::user()->level == 'admin')
                         <th class="text-center col-md-2" width="10%">OPSI</th>
                         @endif
@@ -92,7 +92,7 @@
                             {{$data->email}}
                           </td>
                           <td>
-                            {{$data->created_at}}
+                            {{ $data->updated_at->diffForHumans() }}
                           </td>
                           
                          

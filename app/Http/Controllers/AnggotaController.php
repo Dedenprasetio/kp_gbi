@@ -182,7 +182,7 @@ class AnggotaController extends Controller
             return redirect()->to('/');
         }
         
-        Anggota::find($id)->update($request->all());
+        $anggota = Anggota::find($id);
         
         if($request->file('gambar') == '') {
             $gambar = NULL;
@@ -192,9 +192,10 @@ class AnggotaController extends Controller
             $acak  = $file->getClientOriginalExtension();
             $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
             $request->file('gambar')->move("images/anggota", $fileName);
-            //$upload_image = $request->myimage->store('anggota');
-            $gambar = $fileName;
+            $anggota->gambar = $fileName;
         }
+
+        $anggota->update($request->all());
 
         Session::flash('message', 'Data Anggota berhasil diubah!');
         Session::flash('message_type', 'success');

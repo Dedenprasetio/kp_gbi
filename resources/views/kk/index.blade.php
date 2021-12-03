@@ -50,6 +50,7 @@
                        
                         <th class="text-center">NOMOR KARTU KELUARGA</th>
                         <th class="text-center">NAMA KEPALA KELUARGA</th>
+                       
 
                         
                         <!-- <th class="text-center">JENIS</th> -->
@@ -65,7 +66,7 @@
                       @php
                       $no = 1;
                       @endphp
-                      @foreach($datas1 as $data)
+                      @foreach($kk as $data)
           
                         <tr>
                         <td class="text-left">{{ $no++ }}</td>
@@ -83,6 +84,7 @@
                           <td> 
                               {{$data->anggota->nama}}
                           </td>
+                       
 
                           <!-- <td class="col-md-2"> 
                               @if($data->sts_istri == 0)

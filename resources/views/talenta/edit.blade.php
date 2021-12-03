@@ -68,35 +68,35 @@
                           <div class="col-md-12" >
                                            
                           <label >
-                              <input type="radio" name="nama_talenta" value="Khotbah" >
+                              <input type="radio" name="nama_talenta" value="Khotbah" @php if(($data->nama_talenta)=='Khotbah') echo 'checked' @endphp >
                               Khotbah
                           </label>   &nbsp; &nbsp;
                           <label >
-                              <input type="radio" name="nama_talenta" value="Pengajar">
+                              <input type="radio" name="nama_talenta" value="Pengajar" @php if(($data->nama_talenta)=='Pengajar') echo 'checked' @endphp>
                               Pengajar
                           </label>   &nbsp; &nbsp;
                           <label >
-                              <input type="radio" name="nama_talenta" value="Pendoa">
+                              <input type="radio" name="nama_talenta" value="Pendoa" @php if(($data->nama_talenta)=='Pendoa') echo 'checked' @endphp>
                               Pendoa
                           </label>   &nbsp; &nbsp; 
                           <label>
-                          <input type="radio" name="nama_talenta" value="Konselor">
+                          <input type="radio" name="nama_talenta" value="Konselor" @php if(($data->nama_talenta)=='Konselor') echo 'checked' @endphp>
                               Konselor
                           </label>   &nbsp; &nbsp; 
                           <label>
-                          <input type="radio" name="nama_talenta" value="Musik">
+                          <input type="radio" name="nama_talenta" value="Musik" @php if(($data->nama_talenta)=='Musik') echo 'checked' @endphp>
                               Musik
                           </label>  &nbsp; &nbsp;
                           <label>
-                          <input type="radio" name="nama_talenta" value="Singer">
+                          <input type="radio" name="nama_talenta" value="Singer" @php if(($data->nama_talenta)=='Singer') echo 'checked' @endphp>
                               Singer
                           </label>  &nbsp; &nbsp;
                           <label>
-                          <input type="radio" name="nama_talenta" value="Worship Leader">
+                          <input type="radio" name="nama_talenta" value="Worship Leader" @php if(($data->nama_talenta)=='Worship Leader') echo 'checked' @endphp>
                               Worship Leader
                           </label>  &nbsp; &nbsp;
                           <label>
-                          <input type="radio" name="nama_talenta" value="Multimedia">
+                          <input type="radio" name="nama_talenta" value="Multimedia" @php if(($data->nama_talenta)=='Multimedia') echo 'checked' @endphp>
                               Multimedia
                           </label> &nbsp; &nbsp;
                           <label>
