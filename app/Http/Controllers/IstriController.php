@@ -125,6 +125,17 @@ class IstriController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if(Auth::user()->level == 'user') {
+            Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+            return redirect()->to('/');
+        }
+        $detkk = Istri::find($id);
+        $detkk->delete();
+
+        Session::flash('message', 'Data anggota keluarga berhasil dihapus!');
+        Session::flash('message_type', 'success');
+
+        alert()->success('Berhasil.','Data telah dihapus!');
+        return redirect()->back();
     }
 }

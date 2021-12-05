@@ -98,8 +98,6 @@ $(document).ready(function() {
                                                   @endforeach
                                                 </select>
                                               </div>
-
-          
          
                         <div class="col-md-12">
                        <button type="submit" class="btn btn-primary col-md-5" id="submit">

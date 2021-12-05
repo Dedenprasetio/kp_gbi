@@ -30,6 +30,7 @@
                         </br></br>
 
                 <a href="/detailkk/create/{{ $data->id }}" class="btn btn-primary  btn-fw col-lg-2"> <i class="fa fa-plus"></i> Anggota Keluarga </a>
+                
                 <br>
                
                 <br>
@@ -101,7 +102,7 @@
                       
                         <tr>
                         <td class="text-left">{{ $no++ }}</td>
-                        <td>{{ $data->nama }}</td>    
+                        <td>{{ $data->nama }}</td>
                         <td>{{ $data->sts_dlm_klrg }}</td>   
                          <td class="text-center">
                           <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalDelete_{{ $data->id }}"><i class="fa fa-trash"></i></button>
@@ -141,7 +142,7 @@
                                 
                               </form>
                         </td>    
-                         
+                        
                         @endforeach
                               
                                     </div>

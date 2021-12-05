@@ -297,7 +297,7 @@ Highcharts.chart('kelamin', {
         }
     },
     series: [{
-        name: 'Brands',
+        name: 'Jenis Kelamin',
         colorByPoint: true,
         data: [{
             name: 'Pria ( {{$anggota->where('jk', 'Pria')->count()}} )',

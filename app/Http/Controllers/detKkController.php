@@ -69,7 +69,7 @@ class detKkController extends Controller
         $istri = Istri::join('kartu_keluargas', 'kartu_keluargas.id', '=' , 'istri.kartukeluarga_id')
         ->join('anggota', 'anggota.id', '=' , 'istri.istri_id')
         ->where('kartukeluarga_id', $id)
-        ->get(['anggota.nama','anggota.sts_dlm_klrg']);
+        ->get(['anggota.nama','anggota.sts_dlm_klrg','istri.id']);
 
         $istris = Anggota::WhereNotExists(function($query) {
             $query->select(DB::raw(1))
