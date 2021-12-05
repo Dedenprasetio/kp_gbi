@@ -109,15 +109,20 @@
         
         
 
+            <div class="panel col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                <div id="kelamin1"> </div>
+            </div>
           
 
             <div class="panel col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                <div id="kelamin"> </div>
+            </div>
+
+            <div class="panel col-xl-12 col-lg-12 col-md-12 col-sm-12 ">
                 <div id="daftarAnggota"> </div>
             </div>
           
-            <div class="panel col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                <div id="kelamin"> </div>
-            </div>
+            
             
 </div>
 @else   
@@ -265,6 +270,10 @@ Highcharts.chart('daftarAnggota', {
 </script>
 @stop
 
+
+
+
+
 @section('piechart')
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script>
@@ -276,7 +285,7 @@ Highcharts.chart('kelamin', {
         type: 'pie'
     },
     title: {
-        text: 'JENIS KELAMIN'
+        text: 'JENIS KELAMIN JEMAAT'
     },
     tooltip: {
         pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -300,17 +309,75 @@ Highcharts.chart('kelamin', {
         name: 'Jenis Kelamin',
         colorByPoint: true,
         data: [{
-            name: 'Pria ( {{$anggota->where('jk', 'Pria')->count()}} )',
-            y: {{$anggota->where('jk', 'Pria')->count()}},
+            name: 'Pria ( {{$anggota->where('jk', 'Pria')->where('sts_anggota', 'Jemaat')->count()}} )',
+            y: {{$anggota->where('jk', 'Pria')
+            ->where('sts_anggota', 'Jemaat')
+            
+            ->count()}},
             sliced: true,
             selected: true
         }, {
-            name: 'Wanita ( {{$anggota->where('jk', 'Wanita')->count()}} )',
-            y: {{$anggota->where('jk', 'Wanita')->count()}}
+            name: 'Wanita ( {{$anggota->where('jk', 'Wanita')->where('sts_anggota', 'Jemaat')->count()}} )',
+            y: {{$anggota->where('jk', 'Wanita')
+            ->where('sts_anggota', 'Jemaat')
+            ->count()}}
         }]
     }]
 });
 </script>
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script>
+Highcharts.chart('kelamin1', {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie'
+    },
+    title: {
+        text: 'JENIS KELAMIN SIMPATISAN'
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    accessibility: {
+        point: {
+            valueSuffix: '%'
+        }
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: false
+            },
+            showInLegend: true
+        }
+    },
+    series: [{
+        name: 'Jenis Kelamin',
+        colorByPoint: true,
+        data: [{
+            name: 'Pria ( {{$anggota->where('jk', 'Pria')->where('sts_anggota', 'Simpatisan')->count()}} )',
+            y: {{$anggota->where('jk', 'Pria')
+            ->where('sts_anggota', 'Simpatisan')
+            
+            ->count()}},
+            sliced: true,
+            selected: true
+        }, {
+            name: 'Wanita ( {{$anggota->where('jk', 'Wanita')->where('sts_anggota', 'Simpatisan')->count()}} )',
+            y: {{$anggota->where('jk', 'Wanita')
+            ->where('sts_anggota', 'Simpatisan')
+            ->count()}}
+        }]
+    }]
+});
+</script>
+
+
 @stop
 
 
