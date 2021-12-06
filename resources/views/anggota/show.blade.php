@@ -57,7 +57,7 @@
                             <label class="col-md-12"><b>STATUS KEANGGOTAAN : </b> {{$data->sts_anggota}}</label>
                             <label class="col-md-12"><b>NAMA : </b> {{$data->nama}}</label>
                             <label class="col-md-12"><b>TEMPAT LAHIR : </b> {{$data->tempat_lahir}}</label>
-                            <label class="col-md-12"><b>TANGGAL LAHIR : </b> {{$data->tgl_lahir}}</label>
+                            <label class="col-md-12"><b>TANGGAL LAHIR : </b> {{$data->tgl_lahir->format('d-m-Y')}}</label>
                             <label class="col-md-12"><b>JENIS KELAMIN : </b> {{$data->jk}}</label>
                             <label class="col-md-12"><b>GOLONGAN DARAH  : </b> {{$data->goldar}}</label>
                             
@@ -86,8 +86,6 @@
                             </br>
                             <label class="col-md-12"><b>AYAH : </b> {{$data->ayah}}</label>
                     <label class="col-md-12"><b>IBU : </b> {{$data->ibu}}</label>
-                            </br>
-                            <label class="col-md-12"><b>STATUS KELUARGA : </b> {{$data->sts_keluarga}}</label>
                             </br>
                             </br>
                             

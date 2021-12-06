@@ -1,4 +1,5 @@
 @section('js')
+
  <script type="text/javascript">
             $(document).on('click', '.pilih', function (e) {
                 document.getElementById("gerwil_judul").value = $(this).attr('data-gerwil_judul');
@@ -58,9 +59,7 @@
             
                   <div class="card">
                     <div class="card-body">
-
-                    
-                      
+                                         
                         
                         <div class="form-group{{ $errors->has('kode_anggota') ? ' has-error' : '' }}">
                         
@@ -383,11 +382,22 @@
 
             <div class="card  col-md-12">
               <div class="row flex-grow">
-              <div class="col-md-6">
+              <div class="col-md-12">
                         <div class="form-group{{ $errors->has('ayah') ? ' has-error' : '' }}">
                             <label for="ayah" class=" control-label">Ayah   <b style="color:Tomato;">*</b>  </label>
                             
-                                <input id="ayah" type="text" class="form-control" name="ayah" value="{{ old('ayah') }}" required>
+                            <select required="required" name="ayah" id="ayah" class="custom-select mb-3" >
+                                                  <option hidden disabled selected value>Pilih Ayah</option>
+                                                  @foreach($anggotas as $a)
+                                                  @if  ( $a->sts_dlm_klrg == 'Suami' OR $a->sts_pernikahan == 'Duda')
+                                                  <option value="{{ $a->nama }}">{{ $a->kode_anggota }}-{{ $a->nama }}</option>
+                                                 
+                                                  @endif
+                                                  @endforeach
+                                                  <option value="Tidak Terdaftar Dalam Anggota">Tidak Terdaftar Dalam Anggota</option>
+                                                </select>
+                                                
+                                                
                                 @if ($errors->has('ayah'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('ayah') }}</strong>
@@ -397,11 +407,21 @@
                         </div>
                         </div>
 
-                        <div class="col-md-6">
+
+                        <div class="col-md-12">
                         <div class="form-group{{ $errors->has('ibu') ? ' has-error' : '' }}">
                             <label for="ibu" class=" control-label">Ibu   <b style="color:Tomato;">*</b>  </label>
-                            
-                                <input id="ibu" type="text" class="form-control" name="ibu" value="{{ old('ibu') }}" required>
+                            <select required="required" name="ibu" id="ibu" class="custom-select mb-3" >
+                                                  <option hidden disabled selected value>Pilih Ibu</option>
+                                                  @foreach($anggotas as $a)
+                                                  @if  ( $a->sts_dlm_klrg == 'Istri' OR $a->sts_pernikahan == 'Janda')
+                                                  <option value="{{ $a->nama }}">{{ $a->kode_anggota }}-{{ $a->nama }}</option>
+                                                  
+                                                  @endif
+                                                  @endforeach
+                                                  <option value="Tidak Terdaftar Dalam Anggota">Tidak Terdaftar Dalam Anggota</option>
+                                                </select>
+                              
                                 @if ($errors->has('ibu'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('ibu') }}</strong>
@@ -412,6 +432,24 @@
                 </div>
               <!-- /.card-body -->
             </div>
+            <!-- <div class="form-group{{ $errors->has('ayah') ? ' has-error' : '' }}">
+                            <label for="ayah" class="col-md-12 control-label">Ayah</label>
+                            <div class="col-md-12">
+                                <div class="input-group"  >
+                                <input id="ayah" type="text" class="form-control"     >
+                                <input id="ayah" type="hidden" multiple="multiple" name="ayah" value="{{ old('ayah') }}" readonly="">
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal4"><b>Cari</b> <span class="fa fa-search"></span></button>
+                                </span>
+                                </div>
+                                @if ($errors->has('ayah'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('ayah') }}</strong>
+                                    </span>
+                                @endif
+                                 
+                            </div>
+                        </div> -->
             </br>
 
             <div class="card  col-md-12">
@@ -620,7 +658,8 @@
                             </thead>
                             <tbody>
                                 @foreach($anggotas as $data)
-                        <tr class="pilih_keluarga1" data-sts_keluarga="<?php echo $data->nama; ?>" data-sts_keluarga="<?php echo $data->nama; ?>" >
+                                @if($data->sts_dlm_klrg == 'Suami' OR $data->sts_pernikahan == 'Duda')
+                        <tr class="pilih_ayah" data-ayah_id="<?php echo $data->nama; ?>" data-ayah_judul="<?php echo $data->nama; ?>" >
                                     <td>{{$data->nama}}</td>
                                     <td>{{$data->kota}}</td>
                                     <td>{{$data->asal_grj}}</td>
@@ -634,6 +673,7 @@
                          @endif
                          </td>
                                 </tr>
+                                @endif
                                 @endforeach
                             </tbody>
                         </table>  
