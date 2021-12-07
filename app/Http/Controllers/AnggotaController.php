@@ -127,7 +127,40 @@ class AnggotaController extends Controller
         }
          
         
-        Anggota::create($request->all());
+        // Anggota::create($request->all());
+        Anggota::create([
+            'kode_anggota' => $request->input('kode_anggota'),
+            'nama' => $request->input('nama'),
+            'tgl_baptis' => $request->input('tgl_baptis'),
+            // 
+            'grj_baptis' => $request->input('grj_baptis'),
+            'asal_grj' => $request->input('asal_grj'),
+            'kota' => $request->input('kota'),
+            'kelurahan' => $request->input('kelurahan'),
+            'kecamatan' => $request->input('kecamatan'),
+            'provinsi' => $request->input('provinsi'),
+            'alamat' => $request->input('alamat'),
+            // 
+            'jk' => $request->input('jk'),
+            'tempat_lahir' => $request->input('tempat_lahir'),
+            'gerwil' => $request->input('gerwil'),
+            'tgl_lahir' => $request->input('tgl_lahir'),
+            'sts_dlm_klrg' => $request->input('sts_dlm_klrg'),
+            'alamat_domisili' => $request->input('alamat_domisili'),
+            'kelurahan_domisili' => $request->input('kelurahan_domisili'),
+            'kecamatan_domisili' => $request->input('kecamatan_domisili'),
+            'kota_domisili' => $request->input('kota_domisili'),
+            'provinsi_domisili' => $request->input('provinsi_domisili'),
+            'pendidikan' => $request->input('pendidikan'),
+            'jurusan' => $request->input('jurusan'),
+            'goldar' => $request->input('goldar'),
+            'ayah' => $request->input('ayah'),
+            'ibu' => $request->input('ibu'),
+            'hp' => $request->input('hp'),
+            'sts_anggota' => $request->input('sts_anggota'),
+            'pekerjaan' => $request->input('pekerjaan'),
+            'gambar' => $gambar
+        ]);
 
         Session::flash('message', 'Data Anggota berhasil ditambahkan!');
         Session::flash('message_type', 'success');
@@ -195,7 +228,16 @@ class AnggotaController extends Controller
             $anggota->gambar = $fileName;
         }
 
-        $anggota->update($request->all());
+        $anggota->nama = $request->input('nama');
+        $anggota->alamat = $request->input('alamat');
+        $anggota->gerwil = $request->input('gerwil');
+        $anggota->sts_dlm_klrg = $request->input('sts_dlm_klrg');
+        $anggota->sts_pernikahan = $request->input('sts_pernikahan');
+        $anggota->sts_anggota = $request->input('sts_anggota');
+        $anggota->pekerjaan = $request->input('pekerjaan');
+        $anggota->hp = $request->input('hp');
+
+        $anggota->update();
 
         Session::flash('message', 'Data Anggota berhasil diubah!');
         Session::flash('message_type', 'success');

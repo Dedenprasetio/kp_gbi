@@ -72,17 +72,19 @@
                           @if($data->sts_anggota == 'Jemaat')
                           @if($data->gambar)
                             <img width="50" height="50" src="{{url('images/anggota', $data->gambar)}}" alt="image" style="margin-right: 10px;" />
-                          @else
-                            <img width="50" height="50" src="{{url('images/anggota/default.png')}}" alt="image" style="margin-right: 10px;" />
-
+                          @elseif ($data->gambar == null AND $data->jk == 'Pria')
+                            <img width="50" height="50" src="{{url('images/anggota/male.jpg')}}" alt="image" style="margin-right: 10px;" />
+                            @elseif ($data->gambar == null AND $data->jk == 'Wanita')
+                            <img width="50" height="50" src="{{url('images/anggota/female.jpg')}}" alt="image" style="margin-right: 10px;" />
                           @endif
                           <label class="text-success">{{$data->kode_anggota}}</label>
                           @else($data->sts_anggota == 'Simpatisan')
                           @if($data->gambar)
                             <img width="50" height="50" src="{{url('images/anggota', $data->gambar)}}" alt="image" style="margin-right: 10px;" />
-                          @else
-                            <img width="50" height="50" src="{{url('images/anggota/default.png')}}" alt="image" style="margin-right: 10px;" />
-
+                          @elseif ($data->gambar == null AND $data->jk == 'Pria')
+                            <img width="50" height="50" src="{{url('images/anggota/male.jpg')}}" alt="image" style="margin-right: 10px;" />
+                            @elseif ($data->gambar == null AND $data->jk == 'Wanita')
+                            <img width="50" height="50" src="{{url('images/anggota/female.jpg')}}" alt="image" style="margin-right: 10px;" />
                           @endif
                           <label class="text-warning">{{$data->kode_anggota}}</label>
                           @endif

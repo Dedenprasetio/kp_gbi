@@ -15,9 +15,9 @@ class CreateAnggotasTable extends Migration
     {
         Schema::create('anggota', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('kode_anggota');
-            $table->string('nama'); 
-            $table->enum('jk', ['Pria', 'Wanita']);
+            $table->string('kode_anggota')->nullable();
+            $table->string('nama')->nullable(); 
+            $table->enum('jk', ['Pria', 'Wanita'])->nullable();
             $table->string('tempat_lahir')->nullable();
             $table->date('tgl_lahir')->nullable();
             
@@ -28,16 +28,16 @@ class CreateAnggotasTable extends Migration
             $table->string('kecamatan')->nullable();
             
             
-            $table->enum('gerwil', ['Tengah', 'Timur', 'Barat', 'Selatan', 'Utara','Belum']);
+            $table->enum('gerwil', ['Tengah', 'Timur', 'Barat', 'Selatan', 'Utara','Belum'])->nullable();
             $table->string('pekerjaan')->nullable();
             $table->string('pernikahan')->nullable(); 
             $table->string('gambar')->nullable();
             $table->string('hp')->nullable(); 
-            $table->enum('sts_anggota', ['Jemaat', 'Simpatisan']);
+            $table->enum('sts_anggota', ['Jemaat', 'Simpatisan'])->nullable();
 
             //TAMBAHAN
             $table->string('sts_dlm_klrg')->nullable();
-            $table->enum('sts_pernikahan', ['Belum', 'Menikah', 'Janda', 'Duda']);      
+            $table->enum('sts_pernikahan', ['Belum', 'Menikah', 'Janda', 'Duda'])->nullable();      
             $table->string('alamat_domisili')->nullable();
             $table->string('kelurahan_domisili')->nullable();
             $table->string('kecamatan_domisili')->nullable();

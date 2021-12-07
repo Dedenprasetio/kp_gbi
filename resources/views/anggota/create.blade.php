@@ -45,14 +45,24 @@
     {{ csrf_field() }}
 
 
+    
 <div class="row">
 
 
-<div class="col-md-6 d-flex align-items-stretch grid-margin">
-    
-<div class="row flex-grow">
+<div class="row" style="margin-top: 5px;">
+<div class="col-md-12 grid-margin stretch-card">
+                       
+                <ol class="breadcrumb float-sm-right" style="background-color:#f4f6f9;">
+                        <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="/anggota">Data Anggota</a></li>
+                        <li class="breadcrumb-item active">Tambah Data Anggota</li>
+                        </ol> 
+              </div>
 
-                        </br></br>
+              
+
+
+<div class="col-md-6 d-flex align-items-stretch grid-margin">
     
                 <div class="card-body">
 
@@ -350,7 +360,7 @@
               <!-- /.card-body -->
             </div>
 
-                    </div>
+
                   </div>
                 </div>
               </div>
@@ -623,17 +633,14 @@
                     
 
                         </br>
+
                         <div class="form-group">
                             <label for="email" class="col-md-4 control-label">Gambar</label>
-                            <div class="col-md-10">
-                                <img class="product" width="200" height="200" />
+                            <div class="col-md-12">
+                                <img class="product" width="377" height="377" />
                                 <input type="file" class="uploads form-control" style="margin-top: 20px;" name="gambar">
                             </div>
                         </div>
-
-                        </br>
-                        </br>
-                        </br>
 
                         </br>
                         <div class="col-md-12">

@@ -115,7 +115,7 @@
 <script src="/adminlte/js/demo.js"></script>
 
 
-<!-- TEMPLATE SEBELUMNYA -->
+<!-- TEMPLATE SEBELUMNYA
 <script src="{{asset('vendors/js/vendor.bundle.base.js')}}"></script>
   <script src="{{asset('vendors/js/vendor.bundle.addons.js')}}"></script>
   <script src="{{asset('js/off-canvas.js')}}"></script>
@@ -124,7 +124,7 @@
   <script src="{{asset('js/jquery.dataTables.min.js')}}"></script>
   <script src="{{asset('js/dataTables.bootstrap4.min.js')}}"></script>
   <script src="{{asset('js/sweetalert2.all.js')}}"></script>
-  <script src="{{asset('js/select2.min.js')}}"></script>
+  <script src="{{asset('js/select2.min.js')}}"></script> -->
 
 
  <script src="{{asset('js/jquery.dataTables.min.js')}}"></script>

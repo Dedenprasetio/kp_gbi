@@ -136,7 +136,7 @@ Akte Notaris No.37Th.1973. Terdaftar pada: Dep.Agama RI No.E/Ket/392/1385/75 Tel
 
                           
                           <td>
-                            {{$data->tgl_lahir->format('d-m-Y')}}
+                            {{$data->tgl_lahir}}
                           </td>
                          
                           <td>
