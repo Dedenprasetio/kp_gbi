@@ -80,6 +80,9 @@ class kkController extends Controller
             );
         }
 
+        Session::flash('message', 'Status berhasil diubah!');
+        Session::flash('message_type', 'success');
+
         return redirect()->route('kk.index');
     }
     

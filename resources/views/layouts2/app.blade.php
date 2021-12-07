@@ -71,18 +71,7 @@
         </div>
       </div>
 
-      <!-- SidebarSearch Form
-      <div class="form-inline">
-        <div class="input-group" data-widget="sidebar-search">
-          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-          <div class="input-group-append">
-            <button class="btn btn-sidebar">
-              <i class="fas fa-search fa-fw"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-     -->
+    
       <!-- Sidebar Menu -->
       <nav class="mt-2">
       @section('sidebar')
@@ -127,7 +116,7 @@
 
 
 <!-- TEMPLATE SEBELUMNYA -->
-<!-- <script src="{{asset('vendors/js/vendor.bundle.base.js')}}"></script>
+<script src="{{asset('vendors/js/vendor.bundle.base.js')}}"></script>
   <script src="{{asset('vendors/js/vendor.bundle.addons.js')}}"></script>
   <script src="{{asset('js/off-canvas.js')}}"></script>
   <script src="{{asset('js/misc.js')}}"></script>
@@ -137,7 +126,7 @@
   <script src="{{asset('js/sweetalert2.all.js')}}"></script>
   <script src="{{asset('js/select2.min.js')}}"></script>
 
- -->
+
  <script src="{{asset('js/jquery.dataTables.min.js')}}"></script>
   <script src="{{asset('js/dataTables.bootstrap4.min.js')}}"></script>
 
@@ -153,6 +142,24 @@
 </script>
 @endif
 
+<script>
+  
+  $(document).on('click', '.pilih_ayah', function (e) {
+    document.getElementById("ayah_judul").value = $(this).attr('data-ayah_judul');
+    document.getElementById("ayah_id").value = $(this).attr('data-ayah_id');
+    $('#modalAyah').modal('hide');
+  });
+
+  $(document).on('click', '.pilih_ibu', function (e) {
+      document.getElementById("ibu_judul").value = $(this).attr('data-ibu_judul');
+      document.getElementById("ibu_id").value = $(this).attr('data-ibu_id');
+      $('#modalIbu').modal('hide');
+  });
+
+  $(function () {
+      $("#tableAyah, #tableIbu").dataTable();
+  });
+</script>
 
 <script>
 
@@ -204,6 +211,8 @@
   });
 </script>
 
+
+@section('js')
 @yield('footer')
   @yield('piechart')
   @yield('bendahara1')

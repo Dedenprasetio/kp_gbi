@@ -102,7 +102,7 @@ $(document).ready(function() {
                                                 <select required="required" name="anggota_id" class="custom-select mb-3" >
                                                   <option value="">Pilih Anggota Keluarga</option>
                                                   @foreach($anggotas as $a)
-                                                  @if ($a->sts_dlm_klrg != 'Suami' AND $a->sts_dlm_klrg != 'Istri')
+                                                  @if ($a->sts_dlm_klrg == 'Anak')
                                                   <option value="{{ $a->id }}">{{ $a->kode_anggota }}-{{ $a->nama }}({{ $a->sts_dlm_klrg }})</option>
                                                   @endif
                                                   @endforeach

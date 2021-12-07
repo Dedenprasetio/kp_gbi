@@ -7,17 +7,7 @@
                 $('#myModal').modal('hide');
             });
 
-            $(document).on('click', '.pilih_ayah', function (e) {
-                document.getElementById("ayah_judul").value = $(this).attr('data-ayah_judul');
-                document.getElementById("ayah_id").value = $(this).attr('data-ayah_id');
-                $('#myModal2').modal('hide');
-            });
-
-            $(document).on('click', '.pilih_ibu', function (e) {
-                document.getElementById("ibu_judul").value = $(this).attr('data-ibu_judul');
-                document.getElementById("ibu_id").value = $(this).attr('data-ibu_id');
-                $('#myModal3').modal('hide');
-            });
+            
 
             $(document).on('click', '.pilih_keluarga1', function (e) {
                 document.getElementById("sts_keluarga").value = $(this).attr('data-sts_keluarga');
@@ -25,12 +15,22 @@
                 $('#myModal4').modal('hide');
             });
             
-
-            $(function () {
-                $("#lookup, #lookup2").dataTable();
+            $(document).on('click', '.pilih_ayah', function (e) {
+                document.getElementById("ayah").value = $(this).attr('data-ayah');
+                document.getElementById("anggota_id").value = $(this).attr('data-anggota_id');
+                $('#modalAyah').modal('hide');
             });
 
-        </script>
+            $(document).on('click', '.pilih_ibu', function (e) {
+                document.getElementById("ibu").value = $(this).attr('data-ibu');
+                document.getElementById("anggota_id").value = $(this).attr('data-anggota_id');
+                $('#modalIbu').modal('hide');
+            });
+
+            $(function () {
+                $("#tableAyah, #tableIbu").dataTable();
+            });
+ </script>
 
 @stop
 @section('css')
@@ -39,6 +39,7 @@
 @extends('layouts2.app')
 
 @section('content')
+
 
 <form method="POST" action="{{ route('anggota.store') }}" enctype="multipart/form-data">
     {{ csrf_field() }}
@@ -378,12 +379,13 @@
                             </select>
                             </div>
                         </div>
-                        </br>
+                        <br>
+                        
 
-            <div class="card  col-md-12">
+                        <div class="card  col-md-12">
               <div class="row flex-grow">
               <div class="col-md-12">
-                        <div class="form-group{{ $errors->has('ayah') ? ' has-error' : '' }}">
+                        <!-- <div class="form-group{{ $errors->has('ayah') ? ' has-error' : '' }}">
                             <label for="ayah" class=" control-label">Ayah   <b style="color:Tomato;">*</b>  </label>
                             
                             <select required="required" name="ayah" id="ayah" class="custom-select mb-3" >
@@ -404,12 +406,31 @@
                                     </span>
                                 @endif
                            
+                        </div> -->
+
+                        <div class="form-group{{ $errors->has('ayah') ? ' has-error' : '' }}">
+                            <label for="ayah" class="col-md-12 control-label">Ayah <b style="color:Tomato;">*</b></label>
+                            <div class="col-md-12">
+                                <div class="input-group"  >
+                                <input id="ayah" type="text" name="ayah" class="form-control" value="{{ old('ayah') }}"    >
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalAyah"><b>Cari</b> <span class="fa fa-search"></span></button>
+                                </span>
+                                </div>
+                                @if ($errors->has('ayah'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('ayah') }}</strong>
+                                    </span>
+                                @endif
+                                 
+                            </div>
                         </div>
+
                         </div>
 
 
                         <div class="col-md-12">
-                        <div class="form-group{{ $errors->has('ibu') ? ' has-error' : '' }}">
+                        <!-- <div class="form-group{{ $errors->has('ibu') ? ' has-error' : '' }}">
                             <label for="ibu" class=" control-label">Ibu   <b style="color:Tomato;">*</b>  </label>
                             <select required="required" name="ibu" id="ibu" class="custom-select mb-3" >
                                                   <option hidden disabled selected value>Pilih Ibu</option>
@@ -427,30 +448,35 @@
                                         <strong>{{ $errors->first('ibu') }}</strong>
                                     </span>
                                 @endif
-                        </div>
-                        </div>                 
-                </div>
-              <!-- /.card-body -->
-            </div>
-            <!-- <div class="form-group{{ $errors->has('ayah') ? ' has-error' : '' }}">
-                            <label for="ayah" class="col-md-12 control-label">Ayah</label>
+                        </div> -->
+
+                        <div class="form-group{{ $errors->has('ibu') ? ' has-error' : '' }}">
+                            <label for="ibu" class="col-md-12 control-label">Ibu <b style="color:Tomato;">*</b></label>
                             <div class="col-md-12">
                                 <div class="input-group"  >
-                                <input id="ayah" type="text" class="form-control"     >
-                                <input id="ayah" type="hidden" multiple="multiple" name="ayah" value="{{ old('ayah') }}" readonly="">
+                                <input id="ibu" type="text" name="ibu" class="form-control"  value="{{ old('ibu') }}"   >
+                                
                                 <span class="input-group-btn">
-                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal4"><b>Cari</b> <span class="fa fa-search"></span></button>
+                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalIbu"><b>Cari</b> <span class="fa fa-search"></span></button>
                                 </span>
                                 </div>
-                                @if ($errors->has('ayah'))
+                                @if ($errors->has('ibu'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('ayah') }}</strong>
+                                        <strong>{{ $errors->first('ibu') }}</strong>
                                     </span>
                                 @endif
                                  
                             </div>
-                        </div> -->
-            </br>
+                        </div>
+
+                        </div>                 
+                </div>
+            </div>
+            
+          <br>
+
+           
+           
 
             <div class="card  col-md-12">
               <div class="row flex-grow">
@@ -637,7 +663,7 @@
 
  
 <!-- Modal -->
-<div class="modal fade bd-example-modal-lg" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >
+<div class="modal fade bd-example-modal-lg" id="modalAyah" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >
   <div class="modal-dialog modal-lg" role="document" >
     <div class="modal-content" style="background: #fff;">
       <div class="modal-header">
@@ -647,7 +673,7 @@
         </button>
       </div>
       <div class="modal-body">
-                        <table id="lookup" class="table table-bordered table-hover table-striped">
+                        <table id="tableAyah" class="table table-bordered table-hover table-striped">
                             <thead>
                                 <tr>
                                     <th>Nama</th>
@@ -659,7 +685,7 @@
                             <tbody>
                                 @foreach($anggotas as $data)
                                 @if($data->sts_dlm_klrg == 'Suami' OR $data->sts_pernikahan == 'Duda')
-                        <tr class="pilih_ayah" data-ayah_id="<?php echo $data->nama; ?>" data-ayah_judul="<?php echo $data->nama; ?>" >
+                        <tr class="pilih_ayah" data-anggota_id="<?php echo $data->id; ?>" data-ayah="<?php echo $data->nama; ?>" >
                                     <td>{{$data->nama}}</td>
                                     <td>{{$data->kota}}</td>
                                     <td>{{$data->asal_grj}}</td>
@@ -681,4 +707,51 @@
                 </div>
             </div>
         </div>
+
+        <!-- Modal -->
+<div class="modal fade bd-example-modal-lg" id="modalIbu" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >
+  <div class="modal-dialog modal-lg" role="document" >
+    <div class="modal-content" style="background: #fff;">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Cari ibu</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+                        <table id="tableIbu" class="table table-bordered table-hover table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Nama</th>
+                                    <th>Kabupaten</th>
+                                    <th>Asal Gereja</th>
+                                     <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($anggotas as $data)
+                                @if($data->sts_dlm_klrg == 'Istri' OR $data->sts_pernikahan == 'Janda')
+                        <tr class="pilih_ibu" data-anggota_id="<?php echo $data->id; ?>" data-ibu="<?php echo $data->nama; ?>" >
+                                    <td>{{$data->nama}}</td>
+                                    <td>{{$data->kota}}</td>
+                                    <td>{{$data->asal_grj}}</td>
+                                    
+                                    <td>
+                         
+                         @if($data->sts_anggota == 'Jemaat')
+                         <label class="btn btn-success btn-sm col-md-12 align-center">{{$data->sts_anggota}}</label>
+                         @else($data->sts_anggota == 'Simpatisan')
+                         <label class="btn btn-warning btn-sm col-md-12  align-center">{{$data->sts_anggota}}</label>
+                         @endif
+                         </td>
+                                </tr>
+                                @endif
+                                @endforeach
+                            </tbody>
+                        </table>  
+                    </div>
+                </div>
+            </div>
+        </div>
+
 @endsection

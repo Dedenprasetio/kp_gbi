@@ -137,7 +137,7 @@
                             </select>
                             </div>
                         </div>
-
+              
                     
                         <div class="form-group{{ $errors->has('sts_anggota') ? ' has-error' : '' }}">
                               <label for="goldar" class="col-md-12 control-label" >Status Anggota    </label>
