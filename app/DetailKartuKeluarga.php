@@ -8,6 +8,7 @@ class DetailKartuKeluarga extends Model
 {
     protected $table = 'detail_kartu_keluarga';
     protected $fillable = ['anggota_id', 'kartukeluarga_id'];
+    protected $dates = ['tgl_lahir'];
     
 
     public function anggota()

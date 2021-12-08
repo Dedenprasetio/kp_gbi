@@ -134,6 +134,9 @@ Akte Notaris No.37Th.1973. Terdaftar pada: Dep.Agama RI No.E/Ket/392/1385/75 Tel
                           <th>
                             NAMA
                           </th>
+                          <th>
+                            TGL LAHIR
+                          </th>
 
                           <th>
                             JK
@@ -166,7 +169,9 @@ Akte Notaris No.37Th.1973. Terdaftar pada: Dep.Agama RI No.E/Ket/392/1385/75 Tel
                             {{$data->nama}}
                           </td>
 
-
+                          <td>
+                            {{$data->tgl_lahir->format('d M Y')}}
+                          </td>
                          
                           <td>
                             {{$data->jk}}
