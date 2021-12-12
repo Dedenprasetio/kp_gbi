@@ -241,7 +241,7 @@ class LaporanController extends Controller
             {
                 $q->where('gerwil', 'Tengah');
             }  
-            elseif($request->get('gerwil') == 'Timut') 
+            elseif($request->get('gerwil') == 'Timur') 
             {
                 $q->where('gerwil', 'Timur');
             } 
