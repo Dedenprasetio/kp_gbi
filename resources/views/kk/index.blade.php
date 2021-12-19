@@ -72,9 +72,9 @@
                         <td class="text-left">{{ $no++ }}</td>
                         <td class="text-center">
                         @if($data->sts_istri == 1) 
-                              <a href="/detailkk/status/istri/{{ $data->id }}" class="btn btn-success  btn-sm">  Sudah Ada Istri </a>
+                              <a href="/detailkk/status/istri/{{ $data->id }}" class="btn btn-success  btn-sm" >  Sudah Ada Istri </a>
                               @elseif($data->sts_istri == 0)
-                              <a href="/detailkk/status/istri/{{ $data->id }}" class="btn btn-danger  btn-sm">  Belum Ada Istri </a>
+                              <a href="/detailkk/status/istri/{{ $data->id }}" class="btn btn-danger  btn-sm" >  Belum Ada Istri </a>
                               @endif
                         </td>
                         <td> 
@@ -112,10 +112,10 @@
                         </div>
                         <div>
                           
-                          <a href="/detailkk/index/{{ $data->id }}" class="btn btn-warning  btn-sm" > <i class="fa fa-list-alt" aria-hidden="true"></i></a>
+                          <a href="/detailkk/index/{{ $data->id }}" class="btn btn-warning  btn-sm" title="Detail Kartu Keluarga" > <i class="fa fa-list-alt" aria-hidden="true"></i></a>
                          <!-- <a href="{{ route('kk.edit', $data->id) }}" class="btn btn-secondary  btn-sm" tooltip ><i class="fa fa-download"></i> </a> -->
                           
-                              <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalDelete_{{ $data->id }}"><i class="fa fa-trash"></i> </button>
+                              <button type="button" class="btn btn-danger btn-sm" title="Hapus Data" data-toggle="modal" data-target="#modalDelete_{{ $data->id }}"><i class="fa fa-trash"></i> </button>
 
 
 

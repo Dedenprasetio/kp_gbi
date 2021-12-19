@@ -93,8 +93,6 @@ class UserController extends Controller
         ]);
 
 
-        
-
         Session::flash('message', 'Data Pengguna Berhasil ditambahkan!');
         Session::flash('message_type', 'success');
 

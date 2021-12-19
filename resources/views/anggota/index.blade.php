@@ -6,6 +6,9 @@
     });
 
 } );
+
+
+
 </script>
 @stop
 @extends('layouts2.app')
@@ -109,12 +112,12 @@
                       
                       @if(Auth::user()->level == 'admin')
                       <td class="text-center">
-                      <a href="{{ route('anggota.show', $data->id) }}" class="btn btn-primary  btn-sm" tooltip ><i class="fa fa-eye"></i></a> 
-                  <a href="{{ route('anggota.laporan', $data->id) }}" class="btn btn-success  btn-sm" tooltip ><i class="fa fa-download"></i></a> 
+                      <a href="{{ route('anggota.show', $data->id) }}" class="btn btn-primary  btn-sm" title="Lihat Detail" ><i class="fa fa-eye"></i></a> 
+                  <a href="{{ route('anggota.laporan', $data->id) }}" class="btn btn-success  btn-sm" title="Download" ><i class="fa fa-download"></i></a> 
                   
 
-                  <a href="{{route('anggota.edit', $data->id)}}" class="btn btn-secondary  btn-sm"><i class="fa fa-cog"></i> </a>
-                  <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalDelete_{{ $data->id }}"><i class="fa fa-trash"></i></button>
+                  <a href="{{route('anggota.edit', $data->id)}}" class="btn btn-secondary  btn-sm" title="Ubah Data"><i class="fa fa-cog"></i> </a>
+                  <button type="button" class="btn btn-danger btn-sm" title="Hapus Data" data-toggle="modal" data-target="#modalDelete_{{ $data->id }}"><i class="fa fa-trash"></i></button>
                   
                   
 

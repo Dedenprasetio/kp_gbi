@@ -100,9 +100,9 @@
                   <!-- <a href="#" class="btn btn-secondary  btn-sm"><i class="fa fa-download"></i> </a> -->
                   @if(Auth::user()->level == 'admin')
                   <td class="text-center col-md-2" width="10%">
-                  <a href="{{route('talenta.laporan', $data->id) }}" class="btn btn-success  btn-sm" tooltip ><i class="fa fa-download"></i></a> 
-                  <a href="{{route('talenta.edit', $data->id)}}" class="btn btn-secondary  btn-sm"><i class="fa fa-cog"></i> </a>
-                  <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalDelete_{{ $data->id }}"><i class="fa fa-trash"></i></button>
+                  <a href="{{route('talenta.laporan', $data->id) }}" class="btn btn-success  btn-sm" title="Download Data" ><i class="fa fa-download"></i></a> 
+                  <a href="{{route('talenta.edit', $data->id)}}" class="btn btn-secondary  btn-sm" title="Ubah Data"><i class="fa fa-cog"></i> </a>
+                  <button type="button" class="btn btn-danger btn-sm" title="Hapus Data" data-toggle="modal" data-target="#modalDelete_{{ $data->id }}"><i class="fa fa-trash"></i></button>
                   
 
                   
